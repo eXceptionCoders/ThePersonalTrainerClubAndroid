@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ToolbarStyle.Event"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_centerHorizontal="false"
+    android:background="@color/customOrange"
+    android:minHeight="?attr/actionBarSize"
+    android:padding="1dp"
+    app:subtitleTextColor="#f5fbff"
+    app:titleTextColor="#fff"
+    tools:title="Some title" />

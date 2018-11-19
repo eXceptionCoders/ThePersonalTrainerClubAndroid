@@ -9,6 +9,7 @@ import es.exceptioncoders.thepersonaltrainerclub.network.entity.LoginRequest
 interface LoginProvider {
     enum class LoginError {
         UserPasswordNotFound,
+        IncorrectEntry,
         OtherError
     }
 
@@ -25,14 +26,18 @@ class LoginProviderImp: LoginProvider {
 
         ws.load<Boolean>(endpoint) { b:Boolean?, e: WebServiceError? ->
             var error: LoginProvider.LoginError? = null
-            e.let {
-                when (it) {
-                    WebServiceError.ForbiddenError -> LoginProvider.LoginError.UserPasswordNotFound
+            var loggedIn = false
+            e?.let {
+                error = when (it) {
+                    WebServiceError.Unauthorized -> LoginProvider.LoginError.UserPasswordNotFound
+                    WebServiceError.UnprocessableEntity -> LoginProvider.LoginError.IncorrectEntry
                     else -> LoginProvider.LoginError.OtherError
                 }
+            } ?: kotlin.run {
+                loggedIn = true
             }
 
-            completion(b ?: false, error)
+            completion(loggedIn, error)
         }
     }
 }
