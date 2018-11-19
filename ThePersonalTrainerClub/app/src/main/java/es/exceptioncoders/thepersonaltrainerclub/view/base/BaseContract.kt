@@ -5,6 +5,7 @@ interface BaseContract {
     interface BaseView {
         fun showLoading()
         fun hideLoading()
+        fun showAlertMessage(title: String?, message: String)
     }
 
     interface BasePresenter<in T : BaseView> {

@@ -8,7 +8,7 @@ import es.exceptioncoders.thepersonaltrainerclub.network.entity.LoginRequest
 
 class Endpoint(private val type: EndpointType) {
     init {
-        FuelManager.instance.basePath = "https://thepersonaltrainerclubapi.azurewebsites.net"
+        FuelManager.instance.basePath = "https://thepersonaltrainerappapi.azurewebsites.net"
     }
 
     sealed class EndpointType {
@@ -16,8 +16,9 @@ class Endpoint(private val type: EndpointType) {
     }
 
     fun request(): Request {
-        return method()
-                .header(Pair("Content-Type", "application/json"))
+        return method().also {
+            it.headers.clear()
+        }.header(Pair("Content-Type", "application/json"))
                 .body(parameters())
     }
 

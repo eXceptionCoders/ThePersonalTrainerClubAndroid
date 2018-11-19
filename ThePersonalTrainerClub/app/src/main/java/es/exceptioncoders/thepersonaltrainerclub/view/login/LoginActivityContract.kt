@@ -3,9 +3,7 @@ package es.exceptioncoders.thepersonaltrainerclub.view.login
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseContract
 
 interface LoginActivityContract {
-    interface LoginView : BaseContract.BaseView {
-        fun showMessage(message: String)
-    }
+    interface LoginView : BaseContract.BaseView
 
     interface LoginViewPresenter<V : LoginView> : BaseContract.BasePresenter<V> {
         fun onLogin(email: String?, password: String?)
