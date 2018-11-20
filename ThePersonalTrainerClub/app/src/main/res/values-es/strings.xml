@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ThePersonalTrainerClub</string>
+    <string name="app_bar_name">GymUs</string>
+    <string name="login_email_placeholder">usuario@dominio.com</string>
+    <string name="login_password_placeholder">Contraseña</string>
+    <string name="login_login_button">Login</string>
+    <string name="login_register_button">Registro</string>
+    <string name="login_error_title">Error</string>
+    <string name="login_error_empty_field">Debes rellenar todos los campos</string>
+    <string name="login_error_wrong_user">Usuario o password incorrecto</string>
+    <string name="login_error_invalid_email">El email está mal escrito</string>
+    <string name="login_error_default">Ha ocurrido un error durante el login</string>
+</resources>

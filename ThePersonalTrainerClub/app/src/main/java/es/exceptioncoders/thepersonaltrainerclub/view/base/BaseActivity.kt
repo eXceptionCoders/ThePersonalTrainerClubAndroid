@@ -11,22 +11,26 @@ abstract class BaseActivity : AppCompatActivity(), BaseContract.BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutInflater.inflate(bindLayout(), null))
+
+        localizeView()
     }
 
     override fun showLoading() {}
 
     override fun hideLoading() {}
 
-    override fun showAlertMessage(title: String?, message: String) {
+    override fun showAlertMessage(title: Int?, message: Int) {
         val builder = AlertDialog.Builder(this)
 
         title?.let {
-            builder.setTitle(it)
+            builder.setTitle(resources.getString(title))
         }
 
-        builder.setMessage(message)
+        builder.setMessage(resources.getString(message))
 
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+    protected abstract fun localizeView()
 }
