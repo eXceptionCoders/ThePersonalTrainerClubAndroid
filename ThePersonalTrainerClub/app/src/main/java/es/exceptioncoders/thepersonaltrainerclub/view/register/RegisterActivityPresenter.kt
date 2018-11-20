@@ -13,7 +13,8 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
 
     override fun onRegister(name: String?, surname: String?, email: String?, password: String?, isTrainer: Boolean?) {
         if (isValidFormData(name, surname, email, password, isTrainer)) {
-            mView?.showAlertMessage(null, "Faltan datos")
+            //TODO: Utilizar R.string.XXX
+            //mView?.showAlertMessage(null, "Faltan datos")
             return
         }
 
@@ -26,17 +27,20 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
 
             RegisterError?.let {
                 when (it) {
-                    RegisterProvider.RegisterError.DuplicateError -> mView?.showAlertMessage(null, "Ya existe un usuario con ese email")
-                    RegisterProvider.RegisterError.IncorrectEntry -> mView?.showAlertMessage(null, "El email está mal escrito")
-                    RegisterProvider.RegisterError.OtherError -> mView?.showAlertMessage(null, "Ha ocurrido un error durante el Register")
+                    //TODO: Utilizar R.string.XXX
+                    //RegisterProvider.RegisterError.DuplicateError -> mView?.showAlertMessage(null, "Ya existe un usuario con ese email")
+                    //RegisterProvider.RegisterError.IncorrectEntry -> mView?.showAlertMessage(null, "El email está mal escrito")
+                    //RegisterProvider.RegisterError.OtherError -> mView?.showAlertMessage(null, "Ha ocurrido un error durante el Register")
                 }
                 return@register
             }
 
             if (registered) {
-                mView?.showAlertMessage(null, "OK")
+                //TODO: Utilizar R.string.XXX
+                //mView?.showAlertMessage(null, "OK")
             } else {
-                mView?.showAlertMessage(null, "Ha ocurrido un error durante el Register")
+                //TODO: Utilizar R.string.XXX
+                //mView?.showAlertMessage(null, "Ha ocurrido un error durante el Register")
             }
         }
     }
