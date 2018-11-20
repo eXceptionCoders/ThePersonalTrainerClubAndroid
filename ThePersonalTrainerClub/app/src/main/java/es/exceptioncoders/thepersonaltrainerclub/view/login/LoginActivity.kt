@@ -22,22 +22,18 @@ class LoginActivity : BaseActivity(), LoginActivityContract.LoginView {
         mPresenter = LoginActivityPresenter(mNavigator) as LoginActivityContract.LoginViewPresenter<LoginActivity>
         mPresenter.attachView(this)
 
-        (loginButton as Button).text = "Login"
         loginButton.setOnClickListener {
             mPresenter.onLogin(emailEditText.text.toString(), passwordEditText.text.toString())
         }
 
-        (registerButton as Button).text = "Register"
         registerButton.setOnClickListener {
             mPresenter.onRegister()
         }
 
-
-
         val myToolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(myToolbar)
 
-        supportActionBar?.title = "GymUs"
+        supportActionBar?.title = resources.getString(R.string.app_bar_name)
     }
 
     override fun showLoading() {
@@ -46,5 +42,12 @@ class LoginActivity : BaseActivity(), LoginActivityContract.LoginView {
 
     override fun hideLoading() {
         progressBar.visibility = View.INVISIBLE
+    }
+
+    override fun localizeView() {
+        emailEditText.hint = resources.getString(R.string.login_email_placeholder)
+        passwordEditText.hint = resources.getString(R.string.login_password_placeholder)
+        (loginButton as Button).text =  resources.getString(R.string.login_login_button)
+        (registerButton as Button).text = resources.getString(R.string.login_register_button)
     }
 }

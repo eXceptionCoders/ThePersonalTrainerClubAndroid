@@ -1,5 +1,6 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.login
 
+import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LoginModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.LoginProvider
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.LoginProviderImp
@@ -13,7 +14,7 @@ class LoginActivityPresenter(private val mNavigator: LoginActivityContract.Login
 
     override fun onLogin(email: String?, password: String?) {
         if (email.isNullOrEmpty() || email.isNullOrBlank() || password.isNullOrEmpty() || password.isNullOrBlank()) {
-            mView?.showAlertMessage(null, "Faltan datos")
+            mView?.showAlertMessage(R.string.login_error_title, R.string.login_error_empty_field)
         } else {
             mView?.showLoading()
 
@@ -24,17 +25,17 @@ class LoginActivityPresenter(private val mNavigator: LoginActivityContract.Login
 
                 loginError?.let {
                     when (it) {
-                        LoginProvider.LoginError.UserPasswordNotFound -> mView?.showAlertMessage(null, "Usuario no encontrado o password incorrecto")
-                        LoginProvider.LoginError.IncorrectEntry -> mView?.showAlertMessage(null, "El email está mal escrito")
-                        LoginProvider.LoginError.OtherError -> mView?.showAlertMessage(null, "Ha ocurrido un error durante el login")
+                        LoginProvider.LoginError.UserPasswordNotFound -> mView?.showAlertMessage(null, R.string.login_error_wrong_user)
+                        LoginProvider.LoginError.IncorrectEntry -> mView?.showAlertMessage(null, R.string.login_error_invalid_email)
+                        LoginProvider.LoginError.OtherError -> mView?.showAlertMessage(null, R.string.login_error_default)
                     }
                     return@login
                 }
 
                 if (loggedIn) {
-                    mView?.showAlertMessage(null, "OK")
+                    mView?.showAlertMessage(null, android.R.string.ok)
                 } else {
-                    mView?.showAlertMessage(null, "Ha ocurrido un error durante el login")
+                    mView?.showAlertMessage(null, R.string.login_error_default)
                 }
             }
         }

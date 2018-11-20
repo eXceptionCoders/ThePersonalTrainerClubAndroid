@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">ThePersonalTrainerClub</string>
+    <string name="app_bar_name">GymUs</string>
+    <string name="login_email_placeholder">user@domain.com</string>
+    <string name="login_password_placeholder">Password</string>
+    <string name="login_login_button">Login</string>
+    <string name="login_register_button">Register</string>
+    <string name="login_error_title">Error</string>
+    <string name="login_error_empty_field">There are empty fields</string>
+    <string name="login_error_wrong_user">User or password incorrect</string>
+    <string name="login_error_invalid_email">Wrong_email</string>
+    <string name="login_error_default">An error occurs while login</string>
 </resources>
