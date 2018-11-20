@@ -4,13 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".view.register.RegisterActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RegisterView!!"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/lightGray"
+        android:textColorHint="@color/lightGray"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="48dp" />
+
+    <EditText
+        android:id="@+id/surnameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Apellidos"
+        android:backgroundTint="@color/lightGray"
+        android:textColorHint="@color/lightGray"
+        android:textColor="@android:color/black"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Email"
+        android:backgroundTint="@color/lightGray"
+        android:textColorHint="@color/lightGray"
+        android:textColor="@android:color/black"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/surnameEditText"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <EditText
+        android:id="@+id/pwdEditText"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Contraseña (min. 6 caracteres)"
+        android:backgroundTint="@color/lightGray"
+        android:textColorHint="@color/lightGray"
+        android:textColor="@android:color/black"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <CheckBox
+        android:id="@+id/isTrainerCheckBox"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Indica si tambien eres entrenador"
+        android:backgroundTint="@color/lightGray"
+        android:textColorHint="@color/lightGray"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@+id/pwdEditText"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <include
+        android:id="@+id/registerButton"
+        layout="@layout/button_custom"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="REGISTRARSE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isTrainerCheckBox" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
 </android.support.constraint.ConstraintLayout>

@@ -3,8 +3,9 @@ package es.exceptioncoders.thepersonaltrainerclub.network
 import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.core.Request
 import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.fuel.httpGet
 import com.google.gson.Gson
-import es.exceptioncoders.thepersonaltrainerclub.network.entity.LoginRequest
+import es.exceptioncoders.thepersonaltrainerclub.network.entity.*
 
 class Endpoint(private val type: EndpointType) {
     init {
@@ -12,7 +13,8 @@ class Endpoint(private val type: EndpointType) {
     }
 
     sealed class EndpointType {
-        class Login(val requestModel: LoginRequest) : EndpointType()
+        class Login(val loginRequestModel: LoginRequest) : EndpointType()
+        class Register(val registerRequestModel: RegisterRequest) : EndpointType()
     }
 
     fun request(): Request {
@@ -25,18 +27,21 @@ class Endpoint(private val type: EndpointType) {
     private fun path(): String {
         return when (type) {
             is EndpointType.Login -> "/api/v1/es/users/login"
+            is EndpointType.Register -> "/api/v1/es/users/signup"
         }
     }
 
     private fun parameters(): String {
         return when (type) {
-            is EndpointType.Login -> Gson().toJson(type.requestModel)
+            is EndpointType.Login -> Gson().toJson(type.loginRequestModel)
+            is EndpointType.Register -> Gson().toJson(type.registerRequestModel)
         }
     }
 
     private fun method(): Request {
         return when (type) {
             is EndpointType.Login -> path().httpPost()
+            is EndpointType.Register -> path().httpPost()
         }
     }
 

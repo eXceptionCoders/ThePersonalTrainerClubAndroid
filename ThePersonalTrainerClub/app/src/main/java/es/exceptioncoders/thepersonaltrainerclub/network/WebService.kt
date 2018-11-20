@@ -12,7 +12,8 @@ enum class WebServiceError {
     BadRequest,
     ForbiddenError,
     NotFound,
-    InternalServerError
+    InternalServerError,
+    DuplicateError
 }
 
 class WebService {
