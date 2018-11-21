@@ -3,6 +3,7 @@ package es.exceptioncoders.thepersonaltrainerclub.view.register
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.View
+import android.widget.Button
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_register.*
@@ -28,7 +29,7 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
                     emailEditText.text.toString(),
                     pwdEditText.text.toString(),
                     isTrainerCheckBox.isSelected
-                    )
+                )
         }
 
         val myToolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -46,6 +47,11 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
     }
 
     override fun localizeView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        nameEditText.hint = getString(R.string.register_name_placeholder)
+        surnameEditText.hint = getString(R.string.register_surname_placeholder)
+        emailEditText.hint = getString(R.string.register_email_placeholder)
+        pwdEditText.hint = getString(R.string.register_pwd_placeholder)
+        isTrainerCheckBox.text = getString(R.string.register_isTrainer_placeholder)
+        (registerButton as Button).text = resources.getString(R.string.register_register_button)
     }
 }

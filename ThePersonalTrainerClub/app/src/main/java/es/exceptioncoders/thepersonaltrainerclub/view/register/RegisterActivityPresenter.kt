@@ -1,5 +1,6 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.register
 
+import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.RegisterModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.RegisterProvider
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.RegisterProviderImp
@@ -12,9 +13,8 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
     val useCase: RegisterUseCase = RegisterUseCaseImp(RegisterProviderImp())
 
     override fun onRegister(name: String?, surname: String?, email: String?, password: String?, isTrainer: Boolean?) {
-        if (isValidFormData(name, surname, email, password, isTrainer)) {
-            //TODO: Utilizar R.string.XXX
-            //mView?.showAlertMessage(null, "Faltan datos")
+        if (isInvalidFormData(name, surname, email, password, isTrainer)) {
+            mView?.showAlertMessage(null, R.string.login_error_empty_field)
             return
         }
 
@@ -27,26 +27,23 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
 
             RegisterError?.let {
                 when (it) {
-                    //TODO: Utilizar R.string.XXX
-                    //RegisterProvider.RegisterError.DuplicateError -> mView?.showAlertMessage(null, "Ya existe un usuario con ese email")
-                    //RegisterProvider.RegisterError.IncorrectEntry -> mView?.showAlertMessage(null, "El email está mal escrito")
-                    //RegisterProvider.RegisterError.OtherError -> mView?.showAlertMessage(null, "Ha ocurrido un error durante el Register")
+                    RegisterProvider.RegisterError.DuplicateError -> mView?.showAlertMessage(null, R.string.register_error_duplicate_user)
+                    RegisterProvider.RegisterError.IncorrectEntry -> mView?.showAlertMessage(null, R.string.error_invalid_email)
+                    RegisterProvider.RegisterError.OtherError -> mView?.showAlertMessage(null, R.string.register_error_default)
                 }
                 return@register
             }
 
             if (registered) {
-                //TODO: Utilizar R.string.XXX
-                //mView?.showAlertMessage(null, "OK")
+                mView?.showAlertMessage(null, R.string.ok)
             } else {
-                //TODO: Utilizar R.string.XXX
-                //mView?.showAlertMessage(null, "Ha ocurrido un error durante el Register")
+                mView?.showAlertMessage(null,  R.string.register_error_default)
             }
         }
     }
 
-    private fun isValidFormData(name: String?, surname: String?, email: String?, password: String?, isTrainer: Boolean?): Boolean {
-        return !(name.isNullOrEmpty() || name.isNullOrBlank() ||
+    private fun isInvalidFormData(name: String?, surname: String?, email: String?, password: String?, isTrainer: Boolean?): Boolean {
+        return (name.isNullOrEmpty() || name.isNullOrBlank() ||
                 surname.isNullOrEmpty() || surname.isNullOrBlank() ||
                 email.isNullOrEmpty() || email.isNullOrBlank() ||
                 password.isNullOrEmpty() || password.isNullOrBlank() ||

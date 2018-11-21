@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">ThePersonalTrainerClub</string>
     <string name="app_bar_name">GymUs</string>
+    <string name="ok">OK</string>
+    <string name="error_invalid_email">El email está mal escrito</string>
+    <!-- Login -->
     <string name="login_email_placeholder">usuario@dominio.com</string>
     <string name="login_password_placeholder">Contraseña</string>
     <string name="login_login_button">Login</string>
@@ -8,6 +11,14 @@
     <string name="login_error_title">Error</string>
     <string name="login_error_empty_field">Debes rellenar todos los campos</string>
     <string name="login_error_wrong_user">Usuario o password incorrecto</string>
-    <string name="login_error_invalid_email">El email está mal escrito</string>
     <string name="login_error_default">Ha ocurrido un error durante el login</string>
+    <!-- Register -->
+    <string name="register_error_duplicate_user">Ya existe un usuario con ese email</string>
+    <string name="register_error_default">Ha ocurrido un error durante el registro</string>
+    <string name="register_isTrainer_placeholder">Indica si tambien eres entrenador</string>
+    <string name="register_pwd_placeholder">Contraseña (min. 6 caracteres)</string>
+    <string name="register_surname_placeholder">Apellidos</string>
+    <string name="register_name_placeholder">Nombre</string>
+    <string name="register_email_placeholder">Email</string>
+    <string name="register_register_button">Registrar</string>
 </resources>

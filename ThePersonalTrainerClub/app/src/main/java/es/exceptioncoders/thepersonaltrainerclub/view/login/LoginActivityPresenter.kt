@@ -26,7 +26,7 @@ class LoginActivityPresenter(private val mNavigator: LoginActivityContract.Login
                 loginError?.let {
                     when (it) {
                         LoginProvider.LoginError.UserPasswordNotFound -> mView?.showAlertMessage(null, R.string.login_error_wrong_user)
-                        LoginProvider.LoginError.IncorrectEntry -> mView?.showAlertMessage(null, R.string.login_error_invalid_email)
+                        LoginProvider.LoginError.IncorrectEntry -> mView?.showAlertMessage(null, R.string.error_invalid_email)
                         LoginProvider.LoginError.OtherError -> mView?.showAlertMessage(null, R.string.login_error_default)
                     }
                     return@login
