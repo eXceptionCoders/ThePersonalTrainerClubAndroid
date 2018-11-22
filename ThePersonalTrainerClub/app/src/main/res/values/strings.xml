@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">ThePersonalTrainerClub</string>
     <string name="app_bar_name">GymUs</string>
-    <string name="error_invalid_email">Wrong email format</string>
-    <string name="ok">OK</string>
     <!-- Login -->
     <string name="login_email_placeholder">user@domain.com</string>
     <string name="login_password_placeholder">Password</string>
@@ -11,14 +9,23 @@
     <string name="login_error_title">Error</string>
     <string name="login_error_empty_field">There are empty fields</string>
     <string name="login_error_wrong_user">User or password incorrect</string>
+    <string name="login_error_invalid_email">Wrong email format</string>
     <string name="login_error_default">An error occurred while trying to log</string>
     <!-- Register -->
+    <string name="register_bar_name">User Registry</string>
     <string name="register_error_duplicate_user">A user with that email already exists</string>
+    <string name="register_error_wrong_user_data">User data is incorrect</string>
     <string name="register_error_default">An error occurred while trying to register</string>
+    <string name="register_error_empty_field">There are empty/invalid fields</string>
+    <string name="register_ok">User registered successfully</string>
     <string name="register_isTrainer_placeholder">Enable it if you are a trainer too</string>
     <string name="register_pwd_placeholder">Password (min. 6 characters)</string>
-    <string name="register_surname_placeholder">Surname</string>
+    <string name="register_lastName_placeholder">Last name</string>
     <string name="register_name_placeholder">Name</string>
     <string name="register_email_placeholder">Email</string>
     <string name="register_register_button">Register</string>
+    <string name="register_birthday_placeholder">Birthday</string>
+    <string name="register_genderLabel_text">Gender:</string>
+    <string name="register_genderFemale_text">Female</string>
+    <string name="register_genderMale_text">Male</string>
 </resources>

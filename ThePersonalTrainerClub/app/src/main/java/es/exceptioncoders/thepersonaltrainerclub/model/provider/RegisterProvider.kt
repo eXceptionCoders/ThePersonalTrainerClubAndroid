@@ -5,6 +5,7 @@ import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService
 import es.exceptioncoders.thepersonaltrainerclub.network.WebServiceError
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.RegisterRequest
+import java.time.format.DateTimeFormatter
 
 
 interface RegisterProvider {
@@ -21,9 +22,11 @@ class RegisterProviderImp: RegisterProvider {
     override fun register(model: RegisterModel, completion: (Boolean, RegisterProvider.RegisterError?) -> Unit) {
         val requestModel = RegisterRequest(
                 model.name,
-                model.surname,
+                model.lastName,
+                model.gender.gender,
                 model.email,
                 model.password,
+                model.birthday.format(DateTimeFormatter.ISO_DATE_TIME),
                 model.isTrainer
         )
 
