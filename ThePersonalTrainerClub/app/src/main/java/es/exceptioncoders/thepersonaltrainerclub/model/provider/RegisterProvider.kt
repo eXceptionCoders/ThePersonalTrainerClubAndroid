@@ -22,8 +22,8 @@ class RegisterProviderImp: RegisterProvider {
     override fun register(model: RegisterModel, completion: (Boolean, RegisterProvider.RegisterError?) -> Unit) {
         val requestModel = RegisterRequest(
                 model.name,
-                model.lastName,
-                model.gender.gender,
+                model.lastname,
+                model.gender.value,
                 model.email,
                 model.password,
                 model.birthday.format(DateTimeFormatter.ISO_DATE_TIME),

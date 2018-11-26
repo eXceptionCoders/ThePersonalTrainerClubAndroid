@@ -10,7 +10,7 @@
     <string name="login_error_empty_field">There are empty fields</string>
     <string name="login_error_wrong_user">User or password incorrect</string>
     <string name="login_error_invalid_email">Wrong email format</string>
-    <string name="login_error_default">An error occurred while trying to log</string>
+    <string name="login_error_default">An error occurred while trying to log in</string>
     <!-- Register -->
     <string name="register_bar_name">User Registry</string>
     <string name="register_error_duplicate_user">A user with that email already exists</string>

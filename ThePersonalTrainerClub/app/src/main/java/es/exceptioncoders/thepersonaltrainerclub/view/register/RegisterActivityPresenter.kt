@@ -32,7 +32,7 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
             RegisterError?.let {
                 when (it) {
                     RegisterProvider.RegisterError.DuplicateError -> mView?.showAlertMessage(null, R.string.register_error_duplicate_user)
-                    RegisterProvider.RegisterError.IncorrectEntry -> mView?.showAlertMessage(null, R.string.login_error_invalid_email)
+                    RegisterProvider.RegisterError.IncorrectEntry -> mView?.showAlertMessage(null, R.string.register_error_wrong_user_data)
                     RegisterProvider.RegisterError.OtherError -> mView?.showAlertMessage(null, R.string.register_error_default)
                 }
                 return@register

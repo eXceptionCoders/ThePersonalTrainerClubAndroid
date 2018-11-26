@@ -1,27 +1,27 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.register
 
 import android.app.DatePickerDialog
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
+import android.widget.RadioButton
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.GenderType
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 import android.widget.TextView
-import java.lang.Exception
+import es.exceptioncoders.thepersonaltrainerclub.utils.DateUtils
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 
 class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
 
     private lateinit var mPresenter: RegisterActivityContract.RegisterViewPresenter<RegisterActivity>
-    val DATE_FORMAT: String = "dd/MM/yyyy"
 
     override fun bindLayout(): Int = R.layout.activity_register
 
@@ -29,6 +29,7 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
         super.onCreate(savedInstanceState)
 
         val mNavigator = RegisterActivityNavigator() as RegisterActivityContract.RegisterViewNavigator<RegisterActivityContract.RegisterView>
+        val maleRadioButton = maleRadioButton as RadioButton;
         mNavigator.attachView(this)
 
         mPresenter = RegisterActivityPresenter(mNavigator) as RegisterActivityContract.RegisterViewPresenter<RegisterActivity>
@@ -36,7 +37,7 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
 
         registerButton.setOnClickListener {
             val gender: GenderType = if (maleRadioButton.isChecked) GenderType.MALE else GenderType.FEMALE
-            val birthday = convertStringToLocalDateTime (birthdayEditText.text.toString())
+            val birthday = DateUtils.convertStringToLocalDateTime (birthdayEditText.text.toString())
 
             mPresenter.onRegister(nameEditText.text.toString(),
                     lastnameEditText.text.toString(),
@@ -80,15 +81,16 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
         emailEditText.hint = getString(R.string.register_email_placeholder)
         pwdEditText.hint = getString(R.string.register_pwd_placeholder)
         birthdayEditText.hint = getString(R.string.register_birthday_placeholder)
-        isTrainerCheckBox.text = getString(R.string.register_isTrainer_placeholder)
-        maleRadioButton.text = getString(R.string.register_genderMale_text)
-        femaleRadioButton.text = getString(R.string.register_genderFemale_text)
+        (isTrainerCheckBox as CheckBox).text = getString(R.string.register_isTrainer_placeholder)
+        (maleRadioButton as RadioButton).text = getString(R.string.register_genderMale_text)
+        (femaleRadioButton as RadioButton).text = getString(R.string.register_genderFemale_text)
         (registerButton as Button).text = resources.getString(R.string.register_register_button)
     }
 
     private fun setUpDatePicker() {
         val textView: TextView  = findViewById(R.id.birthdayEditText)
-        textView.text = SimpleDateFormat(DATE_FORMAT).format(System.currentTimeMillis())
+        textView.text = SimpleDateFormat(DateUtils.DATE_FORMAT).format(System.currentTimeMillis())
+        // TODO: Find a way to do it for API < 26
         textView.showSoftInputOnFocus = false
 
         var calendar = Calendar.getInstance()
@@ -98,10 +100,7 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
             calendar.set(Calendar.MONTH, monthOfYear)
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-            val myFormat = DATE_FORMAT
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            textView.text = sdf.format(calendar.time)
-
+            textView.text = DateUtils.convertDateToString(calendar.time)
         }
 
         textView.setOnClickListener {
@@ -110,18 +109,5 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
                     calendar.get(Calendar.MONTH),
                     calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
-    }
-
-    // TODO: Move to a utilities library
-    private fun convertStringToLocalDateTime (dateString: String): LocalDateTime? {
-        val formatter = DateTimeFormatter.ofPattern("$DATE_FORMAT HH:mm:ss.SSS", Locale.US)
-
-        try {
-            return LocalDateTime.parse("$dateString 00:00:00.000", formatter)
-        }
-        catch (e: Exception) {
-            return null
-        }
-
     }
 }
