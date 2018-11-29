@@ -1,5 +1,6 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.login
 
+import android.content.Context
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LoginModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.LoginProvider
@@ -8,9 +9,9 @@ import es.exceptioncoders.thepersonaltrainerclub.model.usecase.LoginUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.LoginUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 
-class LoginActivityPresenter(private val mNavigator: LoginActivityContract.LoginViewNavigator<LoginActivityContract.LoginView>) : BasePresenter<LoginActivityContract.LoginView>(), LoginActivityContract.LoginViewPresenter<LoginActivityContract.LoginView> {
+class LoginActivityPresenter(private val mNavigator: LoginActivityContract.LoginViewNavigator<LoginActivityContract.LoginView>, private val mContext: Context) : BasePresenter<LoginActivityContract.LoginView>(), LoginActivityContract.LoginViewPresenter<LoginActivityContract.LoginView> {
 
-    val useCase: LoginUseCase = LoginUseCaseImp(LoginProviderImp())
+    val useCase: LoginUseCase = LoginUseCaseImp(LoginProviderImp(mContext))
 
     override fun onLogin(email: String?, password: String?) {
         if (email.isNullOrEmpty() || email.isNullOrBlank() || password.isNullOrEmpty() || password.isNullOrBlank()) {

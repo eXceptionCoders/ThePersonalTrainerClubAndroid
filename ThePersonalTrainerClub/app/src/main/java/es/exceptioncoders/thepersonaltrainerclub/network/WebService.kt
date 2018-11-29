@@ -26,7 +26,7 @@ class WebService {
                 -1 -> e = WebServiceError.RequestError
                 200, 201 -> {
                     try {
-                        v = Gson().fromJson(response.responseMessage, O::class.java)
+                        v = Gson().fromJson(String(response.data), O::class.java)
                     } catch (exception: Exception) {
                         e = WebServiceError.DecodingError
                     }
