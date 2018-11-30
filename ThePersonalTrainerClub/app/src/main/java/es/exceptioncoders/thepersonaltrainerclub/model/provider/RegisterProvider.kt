@@ -5,6 +5,7 @@ import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService
 import es.exceptioncoders.thepersonaltrainerclub.network.WebServiceError
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.RegisterRequest
+import es.exceptioncoders.thepersonaltrainerclub.network.entity.RegisterResponse
 import java.time.format.DateTimeFormatter
 
 
@@ -20,6 +21,7 @@ interface RegisterProvider {
 
 class RegisterProviderImp: RegisterProvider {
     override fun register(model: RegisterModel, completion: (Boolean, RegisterProvider.RegisterError?) -> Unit) {
+        // TODO: Find a way to do it for API < 26
         val requestModel = RegisterRequest(
                 model.name,
                 model.lastname,
@@ -34,7 +36,7 @@ class RegisterProviderImp: RegisterProvider {
 
         val ws = WebService()
 
-        ws.load<Boolean>(endpoint) { b:Boolean?, e: WebServiceError? ->
+        ws.load<RegisterResponse>(endpoint) { response: RegisterResponse?, e: WebServiceError? ->
             var error: RegisterProvider.RegisterError? = null
             var registered = false
             e?.let {

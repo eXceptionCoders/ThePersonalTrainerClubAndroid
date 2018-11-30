@@ -35,7 +35,14 @@ class WebService {
                 401 -> e = WebServiceError.Unauthorized
                 403 -> e = WebServiceError.ForbiddenError
                 404 -> e = WebServiceError.NotFound
-                422 -> e = WebServiceError.UnprocessableEntity
+                422 -> {
+                    try {
+                        v = Gson().fromJson(String(response.data), O::class.java)
+                        e = WebServiceError.UnprocessableEntity
+                    } catch (exception: Exception) {
+                        e = WebServiceError.DecodingError
+                    }
+                }
                 500 -> e = WebServiceError.InternalServerError
                 else -> e = WebServiceError.OtherError
             }
