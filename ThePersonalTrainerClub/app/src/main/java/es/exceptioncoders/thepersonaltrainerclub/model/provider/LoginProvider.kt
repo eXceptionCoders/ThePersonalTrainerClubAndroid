@@ -39,6 +39,7 @@ class LoginProviderImp(private val mContext: Context?): LoginProvider {
                 }
             } ?: kotlin.run {
                 loggedIn = true
+                // TODO: Move shared preferences to a Singleton
                 val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext)
                 sharedPreferences.edit().putString("jwtToken", response?.data?.token).apply()
             }

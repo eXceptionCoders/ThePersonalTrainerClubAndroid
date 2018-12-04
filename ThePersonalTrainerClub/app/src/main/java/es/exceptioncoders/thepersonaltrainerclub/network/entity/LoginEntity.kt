@@ -1,6 +1,11 @@
 package es.exceptioncoders.thepersonaltrainerclub.network.entity
 
-class LoginResponseData (
+data class LoginRequest (
+    val email: String,
+    val password: String
+)
+
+class LoginEntity (
     val token: String
 )
 
@@ -10,5 +15,5 @@ data class LoginResponse(
     val message: String,
     val datetime: String,
     val error: Any,
-    val data: LoginResponseData
+    val data: LoginEntity
 ): BaseResponse(version, status, message, datetime, error)

@@ -7,12 +7,12 @@ import java.time.LocalDateTime
 interface RegisterActivityContract {
     interface RegisterView : BaseContract.BaseView
 
-    interface RegisterViewPresenter<V : RegisterView> : BaseContract.BasePresenter<V> {
+    interface RegisterViewPresenter<V: RegisterView> : BaseContract.BasePresenter<V> {
         fun onRegister(name: String?, lastname: String?, gender: GenderType?, email: String?,
                        password: String?, birthday: LocalDateTime?, isTrainer: Boolean?)
     }
 
-    interface RegisterViewNavigator<V : RegisterView> : BaseContract.BaseNavigator<V> {
+    interface RegisterViewNavigator<V: RegisterView> : BaseContract.BaseNavigator<V> {
         fun navigateToGeneralManagementView()
     }
 }
