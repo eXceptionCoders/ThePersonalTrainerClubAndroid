@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/java,kotlin,android,androidstudio
 
+# IntelliJ Idea
+*.idea/
 ### Android ###
 # Built application files
 *.apk

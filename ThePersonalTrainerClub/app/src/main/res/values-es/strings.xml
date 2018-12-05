@@ -24,7 +24,6 @@
     <string name="register_name_placeholder">Nombre</string>
     <string name="register_email_placeholder">Email</string>
     <string name="register_register_button">Registrar</string>
-    <string name="register_birthday_placeholder">Fecha de nacimiento</string>
     <string name="register_genderLabel_text">Género:</string>
     <string name="register_genderFemale_text">Mujer</string>
     <string name="register_genderMale_text">Hombre</string>
