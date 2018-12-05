@@ -1,13 +1,13 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.provider
 
 import android.content.Context
-import android.preference.PreferenceManager
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LoginModel
 import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService
 import es.exceptioncoders.thepersonaltrainerclub.network.WebServiceError
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.LoginRequest
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.LoginResponse
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 
 interface LoginProvider {
     enum class LoginError {
@@ -39,9 +39,7 @@ class LoginProviderImp(private val mContext: Context?): LoginProvider {
                 }
             } ?: kotlin.run {
                 loggedIn = true
-                // TODO: Move shared preferences to a Singleton
-                val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext)
-                sharedPreferences.edit().putString("jwtToken", response?.data?.token).apply()
+                SharedApp.preferences.jwtToken = response!!.data!!.token
             }
 
             completion(loggedIn, error)

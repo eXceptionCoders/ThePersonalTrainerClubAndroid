@@ -6,6 +6,7 @@ import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
 import com.google.gson.Gson
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.*
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 
 class Endpoint(private val type: EndpointType) {
     init {
@@ -22,7 +23,7 @@ class Endpoint(private val type: EndpointType) {
     fun request(): Request {
         return method().also {
             it.headers.clear()
-        }.header(Pair("Content-Type", "application/json"), Pair("", "x-access-token")) // TODO: Get auth token from SharedPreferences
+        }.header(Pair("Content-Type", "application/json"), Pair(SharedApp.preferences.jwtToken, "x-access-token"))
                 .body(parameters())
     }
 
