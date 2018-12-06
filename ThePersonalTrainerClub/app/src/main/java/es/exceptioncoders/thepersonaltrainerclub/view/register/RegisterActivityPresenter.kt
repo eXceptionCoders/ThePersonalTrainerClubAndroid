@@ -15,16 +15,16 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
     val useCase: RegisterUseCase = RegisterUseCaseImp(RegisterProviderImp())
 
     override fun onRegister(name: String?, lastname: String?, gender: GenderType?, email: String?,
-                            password: String?, birthday: LocalDateTime?, isTrainer: Boolean?) {
+                            password: String?, isTrainer: Boolean?) {
 
-        if (isInvalidFormData(name, lastname, gender, email, password, birthday, isTrainer)) {
+        if (isInvalidFormData(name, lastname, gender, email, password, isTrainer)) {
             mView?.showAlertMessage(null, R.string.register_error_empty_field)
             return
         }
 
         mView?.showLoading()
 
-        val model = RegisterModel(name!!, lastname!!, gender!!, email!!, password!!, birthday!!, isTrainer!!)
+        val model = RegisterModel(name!!, lastname!!, gender!!, email!!, password!!, isTrainer!!)
 
         useCase.register(model) { registered, RegisterError ->
             mView?.hideLoading()
@@ -47,7 +47,7 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
     }
 
     private fun isInvalidFormData(name: String?, lastname: String?, gender: GenderType?,
-                                  email: String?, password: String?, birthday: LocalDateTime?,
+                                  email: String?, password: String?,
                                   isTrainer: Boolean?): Boolean {
 
         return (name.isNullOrEmpty() || name.isNullOrBlank() ||
@@ -55,6 +55,6 @@ class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract
                 gender == null ||
                 email.isNullOrEmpty() || email.isNullOrBlank() ||
                 password.isNullOrEmpty() || password.isNullOrBlank() ||
-                birthday == null || isTrainer == null)
+                isTrainer == null)
     }
 }

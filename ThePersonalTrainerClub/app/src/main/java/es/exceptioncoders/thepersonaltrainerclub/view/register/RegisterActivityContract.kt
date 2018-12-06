@@ -9,7 +9,7 @@ interface RegisterActivityContract {
 
     interface RegisterViewPresenter<V: RegisterView> : BaseContract.BasePresenter<V> {
         fun onRegister(name: String?, lastname: String?, gender: GenderType?, email: String?,
-                       password: String?, birthday: LocalDateTime?, isTrainer: Boolean?)
+                       password: String?, isTrainer: Boolean?)
     }
 
     interface RegisterViewNavigator<V: RegisterView> : BaseContract.BaseNavigator<V> {

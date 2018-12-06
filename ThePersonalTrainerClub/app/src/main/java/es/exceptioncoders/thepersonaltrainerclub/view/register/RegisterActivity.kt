@@ -37,19 +37,16 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
 
         registerButton.setOnClickListener {
             val gender: GenderType = if (maleRadioButton.isChecked) GenderType.MALE else GenderType.FEMALE
-            val birthday = DateUtils.convertStringToLocalDateTime (birthdayEditText.text.toString())
 
             mPresenter.onRegister(nameEditText.text.toString(),
                     lastnameEditText.text.toString(),
                     gender,
                     emailEditText.text.toString(),
                     pwdEditText.text.toString(),
-                    birthday,
                     isTrainerCheckBox.isSelected
                 )
         }
 
-        setUpDatePicker()
         maleRadioButton.isChecked = true
 
         val myToolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -80,34 +77,9 @@ class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {
         lastnameEditText.hint = getString(R.string.register_lastName_placeholder)
         emailEditText.hint = getString(R.string.register_email_placeholder)
         pwdEditText.hint = getString(R.string.register_pwd_placeholder)
-        birthdayEditText.hint = getString(R.string.register_birthday_placeholder)
         (isTrainerCheckBox as CheckBox).text = getString(R.string.register_isTrainer_placeholder)
         (maleRadioButton as RadioButton).text = getString(R.string.register_genderMale_text)
         (femaleRadioButton as RadioButton).text = getString(R.string.register_genderFemale_text)
         (registerButton as Button).text = resources.getString(R.string.register_register_button)
-    }
-
-    private fun setUpDatePicker() {
-        val textView: TextView  = findViewById(R.id.birthdayEditText)
-        textView.text = SimpleDateFormat(DateUtils.DATE_FORMAT).format(System.currentTimeMillis())
-        // TODO: Find a way to do it for API < 26
-        textView.showSoftInputOnFocus = false
-
-        var calendar = Calendar.getInstance()
-
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            calendar.set(Calendar.YEAR, year)
-            calendar.set(Calendar.MONTH, monthOfYear)
-            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-
-            textView.text = DateUtils.convertDateToString(calendar.time)
-        }
-
-        textView.setOnClickListener {
-            DatePickerDialog(this@RegisterActivity, dateSetListener,
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)).show()
-        }
     }
 }

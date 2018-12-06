@@ -106,56 +106,33 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
-            <EditText
-                android:id="@+id/birthdayEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightGray"
-                android:ems="10"
-                android:inputType="textPassword|date"
-                android:textColor="@android:color/black"
-                android:textColorHint="@color/lightGray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pwdEditText" />
-
-            <DatePicker
-                android:id="@+id/simpleDatePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:datePickerMode="spinner"
-                android:visibility="invisible"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <RadioGroup
                 android:id="@+id/genderRadioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/birthdayEditText">
+                app:layout_constraintTop_toBottomOf="@+id/pwdEditText"
+                tools:layout_editor_absoluteY="316dp">
 
                 <include
-                    layout="@layout/radio_button_custom"
                     android:id="@+id/maleRadioButton"
+                    layout="@layout/radio_button_custom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hombre"/>
+                    android:text="Hombre" />
 
                 <include
-                    layout="@layout/radio_button_custom"
                     android:id="@+id/femaleRadioButton"
+                    layout="@layout/radio_button_custom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mujer"/>
+                    android:text="Mujer" />
 
             </RadioGroup>
 

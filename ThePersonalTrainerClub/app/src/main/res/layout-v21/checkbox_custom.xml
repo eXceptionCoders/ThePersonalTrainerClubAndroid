@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:backgroundTint="@color/lightGray"
     android:buttonTint="@color/customOrange"
+    android:checked="false"
     android:text="checkBox Text"
     android:textColor="@android:color/black"
     android:textColorHint="@color/lightGray" />

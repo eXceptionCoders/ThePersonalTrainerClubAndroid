@@ -28,7 +28,6 @@ class RegisterProviderImp: RegisterProvider {
                 model.gender.value,
                 model.email,
                 model.password,
-                model.birthday.format(DateTimeFormatter.ISO_DATE_TIME),
                 model.isTrainer
         )
 

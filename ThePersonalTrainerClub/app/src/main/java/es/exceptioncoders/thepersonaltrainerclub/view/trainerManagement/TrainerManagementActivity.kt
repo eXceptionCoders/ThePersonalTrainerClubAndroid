@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_trainer_management.*
+import kotlinx.android.synthetic.main.fragment_trainer_management.*
 
 class TrainerManagementActivity: BaseActivity(), TrainerManagementActivityContract.TrainerManagementView {
 
 
     private lateinit var mPresenter: TrainerManagementActivityContract.TrainerManagementViewPresenter<TrainerManagementActivity>
 
-    override fun bindLayout(): Int = R.layout.activity_trainer_management
+    override fun bindLayout(): Int = R.layout.fragment_trainer_management
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

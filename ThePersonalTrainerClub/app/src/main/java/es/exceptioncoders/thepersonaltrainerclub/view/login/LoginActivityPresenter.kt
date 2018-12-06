@@ -34,7 +34,7 @@ class LoginActivityPresenter(private val mNavigator: LoginActivityContract.Login
                 }
 
                 if (loggedIn) {
-                    mView?.showAlertMessage(null, android.R.string.ok)
+                    mNavigator.navigateToDashboardActivity()
                     // mNavigator.navigateToTrainerManagementView()
                 } else {
                     mView?.showAlertMessage(null, R.string.login_error_default)

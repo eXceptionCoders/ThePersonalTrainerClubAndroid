@@ -7,7 +7,6 @@ data class UserModel (
         val name: String,
         val lastname: String,
         val coach: Boolean,
-        val birthday: LocalDateTime,
         val gender: String,
         val thumbnail: String,
         val email: String,
