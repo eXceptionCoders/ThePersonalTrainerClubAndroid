@@ -10,7 +10,7 @@ import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 
 class Endpoint(private val type: EndpointType) {
     init {
-        FuelManager.instance.basePath = "https://thepersonaltrainerappapi.azurewebsites.net"
+        FuelManager.instance.basePath = "https://thepersonaltrainerclubapi-dev.azurewebsites.net"
     }
 
     sealed class EndpointType {
@@ -23,7 +23,7 @@ class Endpoint(private val type: EndpointType) {
     fun request(): Request {
         return method().also {
             it.headers.clear()
-        }.header(Pair("Content-Type", "application/json"), Pair(SharedApp.preferences.jwtToken, "x-access-token"))
+        }.header(Pair("Content-Type", "application/json"), Pair("x-access-token", SharedApp.preferences.jwtToken))
                 .body(parameters())
     }
 
