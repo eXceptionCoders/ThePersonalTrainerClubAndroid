@@ -10,7 +10,7 @@ import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 
 class Endpoint(private val type: EndpointType) {
     init {
-        FuelManager.instance.basePath = "https://thepersonaltrainerappapi.azurewebsites.net"
+        FuelManager.instance.basePath = "https://thepersonaltrainerclubapi-dev.azurewebsites.net"
     }
 
     sealed class EndpointType {

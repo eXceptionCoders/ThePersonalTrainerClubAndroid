@@ -12,5 +12,6 @@ interface LoginActivityContract {
 
     interface LoginViewNavigator<V : LoginView> : BaseContract.BaseNavigator<V> {
         fun navigateToRegisterView()
+        fun navigateToDashboardActivity()
     }
 }

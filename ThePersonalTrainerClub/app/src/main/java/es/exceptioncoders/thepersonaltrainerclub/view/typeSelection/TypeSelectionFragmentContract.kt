@@ -1,8 +1,8 @@
-package es.exceptioncoders.thepersonaltrainerclub.view.typeSelectionDashboard
+package es.exceptioncoders.thepersonaltrainerclub.view.typeSelection
 
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseContract
 
-interface TypeSelectionActivityContract {
+interface TypeSelectionFragmentContract {
     interface TypeSelectionView : BaseContract.BaseView
 
     interface TypeSelectionViewPresenter<V : TypeSelectionView> : BaseContract.BasePresenter<V> {
