@@ -19,7 +19,7 @@ class LoginActivity : BaseActivity(), LoginActivityContract.LoginView {
         val mNavigator = LoginActivityNavigator() as LoginActivityContract.LoginViewNavigator<LoginActivityContract.LoginView>
         mNavigator.attachView(this)
 
-        mPresenter = LoginActivityPresenter(mNavigator, applicationContext) as LoginActivityContract.LoginViewPresenter<LoginActivity>
+        mPresenter = LoginActivityPresenter(mNavigator) as LoginActivityContract.LoginViewPresenter<LoginActivity>
         mPresenter.attachView(this)
 
         loginButton.setOnClickListener {

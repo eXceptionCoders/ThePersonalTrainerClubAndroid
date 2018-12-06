@@ -23,7 +23,7 @@ class Endpoint(private val type: EndpointType) {
     fun request(): Request {
         return method().also {
             it.headers.clear()
-        }.header(Pair("Content-Type", "application/json"), Pair(SharedApp.preferences.jwtToken, "x-access-token"))
+        }.header(Pair("Content-Type", "application/json"), Pair("x-access-token", SharedApp.preferences.jwtToken))
                 .body(parameters())
     }
 

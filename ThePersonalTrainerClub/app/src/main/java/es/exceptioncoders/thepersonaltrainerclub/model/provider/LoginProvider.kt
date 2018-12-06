@@ -19,7 +19,7 @@ interface LoginProvider {
     fun login(model: LoginModel, completion: (Boolean, LoginError?) -> Unit)
 }
 
-class LoginProviderImp(private val mContext: Context?): LoginProvider {
+class LoginProviderImp: LoginProvider {
 
     override fun login(model: LoginModel, completion: (Boolean, LoginProvider.LoginError?) -> Unit) {
         val requestModel = LoginRequest(model.email, model.password)
@@ -31,6 +31,7 @@ class LoginProviderImp(private val mContext: Context?): LoginProvider {
         ws.load<LoginResponse>(endpoint) { response: LoginResponse?, e: WebServiceError? ->
             var error: LoginProvider.LoginError? = null
             var loggedIn = false
+
             e?.let {
                 error = when (it) {
                     WebServiceError.Unauthorized -> LoginProvider.LoginError.UserPasswordNotFound
@@ -39,7 +40,9 @@ class LoginProviderImp(private val mContext: Context?): LoginProvider {
                 }
             } ?: kotlin.run {
                 loggedIn = true
-                SharedApp.preferences.jwtToken = response!!.data!!.token
+                response?.let {
+                    SharedApp.preferences.jwtToken = it.data.token
+                }
             }
 
             completion(loggedIn, error)
