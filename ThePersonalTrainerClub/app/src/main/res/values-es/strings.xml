@@ -30,4 +30,13 @@
     <!-- Type selection -->
     <string name="type_selection_title">Configuración</string>
     <string name="type_selection_title_label">Elige tu estado</string>
+    <!-- Trainer dashboard -->
+    <string name="trainer_management_title">Gestión</string>
+    <!-- Menu -->
+    <string name="menu_activities_title">Deportes</string>
+    <string name="menu_locations_title">Ubicaciones</string>
+    <string name="menu_logout_title">Desconectar</string>
+    <!-- Add sport -->
+    <string name="add_sport_title">Alta deporte</string>
+    <string name="add_sport_error">Error al añadir deportes</string>
 </resources>

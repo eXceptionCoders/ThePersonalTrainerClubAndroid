@@ -1,6 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.provider
 
-import android.content.Context
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LoginModel
 import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService

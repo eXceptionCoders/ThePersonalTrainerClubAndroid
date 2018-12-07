@@ -13,5 +13,17 @@ data class SportResponse (
         val message: String,
         val datetime: String,
         val error: Any,
-        val data: SportEntity
+        val data: Array<SportEntity>
 ) : BaseResponse(version, status, message, datetime, error)
+
+data class SetSportRequest (
+        val listsport: String
+)
+
+data class SetSportResponse (
+        val version: String,
+        val status: String,
+        val message: String,
+        val datetime: String,
+        val error: Any
+): BaseResponse(version, status, message, datetime, error)

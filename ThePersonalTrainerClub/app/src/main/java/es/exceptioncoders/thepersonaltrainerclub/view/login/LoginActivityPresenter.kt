@@ -1,6 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.login
 
-import android.content.Context
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LoginModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.LoginProvider
@@ -9,7 +8,7 @@ import es.exceptioncoders.thepersonaltrainerclub.model.usecase.LoginUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.LoginUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 
-class LoginActivityPresenter(private val mNavigator: LoginActivityContract.LoginViewNavigator<LoginActivityContract.LoginView>) : BasePresenter<LoginActivityContract.LoginView>(), LoginActivityContract.LoginViewPresenter<LoginActivityContract.LoginView> {
+class LoginActivityPresenter(private val mNavigator: LoginActivityContract.Navigator<LoginActivityContract.View>) : BasePresenter<LoginActivityContract.View>(), LoginActivityContract.Presenter<LoginActivityContract.View> {
 
     val useCase: LoginUseCase = LoginUseCaseImp(LoginProviderImp())
 

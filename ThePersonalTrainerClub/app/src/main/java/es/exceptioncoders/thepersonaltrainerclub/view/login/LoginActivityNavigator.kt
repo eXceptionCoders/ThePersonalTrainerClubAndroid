@@ -7,7 +7,7 @@ import es.exceptioncoders.thepersonaltrainerclub.view.dashboard.DashboardActivit
 import es.exceptioncoders.thepersonaltrainerclub.view.register.RegisterActivity
 import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementActivity
 
-class LoginActivityNavigator : BaseNavigator<LoginActivityContract.LoginView>(), LoginActivityContract.LoginViewNavigator<LoginActivityContract.LoginView> {
+class LoginActivityNavigator : BaseNavigator<LoginActivityContract.View>(), LoginActivityContract.Navigator<LoginActivityContract.View> {
     override fun navigateToRegisterView() {
         val intent = Intent(mView as Activity, RegisterActivity::class.java)
         (mView as Activity).startActivity(intent)
