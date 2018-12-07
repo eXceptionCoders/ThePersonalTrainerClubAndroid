@@ -30,6 +30,18 @@
     <!-- Type selection -->
     <string name="type_selection_title">Settings</string>
     <string name="type_selection_title_label">Choose your role</string>
+    <!-- Fragment Class -->>
+    <string name="fragment_class_sport">Futbol</string>
+    <string name="fragment_class_name_location">Gym name</string>
+    <string name="fragment_class_date">01 January 2018</string>
+    <string name="fragment_class_time">16:00 to 17:00</string>
+    <string name="fragment_class_number_user">Pupils (10 / 10)</string>
+    <string name="fragment_class_price">10€ / Class</string>
+    <string name="fragment_class_name_instructor">Name</string>
+    <string name="fragment_class_lastname_instructor">LastName</string>
+    <string name="fragment_button_vote">Vote</string>
+    <string name="fragment_button_cancel">Cancel</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

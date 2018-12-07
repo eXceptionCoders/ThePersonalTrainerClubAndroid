@@ -30,4 +30,15 @@
     <!-- Type selection -->
     <string name="type_selection_title">Configuración</string>
     <string name="type_selection_title_label">Elige tu estado</string>
+    <!-- Fragment Class -->>
+    <string name="fragment_class_sport">Futbol</string>
+    <string name="fragment_class_name_location">Gimnasio</string>
+    <string name="fragment_class_date">01 January 2018</string>
+    <string name="fragment_class_time">16:00 to 17:00</string>
+    <string name="fragment_class_number_user">Alumnos (10 / 10)</string>
+    <string name="fragment_class_price">10€ / Clase</string>
+    <string name="fragment_class_name_instructor">Nombre</string>
+    <string name="fragment_class_lastname_instructor">Apellido</string>
+    <string name="fragment_button_vote">Votar</string>
+    <string name="fragment_button_cancel">Cancelar</string>
 </resources>
