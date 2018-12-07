@@ -30,7 +30,13 @@
     <!-- Type selection -->
     <string name="type_selection_title">Settings</string>
     <string name="type_selection_title_label">Choose your role</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Trainer dashboard -->
+    <string name="trainer_management_title">Management</string>
+    <!-- Menu -->
+    <string name="menu_activities_title">Activities</string>
+    <string name="menu_locations_title">Locations</string>
+    <string name="menu_logout_title">Logout</string>
+    <!-- Add sport -->
+    <string name="add_sport_title">Set activity</string>
+    <string name="add_sport_error">Error setting activities</string>
 </resources>

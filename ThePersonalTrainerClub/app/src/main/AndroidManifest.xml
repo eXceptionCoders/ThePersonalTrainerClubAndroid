@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.login.LoginActivity"
-            android:theme="@style/SplashTheme"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,9 @@
         </activity>
         <activity android:name=".view.register.RegisterActivity" />
         <activity android:name=".view.typeSelectionDashboard.TypeSelectionActivity" />
-        <activity android:name=".view.dashboard.DashboardActivity"></activity>
+        <activity android:name=".view.dashboard.DashboardActivity" />
+        <activity android:name=".view.addLocation.AddLocationActivity" />
+        <activity android:name=".view.addSport.AddSportActivity"></activity>
     </application>
 
 </manifest>

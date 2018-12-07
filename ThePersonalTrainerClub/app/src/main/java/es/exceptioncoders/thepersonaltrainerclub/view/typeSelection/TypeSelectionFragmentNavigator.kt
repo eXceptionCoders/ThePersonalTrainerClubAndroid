@@ -2,7 +2,7 @@ package es.exceptioncoders.thepersonaltrainerclub.view.typeSelection
 
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseNavigator
 
-class TypeSelectionFragmentNavigator : BaseNavigator<TypeSelectionFragmentContract.TypeSelectionView>(), TypeSelectionFragmentContract.TypeSelectionViewNavigator<TypeSelectionFragmentContract.TypeSelectionView> {
+class TypeSelectionFragmentNavigator : BaseNavigator<TypeSelectionFragmentContract.View>(), TypeSelectionFragmentContract.Navigator<TypeSelectionFragmentContract.View> {
     override fun navigateToTrainerView() {
         //TODO("not implemented")
     }

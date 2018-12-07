@@ -18,6 +18,8 @@ class Endpoint(private val type: EndpointType) {
         class Register(val registerRequestModel: RegisterRequest) : EndpointType()
         class UserData(val userRequestModel: UserRequest) : EndpointType()
         class TrainerClasses(val trainerClassRequestModel: TrainerClassRequest) : EndpointType()
+        object Activities : EndpointType()
+        class SetActivities(val requestModel: SetSportRequest) : EndpointType()
     }
 
     fun request(): Request {
@@ -33,6 +35,8 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.Register -> "/api/v1/es/users/signup"
             is EndpointType.UserData -> "/api/v1/es/data/user"
             is EndpointType.TrainerClasses -> "/api/v1/es/classes/trainers"
+            is EndpointType.Activities -> "/api/v1/es/sports"
+            is EndpointType.SetActivities -> "/api/v1/es/data/sport"
         }
     }
 
@@ -42,6 +46,8 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.Register -> Gson().toJson(type.registerRequestModel)
             is EndpointType.UserData -> Gson().toJson(type.userRequestModel)
             is EndpointType.TrainerClasses -> Gson().toJson(type.trainerClassRequestModel)
+            is EndpointType.Activities -> ""
+            is EndpointType.SetActivities -> Gson().toJson(type.requestModel)
         }
     }
 
@@ -51,6 +57,8 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.Register -> path().httpPost()
             is EndpointType.UserData -> path().httpGet()
             is EndpointType.TrainerClasses -> path().httpGet()
+            is EndpointType.Activities -> path().httpGet()
+            is EndpointType.SetActivities -> path().httpPost()
         }
     }
 
