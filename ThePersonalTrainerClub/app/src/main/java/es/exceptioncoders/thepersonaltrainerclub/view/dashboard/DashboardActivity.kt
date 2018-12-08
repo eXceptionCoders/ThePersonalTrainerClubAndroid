@@ -63,11 +63,11 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
         return if (id == R.id.action_activities) {
             mPresenter.onAddActivitiesTapped()
             true
-        } else if (id == R.id.action_activities) {
+        } else if (id == R.id.action_locations) {
             mPresenter.onAddLocationsTapped()
             true
-        } else if (id == R.id.action_activities) {
-            //TODO: LOGOUT
+        } else if (id == R.id.action_logout) {
+            mPresenter.onLogoutTapped()
             true
         } else {
             super.onOptionsItemSelected(item)

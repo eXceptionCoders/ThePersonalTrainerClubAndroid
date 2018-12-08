@@ -8,11 +8,12 @@ interface DashboardActivityContract {
     interface Presenter<V : View> : BaseContract.BasePresenter<V> {
         fun onAddActivitiesTapped()
         fun onAddLocationsTapped()
-        fun onLogout()
+        fun onLogoutTapped()
     }
 
     interface Navigator<V : View> : BaseContract.BaseNavigator<V> {
         fun navigateToActivities()
         fun navigateToLocations()
+        fun navigateToLogin()
     }
 }
