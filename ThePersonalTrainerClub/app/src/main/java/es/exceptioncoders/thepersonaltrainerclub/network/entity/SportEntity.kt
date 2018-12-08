@@ -17,7 +17,7 @@ data class SportResponse (
 ) : BaseResponse(version, status, message, datetime, error)
 
 data class SetSportRequest (
-        val listsport: String
+        val sports: Array<String>
 )
 
 data class SetSportResponse (

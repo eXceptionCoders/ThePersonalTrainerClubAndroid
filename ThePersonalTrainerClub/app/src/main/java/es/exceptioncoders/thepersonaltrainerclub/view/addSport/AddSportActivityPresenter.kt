@@ -1,8 +1,10 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.addSport
 
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SetSportsModel
+import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.ActivityProviderImp
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.SetActivitiesProviderImp
+import es.exceptioncoders.thepersonaltrainerclub.model.provider.UserProviderImp
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.ActivityUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.ActivityUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.SetActivityUseCase
@@ -10,26 +12,31 @@ import es.exceptioncoders.thepersonaltrainerclub.model.usecase.SetActivityUseCas
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 
 class AddSportActivityPresenter(private val mNavigator: AddSportActivityContract.Navigator<AddSportActivityContract.View>) : BasePresenter<AddSportActivityContract.View>(), AddSportActivityContract.Presenter<AddSportActivityContract.View> {
-
-    val activityUseCase: ActivityUseCase = ActivityUseCaseImp(ActivityProviderImp())
-    val setActivitiesUseCase: SetActivityUseCase = SetActivityUseCaseImp(SetActivitiesProviderImp())
+    private val activityUseCase: ActivityUseCase = ActivityUseCaseImp(ActivityProviderImp())
+    private val setActivitiesUseCase: SetActivityUseCase = SetActivityUseCaseImp(SetActivitiesProviderImp(), UserProviderImp())
 
     override fun create() {
         mView?.showLoading()
 
         activityUseCase.getAllActivities { arrayOfSportModels, activityError ->
+            mView?.hideLoading()
+
             mView?.showSports(arrayOfSportModels)
         }
     }
 
-    override fun saveSports() {
+    override fun saveSports(sports: List<SportModel>) {
         mView?.showLoading()
 
-        var str = ""
+        var str: MutableList<String> = mutableListOf()
+
+        for (sport in sports) {
+            str.add(sport._id)
+        }
 
         setActivitiesUseCase.setActivities(SetSportsModel(str)) { success, error ->
-            //TODO: Check error
             mView?.hideLoading()
+
             mNavigator?.popBack()
         }
     }
