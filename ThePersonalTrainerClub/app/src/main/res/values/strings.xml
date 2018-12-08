@@ -47,6 +47,7 @@
     <string name="menu_activities_title">Activities</string>
     <string name="menu_locations_title">Locations</string>
     <string name="menu_logout_title">Logout</string>
+    <string name="menu_save_title">Save</string>
     <!-- Add sport -->
     <string name="add_sport_title">Set activity</string>
     <string name="add_sport_error">Error setting activities</string>

@@ -45,6 +45,7 @@
     <string name="menu_activities_title">Deportes</string>
     <string name="menu_locations_title">Ubicaciones</string>
     <string name="menu_logout_title">Desconectar</string>
+    <string name="menu_save_title">Guardar</string>
     <!-- Add sport -->
     <string name="add_sport_title">Alta deporte</string>
     <string name="add_sport_error">Error al añadir deportes</string>

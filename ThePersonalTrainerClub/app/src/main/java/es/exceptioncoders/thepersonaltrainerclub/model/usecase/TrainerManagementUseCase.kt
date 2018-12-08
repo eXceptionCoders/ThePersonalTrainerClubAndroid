@@ -7,13 +7,13 @@ import es.exceptioncoders.thepersonaltrainerclub.network.entity.TrainerClassResp
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserResponse
 
 interface TrainerManagementUseCase {
-    fun getUser(model: UserModel, completion: (UserResponse?, UserProvider.UserError?) -> Unit)
+    fun getUser(completion: (UserModel?, UserProvider.UserError?) -> Unit)
     fun getClasses(trainerId: String, completion: (TrainerClassResponse?, ClassProvider.ClassError?) -> Unit)
 }
 
 class TrainerManagementUseCaseImp(private val userProvider: UserProvider, private val classProvider: ClassProvider): TrainerManagementUseCase {
-    override fun getUser(model: UserModel, completion: (UserResponse?, UserProvider.UserError?) -> Unit) {
-        userProvider.getUser(model, completion)
+    override fun getUser(completion: (UserModel?, UserProvider.UserError?) -> Unit) {
+        userProvider.getUser(completion)
     }
 
     override fun getClasses(trainerId: String, completion: (TrainerClassResponse?, ClassProvider.ClassError?) -> Unit) {
