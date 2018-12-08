@@ -2,6 +2,9 @@ package es.exceptioncoders.thepersonaltrainerclub.view.addSport
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
@@ -12,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_strip_grid.view.*
 
 class AddSportActivity : BaseActivity(), AddSportActivityContract.View {
     private lateinit var mPresenter: AddSportActivityContract.Presenter<AddSportActivity>
+    private lateinit var sportsAdapter: ActivityStripViewAdapter
 
     override fun bindLayout(): Int = R.layout.activity_add_sport
 
@@ -34,16 +38,42 @@ class AddSportActivity : BaseActivity(), AddSportActivityContract.View {
         mPresenter.create()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_save, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.getItemId()
+
+        return if (id == R.id.action_save) {
+            mPresenter.saveSports(sportsAdapter.getPreselectedSports())
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun showSports(sports: Array<SportModel>) {
-        val sportsAdapter = ActivityStripViewAdapter(sports, SharedApp.preferences.user.activities,this)
+        sportsAdapter = ActivityStripViewAdapter(sports.toList(), SharedApp.preferences.user.activities.toMutableList(),this)
         gridview.gridview.adapter = sportsAdapter
 
         gridview.gridview.setOnItemClickListener { adapterView, view, i, l ->
-            //TODO: Check/Uncheck
+            sportsAdapter.sportSelected(i)
+            sportsAdapter.notifyDataSetChanged()
         }
     }
 
     override fun showError() {
 
+    }
+
+    override fun showLoading() {
+        loading.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        loading.visibility = View.INVISIBLE
     }
 }

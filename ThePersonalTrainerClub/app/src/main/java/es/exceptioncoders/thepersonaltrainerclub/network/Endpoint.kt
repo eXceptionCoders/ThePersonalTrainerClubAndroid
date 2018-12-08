@@ -36,7 +36,7 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.UserData -> "/api/v1/es/datauser"
             is EndpointType.TrainerClasses -> "/api/v1/es/classes/trainers"
             is EndpointType.Activities -> "/api/v1/es/sports"
-            is EndpointType.SetActivities -> "/api/v1/es/data/sport"
+            is EndpointType.SetActivities -> "/api/v1/es/sports/update"
         }
     }
 

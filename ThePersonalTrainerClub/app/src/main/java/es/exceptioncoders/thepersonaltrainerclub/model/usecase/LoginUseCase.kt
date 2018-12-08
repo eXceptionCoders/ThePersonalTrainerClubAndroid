@@ -20,6 +20,8 @@ class LoginUseCaseImp(private val provider: LoginProvider, private val userProvi
                         completion(true, null)
                     }
                 }
+            } else {
+                completion(false, error)
             }
         }
     }
