@@ -8,18 +8,18 @@ import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : BaseActivity(), LoginActivityContract.LoginView {
-    private lateinit var mPresenter: LoginActivityContract.LoginViewPresenter<LoginActivity>
+class LoginActivity : BaseActivity(), LoginActivityContract.View {
+    private lateinit var mPresenter: LoginActivityContract.Presenter<LoginActivity>
 
     override fun bindLayout(): Int = R.layout.activity_login
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val mNavigator = LoginActivityNavigator() as LoginActivityContract.LoginViewNavigator<LoginActivityContract.LoginView>
+        val mNavigator = LoginActivityNavigator() as LoginActivityContract.Navigator<LoginActivityContract.View>
         mNavigator.attachView(this)
 
-        mPresenter = LoginActivityPresenter(mNavigator) as LoginActivityContract.LoginViewPresenter<LoginActivity>
+        mPresenter = LoginActivityPresenter(mNavigator) as LoginActivityContract.Presenter<LoginActivity>
         mPresenter.attachView(this)
 
         loginButton.setOnClickListener {

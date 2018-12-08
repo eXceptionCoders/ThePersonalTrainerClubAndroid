@@ -11,6 +11,10 @@ abstract class BaseFragment : Fragment(), BaseContract.BaseView {
 
     protected abstract fun bindLayout(): Int
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater!!.inflate(bindLayout(), container, false)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

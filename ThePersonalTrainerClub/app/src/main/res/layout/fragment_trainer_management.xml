@@ -18,19 +18,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementFragment">
+    tools:context=".view.trainerManagement.TrainerManagementFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -41,8 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".view.trainerManagement.TrainerManagementActivity">
-
-                <!-- TODO: Include corresponding views -->
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -59,8 +50,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/userTypeEditText"
+                <TextView
+                    android:id="@+id/usertTypeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -74,8 +65,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/nameEditText"
+                <TextView
+                    android:id="@+id/nameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -85,10 +76,10 @@
                     android:textAlignment="viewEnd"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/userTypeEditText"
+                    app:layout_constraintTop_toBottomOf="@+id/usertTypeTextView"
                     tools:text="Nombre" />
 
-                <EditText
+                <TextView
                     android:id="@+id/sportsLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,12 +87,12 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Qué enseñas"
+                    android:text="@string/trainer_management_sports_label"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+                    app:layout_constraintTop_toBottomOf="@+id/nameTextView"
                     tools:layout_editor_absoluteY="8dp"
-                    tools:text="Qué enseñas" />
+                    tools:text="@string/trainer_management_sports_label" />
 
                 <FrameLayout
                     android:id="@+id/sportFrameLayout"
@@ -116,8 +107,8 @@
 
                 </FrameLayout>
 
-                <EditText
-                    android:id="@+id/locationsLabel"
+                <TextView
+                    android:id="@+id/locationsTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -125,13 +116,13 @@
                     android:layout_marginBottom="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name"
+                    android:text="@string/trainer_management_locations_label"
                     android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sportFrameLayout"
                     app:layout_constraintVertical_bias="0.0"
-                    tools:text="Dónde enseñas" />
+                    tools:text="@string/trainer_management_locations_label" />
 
                 <FrameLayout
                     android:id="@+id/locationsFrameLayout"
@@ -142,12 +133,12 @@
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/locationsLabel">
+                    app:layout_constraintTop_toBottomOf="@+id/locationsTextView">
 
                 </FrameLayout>
 
-                <EditText
-                    android:id="@+id/openClassesLabel"
+                <TextView
+                    android:id="@+id/openClassesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -155,13 +146,13 @@
                     android:layout_marginBottom="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name"
+                    android:text="@string/trainer_management_open_classes_label"
                     android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/locationsFrameLayout"
                     app:layout_constraintVertical_bias="0.0"
-                    tools:text="Clases abiertas" />
+                    tools:text="@string/trainer_management_open_classes_label" />
 
                 <FrameLayout
                     android:id="@+id/openClassesFrameLayout"
@@ -174,7 +165,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/openClassesLabel">
+                    app:layout_constraintTop_toBottomOf="@+id/openClassesTextView">
 
                 </FrameLayout>
 

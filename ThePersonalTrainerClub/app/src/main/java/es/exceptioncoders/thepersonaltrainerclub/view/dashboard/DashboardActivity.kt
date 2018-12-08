@@ -1,18 +1,33 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.dashboard
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v7.widget.Toolbar
+import android.view.Menu
+import android.view.MenuItem
 import es.exceptioncoders.thepersonaltrainerclub.R
+import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
-class DashboardActivity : AppCompatActivity() {
+class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
+    private lateinit var mPresenter: DashboardActivityContract.Presenter<DashboardActivity>
+
+    override fun bindLayout(): Int = R.layout.activity_dashboard
+
+    private lateinit var mMenu: Menu
+
+    override fun localizeView() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
 
-        val fragmentAdapter = DashboardPagerAdapter(supportFragmentManager)
+        val mNavigator = DashboardActivityNavigator() as DashboardActivityContract.Navigator<DashboardActivityContract.View>
+        mNavigator.attachView(this)
+
+        mPresenter = DashboardActivityPresenter(mNavigator) as DashboardActivityContract.Presenter<DashboardActivity>
+        mPresenter.attachView(this)
+
+        val fragmentAdapter = DashboardPagerAdapter(supportFragmentManager, this)
         viewpager_main.adapter = fragmentAdapter
 
         tabs_main.setupWithViewPager(viewpager_main)
@@ -21,9 +36,49 @@ class DashboardActivity : AppCompatActivity() {
         setSupportActionBar(myToolbar)
 
         supportActionBar?.title = resources.getString(R.string.app_bar_name)
+
+        tabs_main.addOnTabSelectedListener(object :  TabLayout.OnTabSelectedListener {
+            override fun onTabUnselected(p0: TabLayout.Tab?) {}
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    setActionBarMenu(it.position)
+                }
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
     }
 
-    fun setActionBarTitle(title: String) {
-        supportActionBar?.title = title
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        mMenu = menu
+        menuInflater.inflate(R.menu.menu_dashboard, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.getItemId()
+
+        return if (id == R.id.action_activities) {
+            mPresenter.onAddActivitiesTapped()
+            true
+        } else if (id == R.id.action_activities) {
+            mPresenter.onAddLocationsTapped()
+            true
+        } else if (id == R.id.action_activities) {
+            //TODO: LOGOUT
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun setActionBarMenu(position: Int) {
+        mMenu.clear()
+        when (position) {
+            0 -> menuInflater.inflate(R.menu.menu_dashboard, mMenu)
+            else -> menuInflater.inflate(R.menu.menu_general, mMenu)
+        }
     }
 }

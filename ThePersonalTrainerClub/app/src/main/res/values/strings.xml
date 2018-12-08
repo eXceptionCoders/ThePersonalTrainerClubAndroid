@@ -36,13 +36,23 @@
     <string name="fragment_class_date">01 January 2018</string>
     <string name="fragment_class_time">16:00 to 17:00</string>
     <string name="fragment_class_number_user">Pupils (10 / 10)</string>
-    <string name="fragment_class_price">10€ / Class</string>
+    <string name="fragment_class_price">10� / Class</string>
     <string name="fragment_class_name_instructor">Name</string>
     <string name="fragment_class_lastname_instructor">LastName</string>
     <string name="fragment_button_vote">Vote</string>
     <string name="fragment_button_cancel">Cancel</string>
-
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Menu -->
+    <string name="menu_activities_title">Activities</string>
+    <string name="menu_locations_title">Locations</string>
+    <string name="menu_logout_title">Logout</string>
+    <!-- Add sport -->
+    <string name="add_sport_title">Set activity</string>
+    <string name="add_sport_error">Error setting activities</string>
+    <!-- Trainer dashboard -->
+    <string name="trainer_management_title">Management</string>
+    <string name="trainer_management_open_classes_label">Open classes</string>
+    <string name="trainer_management_locations_label">Where do you teach?</string>
+    <string name="trainer_management_sports_label">What do you teach?</string>
 </resources>

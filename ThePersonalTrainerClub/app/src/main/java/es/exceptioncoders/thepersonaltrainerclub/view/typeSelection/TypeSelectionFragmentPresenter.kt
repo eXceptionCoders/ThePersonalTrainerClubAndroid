@@ -7,7 +7,7 @@ enum class TypeSelection {
     Client
 }
 
-class TypeSelectionFragmentPresenter(private val mNavigator: TypeSelectionFragmentContract.TypeSelectionViewNavigator<TypeSelectionFragmentContract.TypeSelectionView>) : BasePresenter<TypeSelectionFragmentContract.TypeSelectionView>(), TypeSelectionFragmentContract.TypeSelectionViewPresenter<TypeSelectionFragmentContract.TypeSelectionView> {
+class TypeSelectionFragmentPresenter(private val mNavigator: TypeSelectionFragmentContract.Navigator<TypeSelectionFragmentContract.View>) : BasePresenter<TypeSelectionFragmentContract.View>(), TypeSelectionFragmentContract.Presenter<TypeSelectionFragmentContract.View> {
     override fun onTypeSelected(type: TypeSelection) {
         when (type) {
             TypeSelection.Trainer -> mNavigator.navigateToTrainerView()

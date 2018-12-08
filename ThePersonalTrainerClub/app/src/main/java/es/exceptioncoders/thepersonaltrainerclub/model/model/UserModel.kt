@@ -11,6 +11,6 @@ data class UserModel (
         val thumbnail: String,
         val email: String,
         val locations: Array<LocationModel>,
-        val activities: Array<ActivityModel>,
+        val activities: Array<SportModel>,
         val description: String
 )

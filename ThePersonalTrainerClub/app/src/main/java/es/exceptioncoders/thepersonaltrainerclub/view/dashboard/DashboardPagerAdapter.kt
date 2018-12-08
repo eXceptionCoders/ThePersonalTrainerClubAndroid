@@ -1,12 +1,14 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.dashboard
 
+import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementFragment
 import es.exceptioncoders.thepersonaltrainerclub.view.typeSelection.TypeSelectionFragment
 
-class DashboardPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class DashboardPagerAdapter(fm: FragmentManager, private val ctx: Context) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> TrainerManagementFragment()
@@ -21,11 +23,9 @@ class DashboardPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getPageTitle(position: Int): CharSequence {
         return when (position) {
-            0 -> "ABCJorge"
-            1 -> "STT"
-            else -> {
-                return "Third Tab"
-            }
+            0 -> ctx.resources.getString(R.string.type_selection_title)
+            1 -> ctx.resources.getString(R.string.trainer_management_title)
+            else -> "TODO: RELLENAR"
         }
     }
 }
