@@ -16,7 +16,7 @@ class Endpoint(private val type: EndpointType) {
     sealed class EndpointType {
         class Login(val loginRequestModel: LoginRequest) : EndpointType()
         class Register(val registerRequestModel: RegisterRequest) : EndpointType()
-        class UserData(val userRequestModel: UserRequest) : EndpointType()
+        object UserData : EndpointType()
         class TrainerClasses(val trainerClassRequestModel: TrainerClassRequest) : EndpointType()
         object Activities : EndpointType()
         class SetActivities(val requestModel: SetSportRequest) : EndpointType()
@@ -33,7 +33,7 @@ class Endpoint(private val type: EndpointType) {
         return when (type) {
             is EndpointType.Login -> "/api/v1/es/users/login"
             is EndpointType.Register -> "/api/v1/es/users/signup"
-            is EndpointType.UserData -> "/api/v1/es/data/user"
+            is EndpointType.UserData -> "/api/v1/es/datauser"
             is EndpointType.TrainerClasses -> "/api/v1/es/classes/trainers"
             is EndpointType.Activities -> "/api/v1/es/sports"
             is EndpointType.SetActivities -> "/api/v1/es/data/sport"
@@ -44,10 +44,9 @@ class Endpoint(private val type: EndpointType) {
         return when (type) {
             is EndpointType.Login -> Gson().toJson(type.loginRequestModel)
             is EndpointType.Register -> Gson().toJson(type.registerRequestModel)
-            is EndpointType.UserData -> Gson().toJson(type.userRequestModel)
             is EndpointType.TrainerClasses -> Gson().toJson(type.trainerClassRequestModel)
-            is EndpointType.Activities -> ""
             is EndpointType.SetActivities -> Gson().toJson(type.requestModel)
+            else -> ""
         }
     }
 

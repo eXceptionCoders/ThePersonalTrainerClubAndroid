@@ -18,7 +18,7 @@ class AddSportActivityPresenter(private val mNavigator: AddSportActivityContract
         mView?.showLoading()
 
         activityUseCase.getAllActivities { arrayOfSportModels, activityError ->
-
+            mView?.showSports(arrayOfSportModels)
         }
     }
 
