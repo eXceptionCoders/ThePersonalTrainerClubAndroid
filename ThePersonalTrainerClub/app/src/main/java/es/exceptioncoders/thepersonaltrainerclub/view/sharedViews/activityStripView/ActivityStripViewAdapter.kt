@@ -1,38 +1,37 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.content.Context
+import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.view.LayoutInflater
+import com.squareup.picasso.Picasso
 import es.exceptioncoders.thepersonaltrainerclub.R
+import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import kotlinx.android.synthetic.main.activity_strip_cell.view.*
 
-class ActivityStripViewAdapter(val activities: Array<String>, val mContext: Context): BaseAdapter() {
+class ActivityStripViewAdapter(private val activities: Array<SportModel>, private val currentActivities: Array<SportModel>, private val mContext: Context): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val activity = activities[position]
 
-        //if (convertView == null) {
-            val layoutInflater = LayoutInflater.from(mContext)
-            val cv = layoutInflater.inflate(R.layout.activity_strip_cell, null)
-        //}
+        val layoutInflater = LayoutInflater.from(mContext)
+        val cv = layoutInflater.inflate(R.layout.activity_strip_cell, null)
 
-        // 3
-        /*val imageView = convertView.findViewById(R.id.imageview_cover_art) as ImageView
-        val nameTextView = convertView.findViewById(R.id.textview_book_name) as TextView
-        val authorTextView = convertView.findViewById(R.id.textview_book_author) as TextView
-        val imageViewFavorite = convertView.findViewById(R.id.imageview_favorite) as ImageView
+        activity.icon?.let {
+            Picasso.get().load(it).into(cv.sport_image)
+        }
 
-        // 4
-        cv.sport_image.setImageResource(book.getImageResource())
-        cv.sport_name.setText(mContext.getString(book.getName()))*/
+        cv.sport_name.text = activity.name
+
+        if (isCurrentActivity(activity)) {
+            cv.background = mContext.resources.getDrawable(R.drawable.rounded_orange_border)
+        }
 
         return cv
     }
 
     override fun getItem(position: Int): Any {
-        return Any()
+        return activities[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -41,5 +40,14 @@ class ActivityStripViewAdapter(val activities: Array<String>, val mContext: Cont
 
     override fun getCount(): Int {
         return activities.size
+    }
+
+    private fun isCurrentActivity(activity: SportModel): Boolean {
+        for (a in currentActivities) {
+            if (a.name == activity.name) {
+                return true
+            }
+        }
+        return false
     }
 }

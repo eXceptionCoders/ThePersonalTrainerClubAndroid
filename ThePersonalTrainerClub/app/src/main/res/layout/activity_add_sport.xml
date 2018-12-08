@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.addSport.AddSportActivity"
+    android:background="@android:color/white"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.addSport.AddSportActivity">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        layout="@layout/toolbar"/>
 
-</android.support.constraint.ConstraintLayout>
+    <include
+        android:id="@+id/gridview"
+        layout="@layout/activity_strip_grid"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
