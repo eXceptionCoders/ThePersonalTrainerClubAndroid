@@ -41,6 +41,16 @@
     <string name="fragment_class_lastname_instructor">Apellido</string>
     <string name="fragment_button_vote">Votar</string>
     <string name="fragment_button_cancel">Cancelar</string>
+    <string name="add_class_section_1">Que clase quieres crear</string>
+    <string name="add_class_section_2">Donde</string>
+    <string name="add_class_section_3">Horario</string>
+    <string name="add_class_section_4">Duracion</string>
+    <string name="add_class_section_5">Frecuencia</string>
+    <string name="add_class_section_6">Periodo</string>
+    <string name="add_class_section_7">Numero maximo de alumnos</string>
+    <string name="add_class_section_8">Precio por clase</string>
+    <string name="add_class_section_9">Politica de cancelacion</string>
+    <string name="add_class_section_10">Descripcion</string>
     <!-- Menu -->
     <string name="menu_activities_title">Deportes</string>
     <string name="menu_locations_title">Ubicaciones</string>
