@@ -1,7 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.register
 
-import android.app.DatePickerDialog
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
@@ -13,10 +11,6 @@ import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.GenderType
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_register.*
-import java.util.*
-import android.widget.TextView
-import es.exceptioncoders.thepersonaltrainerclub.utils.DateUtils
-import java.text.SimpleDateFormat
 
 
 class RegisterActivity: BaseActivity(), RegisterActivityContract.RegisterView {

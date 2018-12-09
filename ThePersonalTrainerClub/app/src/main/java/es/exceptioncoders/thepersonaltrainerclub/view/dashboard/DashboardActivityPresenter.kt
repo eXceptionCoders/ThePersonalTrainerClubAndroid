@@ -1,5 +1,7 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.dashboard
 
+import es.exceptioncoders.thepersonaltrainerclub.model.model.UserModel
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 
 class DashboardActivityPresenter(private val mNavigator: DashboardActivityContract.Navigator<DashboardActivityContract.View>) : BasePresenter<DashboardActivityContract.View>(), DashboardActivityContract.Presenter<DashboardActivityContract.View> {
@@ -11,7 +13,9 @@ class DashboardActivityPresenter(private val mNavigator: DashboardActivityContra
         mNavigator.navigateToLocations()
     }
 
-    override fun onLogout() {
-
+    override fun onLogoutTapped() {
+        SharedApp.preferences.jwtToken = ""
+        SharedApp.preferences.user = UserModel()
+        mNavigator.navigateToLogin()
     }
 }

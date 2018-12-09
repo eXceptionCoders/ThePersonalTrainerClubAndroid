@@ -8,6 +8,7 @@ import es.exceptioncoders.thepersonaltrainerclub.model.model.UserModel
 class Preferences (context: Context) {
     val PREFS_NAME = "es.exceptioncoders.thepersonaltrainerclub"
     val SHARED_JWT = "shared_jwt"
+    val SHARED_USER = "shared_user"
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     var jwtToken: String
@@ -15,6 +16,6 @@ class Preferences (context: Context) {
         set(value) = prefs.edit().putString(SHARED_JWT, value).apply()
 
     var user: UserModel
-        get() = Gson().fromJson(prefs.getString("User", ""), UserModel::class.java)
-        set(value) = prefs.edit().putString("User", Gson().toJson(value)).apply()
+        get() = Gson().fromJson(prefs.getString(SHARED_USER, ""), UserModel::class.java)
+        set(value) = prefs.edit().putString(SHARED_USER, Gson().toJson(value)).apply()
 }

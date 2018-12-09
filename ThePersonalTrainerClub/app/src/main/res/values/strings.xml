@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ThePersonalTrainerClub</string>
     <string name="app_bar_name">GymUs</string>
+    <string name="trainer">Trainer</string>
+    <string name="athlete">Athlete</string>
     <!-- Login -->
     <string name="login_email_placeholder">user@domain.com</string>
     <string name="login_password_placeholder">Password</string>
@@ -41,6 +43,7 @@
     <string name="fragment_class_lastname_instructor">LastName</string>
     <string name="fragment_button_vote">Vote</string>
     <string name="fragment_button_cancel">Cancel</string>
+<<<<<<< HEAD
     <!-- Activity Add Class -->
     <string name="add_class_section_1">What class do you want create</string>
     <string name="add_class_section_2">Where</string>
@@ -55,6 +58,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+>>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f
     <!-- Menu -->
     <string name="menu_activities_title">Activities</string>
     <string name="menu_locations_title">Locations</string>

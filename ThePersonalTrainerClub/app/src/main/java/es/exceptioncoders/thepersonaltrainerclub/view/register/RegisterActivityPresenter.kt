@@ -8,7 +8,6 @@ import es.exceptioncoders.thepersonaltrainerclub.model.provider.RegisterProvider
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.RegisterUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.RegisterUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
-import java.time.LocalDateTime
 
 class RegisterActivityPresenter(private val mNavigator: RegisterActivityContract.RegisterViewNavigator<RegisterActivityContract.RegisterView>) : BasePresenter<RegisterActivityContract.RegisterView>(), RegisterActivityContract.RegisterViewPresenter<RegisterActivityContract.RegisterView> {
 

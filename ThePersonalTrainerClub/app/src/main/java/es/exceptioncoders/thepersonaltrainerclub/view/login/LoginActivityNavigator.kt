@@ -5,7 +5,6 @@ import android.content.Intent
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseNavigator
 import es.exceptioncoders.thepersonaltrainerclub.view.dashboard.DashboardActivity
 import es.exceptioncoders.thepersonaltrainerclub.view.register.RegisterActivity
-import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementActivity
 
 class LoginActivityNavigator : BaseNavigator<LoginActivityContract.View>(), LoginActivityContract.Navigator<LoginActivityContract.View> {
     override fun navigateToRegisterView() {

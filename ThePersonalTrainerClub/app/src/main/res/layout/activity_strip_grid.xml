@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridView android:id="@+id/gridview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center"
     android:columnWidth="100dp"
     android:numColumns="auto_fit"

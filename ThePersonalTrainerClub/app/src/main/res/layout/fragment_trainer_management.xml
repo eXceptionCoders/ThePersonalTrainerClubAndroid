@@ -33,7 +33,7 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".view.trainerManagement.TrainerManagementActivity">
+                tools:context=".view.trainerManagement.TrainerManagementFragment">
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -42,12 +42,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_marginBottom="8dp"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/avatarImageView"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:adjustViewBounds="false"
+                    android:src="@drawable/ic_user_male"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -62,7 +74,7 @@
                     android:textAlignment="viewEnd"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/avatarImageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -75,7 +87,7 @@
                     android:text="Nombre"
                     android:textAlignment="viewEnd"
                     android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/avatarImageView"
                     app:layout_constraintTop_toBottomOf="@+id/usertTypeTextView"
                     tools:text="Nombre" />
 
@@ -94,51 +106,42 @@
                     tools:layout_editor_absoluteY="8dp"
                     tools:text="@string/trainer_management_sports_label" />
 
-                <FrameLayout
-                    android:id="@+id/sportFrameLayout"
+                <include
+                    android:id="@+id/gridview"
+                    layout="@layout/activity_strip_grid"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sportsLabel">
-
-                </FrameLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/sportsLabel" />
 
                 <TextView
-                    android:id="@+id/locationsTextView"
+                    android:id="@+id/locationsLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="@string/trainer_management_locations_label"
                     android:textColor="@android:color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sportFrameLayout"
-                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/gridview"
                     tools:text="@string/trainer_management_locations_label" />
 
-                <FrameLayout
-                    android:id="@+id/locationsFrameLayout"
+                <include
+                    android:id="@+id/listview"
+                    layout="@layout/activity_class_list"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/locationsTextView">
-
-                </FrameLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/locationsLabel" />
 
                 <TextView
-                    android:id="@+id/openClassesTextView"
+                    android:id="@+id/openClassesLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -150,7 +153,7 @@
                     android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/locationsFrameLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/listview"
                     app:layout_constraintVertical_bias="0.0"
                     tools:text="@string/trainer_management_open_classes_label" />
 
@@ -161,12 +164,9 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/openClassesTextView">
-
+                    app:layout_constraintTop_toBottomOf="@+id/openClassesLabel">
                 </FrameLayout>
 
             </android.support.constraint.ConstraintLayout>
