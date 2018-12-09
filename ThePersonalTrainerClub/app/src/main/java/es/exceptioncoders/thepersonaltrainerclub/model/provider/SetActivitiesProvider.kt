@@ -19,7 +19,7 @@ interface SetActivitiesProvider {
 
 class SetActivitiesProviderImp: SetActivitiesProvider {
     override fun setSports(model: SetSportsModel, completion: (Boolean, SetActivitiesProvider.SetActivitiesError?) -> Unit) {
-        val requestModel = SetSportRequest(model.activities)
+        val requestModel = SetSportRequest(model.activities.toTypedArray())
 
         val endpoint = Endpoint(Endpoint.EndpointType.SetActivities(requestModel))
 

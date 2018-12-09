@@ -1,6 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.model
 
-import java.time.LocalDateTime
 
 data class UserModel (
         val id: String,
@@ -11,6 +10,5 @@ data class UserModel (
         val thumbnail: String,
         val email: String,
         val locations: Array<LocationModel>,
-        val activities: Array<SportModel>,
-        val description: String
+        val activities: Array<SportModel>
 )

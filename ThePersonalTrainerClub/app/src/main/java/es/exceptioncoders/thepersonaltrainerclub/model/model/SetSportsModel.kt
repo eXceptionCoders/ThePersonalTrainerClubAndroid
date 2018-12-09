@@ -1,5 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.model
 
 class SetSportsModel (
-        val activities: String
+        val activities: List<String>
 )

@@ -4,6 +4,7 @@ import es.exceptioncoders.thepersonaltrainerclub.model.model.UserModel
 import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService
 import es.exceptioncoders.thepersonaltrainerclub.network.WebServiceError
+import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserEntity
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserRequest
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserResponse
 
@@ -13,18 +14,13 @@ interface UserProvider {
         OtherError
     }
 
-    fun getUser(model: UserModel, completion: (UserResponse?, UserError?) -> Unit)
+    fun getUser(completion: (UserModel?, UserError?) -> Unit)
 }
 
 class UserProviderImp: UserProvider {
-    override fun getUser(model: UserModel, completion: (UserResponse?, UserProvider.UserError?) -> Unit) {
-        val requestModel = UserRequest (
-            model.id
-        )
-
-        val endpoint = Endpoint(Endpoint.EndpointType.UserData(requestModel))
+    override fun getUser(completion: (UserModel?, UserProvider.UserError?) -> Unit) {
+        val endpoint = Endpoint(Endpoint.EndpointType.UserData)
         val ws = WebService()
-
         ws.load<UserResponse>(endpoint) { response: UserResponse?, e: WebServiceError? ->
             var error: UserProvider.UserError? = null
 
@@ -35,7 +31,19 @@ class UserProviderImp: UserProvider {
                 }
             }
 
-            completion(response, error)
+            completion(mapEntityToModel(response!!.data), error)
         }
+    }
+
+    private fun mapEntityToModel(response: UserEntity) : UserModel {
+        return UserModel(response._id,
+                response.name,
+                response.lastname,
+                response.coach,
+                response.gender,
+                response.thumbnail,
+                response.email,
+                response.locations,
+                response.sports)
     }
 }

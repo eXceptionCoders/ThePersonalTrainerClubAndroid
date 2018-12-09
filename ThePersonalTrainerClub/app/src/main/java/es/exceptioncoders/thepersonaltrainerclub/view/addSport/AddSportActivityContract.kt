@@ -11,7 +11,7 @@ interface AddSportActivityContract {
 
     interface Presenter<V : View> : BaseContract.BasePresenter<V> {
         fun create()
-        fun saveSports()
+        fun saveSports(sports: List<SportModel>)
     }
 
     interface Navigator<V : View> : BaseContract.BaseNavigator<V> {
