@@ -23,7 +23,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.register.RegisterActivity" />
-        <activity android:name=".view.typeSelectionDashboard.TypeSelectionActivity" />
         <activity android:name=".view.dashboard.DashboardActivity" />
         <activity android:name=".view.addLocation.AddLocationActivity" />
         <activity android:name=".view.addSport.AddSportActivity"></activity>

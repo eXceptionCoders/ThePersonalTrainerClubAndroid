@@ -9,6 +9,7 @@ import es.exceptioncoders.thepersonaltrainerclub.model.usecase.ActivityUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.ActivityUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.SetActivityUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.SetActivityUseCaseImp
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 
 class AddSportActivityPresenter(private val mNavigator: AddSportActivityContract.Navigator<AddSportActivityContract.View>) : BasePresenter<AddSportActivityContract.View>(), AddSportActivityContract.Presenter<AddSportActivityContract.View> {
