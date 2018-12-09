@@ -34,11 +34,7 @@
                 android:orientation="vertical">
 
                 <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
                     android:id="@+id/text_name_sport"
-=======
-                    android:id="@+id/sportTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -50,11 +46,7 @@
                     tools:text="Balonmano" />
 
                 <ImageView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
                     android:id="@+id/image_sport_class"
-=======
-                    android:id="@+id/sportImageView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -123,11 +115,7 @@
                     android:background="?android:attr/listDivider" />
 
                 <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
                     android:id="@+id/text_location_class"
-=======
-                    android:id="@+id/locationTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:text="@string/fragment_class_name_location"
@@ -135,11 +123,7 @@
                     tools:text='Gimnasio "El gran atardecer"' />
 
                 <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
                     android:id="@+id/text_date_class"
-=======
-                    android:id="@+id/dateTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:text="@string/fragment_class_date"
@@ -147,11 +131,7 @@
                     tools:text="12 Septiembre 2018" />
 
                 <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
                     android:id="@+id/text_time_class"
-=======
-                    android:id="@+id/timeTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:text="@string/fragment_class_time"
@@ -159,11 +139,7 @@
                     tools:text="De 16:00 a 17:00" />
 
                 <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
                     android:id="@+id/text_number_pupils_class"
-=======
-                    android:id="@+id/cuotaTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:text="@string/fragment_class_number_user"
@@ -171,11 +147,7 @@
                     tools:text="Alumnos ( 12/20 )" />
 
                 <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
                     android:id="@+id/text_price_class"
-=======
-                    android:id="@+id/priceTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:text="@string/fragment_class_price"
@@ -224,51 +196,35 @@
                     android:padding="4dp">
 
                     <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
-                        android:id="@+id/text_name_coach_class"
-=======
-                        android:id="@+id/userTypeTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Trainer"
-                        android:textColor="@color/text" />
+                    android:id="@+id/text_name_coach_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Trainer"
+                    android:textColor="@color/text" />
 
                     <TextView
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
-                        android:id="@+id/text_lastname_coach_class"
-=======
-                        android:id="@+id/trainerNameTextView"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Name"
-                        android:textColor="@color/text" />
+                    android:id="@+id/text_lastname_coach_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/text" />
                 </LinearLayout>
 
                 <Button
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
-                    android:id="@+id/button_vote_class"
-=======
-                    android:id="@+id/voteButton"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
-                    style="?attr/buttonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text="@string/fragment_button_vote"
-                    android:visibility="visible" />
+                android:id="@+id/button_vote_class"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/fragment_button_vote"
+                android:visibility="visible" />
 
                 <Button
-<<<<<<< HEAD:ThePersonalTrainerClub/app/src/main/res/layout/fragment_class_trainer.xml
-                    android:id="@+id/button_cancel_class"
-=======
-                    android:id="@+id/cancelButton"
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f:ThePersonalTrainerClub/app/src/main/res/layout/activity_class_row.xml
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text="@string/fragment_button_cancel" />
+                android:id="@+id/button_cancel_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/fragment_button_cancel" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -43,7 +43,6 @@
     <string name="fragment_class_lastname_instructor">LastName</string>
     <string name="fragment_button_vote">Vote</string>
     <string name="fragment_button_cancel">Cancel</string>
-<<<<<<< HEAD
     <!-- Activity Add Class -->
     <string name="add_class_section_1">What class do you want create</string>
     <string name="add_class_section_2">Where</string>
@@ -55,11 +54,6 @@
     <string name="add_class_section_8">Price for class</string>
     <string name="add_class_section_9">Cancelation policy</string>
     <string name="add_class_section_10">Description</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
->>>>>>> 9156bc241cda75989a5a30679525c2c744f0089f
     <!-- Menu -->
     <string name="menu_activities_title">Activities</string>
     <string name="menu_locations_title">Locations</string>

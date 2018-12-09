@@ -63,8 +63,8 @@
             android:min="6"
             android:padding="10dp"
             android:progressTint="@color/colorPrimaryDark"
-            android:scrollbarThumbHorizontal="34"
-            android:thumb="@drawable/thumb_seekbar"
+            android:thumb="@drawable/thumb_seekbar"/>
+            <!--android:scrollbarThumbHorizontal="34"-->
 
         <TextView
             android:layout_width="match_parent"
