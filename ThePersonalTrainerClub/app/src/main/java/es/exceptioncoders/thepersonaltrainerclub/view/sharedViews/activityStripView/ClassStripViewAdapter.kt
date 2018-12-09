@@ -15,16 +15,16 @@ class ClassStripViewAdapter(private val openClases: List<ClassModel>, val mConte
         val openClass = openClases[position]
 
         val layoutInflater = LayoutInflater.from(mContext)
-        val cv = layoutInflater.inflate(R.layout.activity_class_row, null)
+        val classView = layoutInflater.inflate(R.layout.activity_class_row, null)
 
-        cv.priceTextView.text = "${openClass.price} €"
-        cv.locationTextView.text = openClass.location.description
-        cv.sportTextView.text = openClass.sport.name
+        classView.text_price_class.text = "${openClass.price} €"
+        classView.text_location_class.text = openClass.location.description
+        classView.text_name_sport.text = openClass.sport.name
 
         openClass.sport.icon?.let {
-            Picasso.get().load(it).into(cv.sportImageView)
+            Picasso.get().load(it).into(classView.image_sport_class)
         }
-        return cv
+        return classView
     }
 
     override fun getItem(position: Int): Any {
