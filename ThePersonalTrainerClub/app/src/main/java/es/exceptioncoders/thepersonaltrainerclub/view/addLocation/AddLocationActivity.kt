@@ -1,15 +1,14 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.addLocation
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.widget.Toolbar
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.Button
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_add_location.*
@@ -17,9 +16,11 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
 
 class AddLocationActivity : BaseActivity(), AddLocationActivityContract.View {
+    companion object {
+        private val REQUEST_PERMISSIONS_REQUEST_CODE = 34
+    }
+
     private lateinit var mPresenter: AddLocationActivityContract.Presenter<AddLocationActivity>
-    private var mFusedLocationClient: FusedLocationProviderClient? = null
-    private var mLastLocation: Location? = null
 
     override fun bindLayout(): Int = R.layout.activity_add_location
 
@@ -42,15 +43,25 @@ class AddLocationActivity : BaseActivity(), AddLocationActivityContract.View {
 
         supportActionBar?.title = resources.getString(R.string.add_location_title)
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         mapView.isClickable = false
         mapView.setBuiltInZoomControls(false)
         mapView.setMultiTouchControls(false)
         mapView.controller.setZoom(17.0)
-        mapView.controller.animateTo(GeoPoint(-20.1698, -40.2487))
-    }
+        //Show Puerta del Sol by default
+        mapView.controller.animateTo(GeoPoint(40.41684, -3.70341))
 
+        currentLocationButton.setOnClickListener {
+            mPresenter.getLastLocation()
+        }
+
+        searchLocationButton.setOnClickListener {
+            if (searchLocationText.text.isNullOrEmpty() || searchLocationText.text.isBlank()) {
+                showAlertMessage(null, R.string.add_location_on_search_error_message)
+            } else {
+                mPresenter.searchLocation(searchLocationText.text.toString())
+            }
+        }
+    }
 
     public override fun onStart() {
         super.onStart()
@@ -58,8 +69,50 @@ class AddLocationActivity : BaseActivity(), AddLocationActivityContract.View {
         if (!checkPermissions()) {
             requestPermissions()
         } else {
-            getLastLocation()
+            mPresenter.startLocation()
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        mPresenter.stopLocation()
+    }
+
+    override fun showLoading() {
+        loading.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        loading.visibility = View.INVISIBLE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_save, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.getItemId()
+
+        return if (id == R.id.action_save) {
+            mPresenter.saveLocation(descriptionText.text.toString())
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun showLocation(center: GeoPoint) {
+        mapView.controller.animateTo(center)
+        addMarker(center)
+    }
+
+    override fun setLocation(center: GeoPoint, address: String) {
+        mapView.controller.animateTo(center)
+        addMarker(center)
+        locationText.text = address
     }
 
     private fun addMarker(center: GeoPoint) {
@@ -73,29 +126,26 @@ class AddLocationActivity : BaseActivity(), AddLocationActivityContract.View {
         mapView.invalidate()
     }
 
-
-    @SuppressLint("MissingPermission")
-    private fun getLastLocation() {
-        mFusedLocationClient!!.lastLocation
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful && task.result != null) {
-                        mLastLocation = task.result
-
-                        mapView.controller.animateTo(GeoPoint(mLastLocation!!.latitude, mLastLocation!!.longitude))
-                        addMarker(GeoPoint(mLastLocation!!.latitude, mLastLocation!!.longitude))
-
-                    } else {
-                        print(task.exception)
-                        //showMessage(getString(R.string.no_location_detected))
-
-                    }
-                }
-    }
-
     private fun checkPermissions(): Boolean {
-        val permissionState = ActivityCompat.checkSelfPermission(this,
+        val coarsePermissionState = ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION)
-        return permissionState == PackageManager.PERMISSION_GRANTED
+        val internetPermissionState = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.INTERNET)
+        val wifiPermissionState = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_WIFI_STATE)
+        val networkPermissionState = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_NETWORK_STATE)
+        val finePermissionState = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+        val storagePermissionState = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        return (coarsePermissionState == PackageManager.PERMISSION_GRANTED) &&
+                (internetPermissionState == PackageManager.PERMISSION_GRANTED) &&
+                (wifiPermissionState == PackageManager.PERMISSION_GRANTED) &&
+                (networkPermissionState == PackageManager.PERMISSION_GRANTED) &&
+                (finePermissionState == PackageManager.PERMISSION_GRANTED) &&
+                (storagePermissionState == PackageManager.PERMISSION_GRANTED)
     }
 
     private fun startLocationPermissionRequest() {
@@ -110,58 +160,28 @@ class AddLocationActivity : BaseActivity(), AddLocationActivityContract.View {
     }
 
     private fun requestPermissions() {
-        val shouldProvideRationale = ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION)
-
-        // Provide an additional rationale to the user. This would happen if the user denied the
-        // request previously, but didn't check the "Don't ask again" checkbox.
-        if (shouldProvideRationale) {
-            print("Displaying permission rationale to provide additional context.")
-
-        } else {
-            print("Requesting permission")
-            // Request permission. It's possible this can be auto answered if device policy
-            // sets the permission in a given state or the user denied the permission
-            // previously and checked "Never ask again".
-            startLocationPermissionRequest()
-        }
+        startLocationPermissionRequest()
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {
-        print("onRequestPermissionResult")
         if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE) {
             if (grantResults.size <= 0) {
-                // If user interaction was interrupted, the permission request is cancelled and you
-                // receive empty arrays.
-                print("User interaction was cancelled.")
-            } else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // User interaction was cancelled.
+                // TODO: PopBack?
+            } else if ((grantResults[0] == PackageManager.PERMISSION_GRANTED) &&
+                    (grantResults[1] == PackageManager.PERMISSION_GRANTED) &&
+                    (grantResults[2] == PackageManager.PERMISSION_GRANTED) &&
+                    (grantResults[3] == PackageManager.PERMISSION_GRANTED) &&
+                    (grantResults[4] == PackageManager.PERMISSION_GRANTED) &&
+                    (grantResults[5] == PackageManager.PERMISSION_GRANTED)) {
                 // Permission granted.
-                getLastLocation()
+                mPresenter.startLocation()
             } else {
+                // TODO: Show message?
                 // Permission denied.
-
-                // Notify the user via a SnackBar that they have rejected a core permission for the
-                // app, which makes the Activity useless. In a real app, core permissions would
-                // typically be best requested during a welcome-screen flow.
-
-                // Additionally, it is important to remember that a permission might have been
-                // rejected without asking the user for permission (device policy or "Never ask
-                // again" prompts). Therefore, a user interface affordance is typically implemented
-                // when permissions are denied. Otherwise, your app could appear unresponsive to
-                // touches or interactions which have required permissions.
             }
         }
-    }
-
-    companion object {
-
-        private val TAG = "LocationProvider"
-
-        private val REQUEST_PERMISSIONS_REQUEST_CODE = 34
     }
 }
 

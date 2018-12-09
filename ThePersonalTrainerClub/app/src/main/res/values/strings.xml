@@ -63,6 +63,7 @@
     <string name="add_location_no_address_found">No matching addresses found</string>
     <string name="add_location_no_last_location_message">No last location known</string>
     <string name="add_location_user_location_error_message">Cannot get user location</string>
+    <string name="add_location_on_search_error_message">You need to provide a location</string>
     <string name="add_location_on_save_error_message">You need to provide a description and a location</string>
     <string name="add_location_server_error">Some error has occurred</string>
     <!-- Trainer dashboard -->

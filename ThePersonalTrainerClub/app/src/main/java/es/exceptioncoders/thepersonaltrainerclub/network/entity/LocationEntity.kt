@@ -7,3 +7,17 @@ class LocationEntity (
     val coordinates: Array<Float>
 )
 
+data class AddLocationRequest (
+    val description: String,
+    val longitude: Double,
+    val latitude: Double
+)
+
+data class AddLocationResponse(
+        val version: String,
+        val status: String,
+        val message: String,
+        val datetime: String,
+        val error: Any
+): BaseResponse(version, status, message, datetime, error)
+

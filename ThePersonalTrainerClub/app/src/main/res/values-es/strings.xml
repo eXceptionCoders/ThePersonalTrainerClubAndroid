@@ -61,6 +61,7 @@
     <string name="add_location_no_address_found">No existe una ubicación que coincida</string>
     <string name="add_location_no_last_location_message">No existe una última ubicación del usuario</string>
     <string name="add_location_user_location_error_message">No se puede obtener la ubicación</string>
+    <string name="add_location_on_search_error_message">Necesitas proveer una ubicación</string>
     <string name="add_location_on_save_error_message">Necesitas proveer una descripción y una ubicación</string>
     <string name="add_location_server_error">Ha ocurrido algún error</string>
     <!-- Trainer dashboard -->
