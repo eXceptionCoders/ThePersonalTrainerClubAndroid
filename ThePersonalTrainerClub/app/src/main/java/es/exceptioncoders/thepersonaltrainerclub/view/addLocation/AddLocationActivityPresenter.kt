@@ -5,7 +5,10 @@ import android.annotation.SuppressLint
 import android.location.Location
 import com.google.android.gms.location.*
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
+import es.exceptioncoders.thepersonaltrainerclub.model.model.MQAddressModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.LocationProviderImp
+import es.exceptioncoders.thepersonaltrainerclub.model.provider.MapQuestProvider
+import es.exceptioncoders.thepersonaltrainerclub.model.provider.MapQuestProviderProviderImp
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.AddLocationUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.AddLocationUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
@@ -13,12 +16,27 @@ import org.osmdroid.util.GeoPoint
 
 class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityContract.Navigator<AddLocationActivityContract.View>) : BasePresenter<AddLocationActivityContract.View>(),AddLocationActivityContract.Presenter<AddLocationActivityContract.View> {
 
-    val useCase: AddLocationUseCase = AddLocationUseCaseImp(LocationProviderImp())
+    private val useCase: AddLocationUseCase = AddLocationUseCaseImp(LocationProviderImp())
+    private val provider: MapQuestProvider = MapQuestProviderProviderImp()
 
     private var mFusedLocationClient: FusedLocationProviderClient? = null
     private var mLastLocation: Location? = null
     private var showCurrentLocation = true
     private var mSelectedLocation: GeoPoint? = null
+
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult?) {
+            locationResult ?: return
+
+            if (locationResult.locations.count() > 0) {
+                mLastLocation = locationResult.locations.first()
+
+                if (showCurrentLocation) {
+                    mView?.showLocation(GeoPoint(mLastLocation!!.latitude, mLastLocation!!.longitude))
+                }
+            }
+        }
+    }
 
     @SuppressLint("MissingPermission")
     override fun startLocation() {
@@ -38,20 +56,6 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
                     }
                 }
 
-        val locationCallback = object : LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult?) {
-                locationResult ?: return
-
-                if (locationResult.locations.count() > 0) {
-                    mLastLocation = locationResult.locations.first()
-
-                    if (showCurrentLocation) {
-                        mView?.showLocation(GeoPoint(mLastLocation!!.latitude, mLastLocation!!.longitude))
-                    }
-                }
-            }
-        }
-
         val mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval((5 * 1000).toLong())        // 5 seconds, in milliseconds
@@ -60,12 +64,6 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
     }
 
     override fun stopLocation() {
-        val locationCallback = object : LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult?) {
-                locationResult ?: return
-            }
-        }
-
         mFusedLocationClient!!.removeLocationUpdates(locationCallback)
     }
 
@@ -73,7 +71,15 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
         mLastLocation?.let {
             showCurrentLocation = true
             mSelectedLocation = GeoPoint(it.latitude, it.longitude)
-            mView?.setLocation(mSelectedLocation!!, "Calle Carlos V")
+
+            mView?.showLoading()
+            provider.getReverseLocation(MQAddressModel("", mSelectedLocation!!)) { response, error ->
+                //TODO: Check error & null
+
+                mView?.hideLoading()
+
+                mView?.setLocation(mSelectedLocation!!, response!!.address)
+            }
         } ?: run {
             mView?.showAlertMessage(null, R.string.add_location_no_last_location_message)
         }
@@ -82,12 +88,24 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
     override fun searchLocation(address: String) {
         mView?.showLoading()
         showCurrentLocation = false
+
+        provider.getLocation(MQAddressModel(address, GeoPoint(0.0, 0.0))) { response, error ->
+            //TODO: Check error & null
+
+            mView?.hideLoading()
+
+            mSelectedLocation = response!!.latlng
+
+            mView?.setLocation(mSelectedLocation!!, response!!.address)
+        }
     }
 
     override fun saveLocation(description: String) {
         if (description.isNullOrEmpty() || description.isBlank()) {
             mView?.showAlertMessage(null, R.string.add_location_on_save_error_message)
         } else {
+            stopLocation()
+
             mView?.showLoading()
 
             mSelectedLocation?.let {
