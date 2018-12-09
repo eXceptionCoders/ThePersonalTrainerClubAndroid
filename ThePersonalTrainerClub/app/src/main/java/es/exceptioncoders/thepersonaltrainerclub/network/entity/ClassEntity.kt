@@ -1,7 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.network.entity
 
-import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
-
 class TrainerClassRequest (
     val id: String
 )

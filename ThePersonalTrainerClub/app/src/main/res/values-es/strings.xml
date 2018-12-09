@@ -51,6 +51,21 @@
     <!-- Add sport -->
     <string name="add_sport_title">Alta deporte</string>
     <string name="add_sport_error">Error al añadir deportes</string>
+    <!-- Add location -->
+    <string name="add_location_title">Alta ubicación</string>
+    <string name="add_location_error">No se puede obtener la ubicación</string>
+    <string name="add_location_search_placeholder">Busca ubicaciones</string>
+    <string name="add_location_set_location_title">Añadir una nueva ubicación</string>
+    <string name="add_location_location_description_placeholder">Descripción</string>
+    <string name="add_location_location_placeholder">Ubicación</string>
+    <string name="add_location_use_current_location_button_title">Usar ubicación actual</string>
+    <string name="add_location_search_location_button_title">Buscar ubicación</string>
+    <string name="add_location_no_address_found">No existe una ubicación que coincida</string>
+    <string name="add_location_no_last_location_message">No existe una última ubicación del usuario</string>
+    <string name="add_location_user_location_error_message">No se puede obtener la ubicación</string>
+    <string name="add_location_on_search_error_message">Necesitas proveer una ubicación</string>
+    <string name="add_location_on_save_error_message">Necesitas proveer una descripción y una ubicación</string>
+    <string name="add_location_server_error">Ha ocurrido algún error</string>
     <!-- Trainer dashboard -->
     <string name="trainer_management_title">Gestión</string>
     <string name="trainer_management_open_classes_label">Clases abiertas</string>
