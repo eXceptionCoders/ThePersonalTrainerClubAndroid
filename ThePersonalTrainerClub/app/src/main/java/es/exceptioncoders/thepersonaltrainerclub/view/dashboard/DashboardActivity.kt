@@ -31,6 +31,9 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
         viewpager_main.adapter = fragmentAdapter
 
         tabs_main.setupWithViewPager(viewpager_main)
+        //for (i in 0 until tabs_main.tabCount) {
+        //    tabs_main.getTabAt(0)!!.icon = resources.getDrawable(R.drawable.ic_task_list)
+        //}
 
         val myToolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(myToolbar)

@@ -51,6 +51,21 @@
     <!-- Add sport -->
     <string name="add_sport_title">Set activity</string>
     <string name="add_sport_error">Error setting activities</string>
+    <!-- Add location -->
+    <string name="add_location_title">Set location</string>
+    <string name="add_location_error">Cannot get user location</string>
+    <string name="add_location_search_placeholder">Search for places</string>
+    <string name="add_location_set_location_title">Set new location</string>
+    <string name="add_location_location_description_placeholder">Location description</string>
+    <string name="add_location_location_placeholder">Location</string>
+    <string name="add_location_use_current_location_button_title">Use current location</string>
+    <string name="add_location_search_location_button_title">Search for location</string>
+    <string name="add_location_no_address_found">No matching addresses found</string>
+    <string name="add_location_no_last_location_message">No last location known</string>
+    <string name="add_location_user_location_error_message">Cannot get user location</string>
+    <string name="add_location_on_search_error_message">You need to provide a location</string>
+    <string name="add_location_on_save_error_message">You need to provide a description and a location</string>
+    <string name="add_location_server_error">Some error has occurred</string>
     <!-- Trainer dashboard -->
     <string name="trainer_management_title">Management</string>
     <string name="trainer_management_open_classes_label">Open classes</string>
