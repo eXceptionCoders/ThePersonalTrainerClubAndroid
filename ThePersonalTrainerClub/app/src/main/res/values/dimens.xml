@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="dimension_line_separator">200dp</dimen>
+    <dimen name="sor_dp">4dp</dimen>
     <dimen name="med_dp">8dp</dimen>
-    <dimen name="text_normal">16dp</dimen>
+    <dimen name="lar_dp">16dp</dimen>
+    <dimen name="text_normal">16sp</dimen>
 </resources>

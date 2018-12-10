@@ -77,6 +77,20 @@
     <string name="add_location_on_search_error_message">You need to provide a location</string>
     <string name="add_location_on_save_error_message">You need to provide a description and a location</string>
     <string name="add_location_server_error">Some error has occurred</string>
+    <!-- Add class -->
+    <string name="add_class_frequency_01">Unique</string>
+    <string name="add_class_frequency_02">Daily</string>
+    <string name="add_class_frequency_03">Weekly</string>
+    <string name="add_class_frequency_04">Monthly</string>
+    <string name="add_class_start_date">Start: 12 Sep 2018</string>
+    <string name="add_class_end_date">End: 12 Sep 2018</string>
+    <string name="add_class_cancellation_policy">Choose the cancellation policy</string>
+    <string name="add_class_description">Description</string>
+    <!-- Cancellation Polity -->
+    <string name="cancellation_polity_01">The class can be annulled free of charge without cost to the user. But it must be discharged before the start of the activity so it is not considered to have been made</string>
+    <string name="cancellation_polity_02">The class can be cancelled up to 24 hours before the start of the class. But No 20% charge of the cost of the class is made in terms of expenses for management.</string>
+    <string name="cancellation_polity_03">This rate is applicable only to classes with a start of 48h from the purchase and the class can be cancelled up to 24 hours before having a cost of 10% of the cost of the class.</string>
+
     <!-- Trainer dashboard -->
     <string name="trainer_management_title">Management</string>
     <string name="trainer_management_open_classes_label">Open classes</string>
