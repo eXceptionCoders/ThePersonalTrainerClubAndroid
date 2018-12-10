@@ -1,5 +1,6 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -87,10 +88,12 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     private fun showLocations(locations: Array<LocationModel>) {
         locationsAdapter = LocationStripViewAdapter(locations.toList(), this.activity!!)
         locationsListview.locationsListview.adapter = locationsAdapter
+        locationsListview.locationsListview.layoutParams.height = if (locations.count() == 0) 100 else 124 * locations.count()
     }
 
     private fun showOpenClasses(classes: Array<ClassModel>) {
         classesAdapter = ClassStripViewAdapter(classes.toList(), this.activity!!)
         openClassesListview.openClassesListview.adapter = classesAdapter
+        openClassesListview.openClassesListview.layoutParams.height = if (classes.count() == 0) 100 else 486 * classes.count()
     }
 }
