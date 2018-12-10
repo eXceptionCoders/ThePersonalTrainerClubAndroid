@@ -15,7 +15,15 @@ class Preferences (context: Context) {
         get() = prefs.getString(SHARED_JWT, "")
         set(value) = prefs.edit().putString(SHARED_JWT, value).apply()
 
-    var user: UserModel
-        get() = Gson().fromJson(prefs.getString(SHARED_USER, ""), UserModel::class.java)
+    var user: UserModel?
+        get() {
+            val gson = prefs.getString(SHARED_USER, "")
+            if (gson.isEmpty()) {
+                return null
+            }
+
+            return Gson().fromJson(gson, UserModel::class.java)
+        }
         set(value) = prefs.edit().putString(SHARED_USER, Gson().toJson(value)).apply()
+
 }

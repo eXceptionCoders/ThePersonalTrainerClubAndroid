@@ -6,6 +6,7 @@ interface LoginActivityContract {
     interface View : BaseContract.BaseView
 
     interface Presenter<V : View> : BaseContract.BasePresenter<V> {
+        fun onCreate()
         fun onLogin(email: String?, password: String?)
         fun onRegister()
     }

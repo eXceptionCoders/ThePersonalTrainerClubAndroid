@@ -6,6 +6,7 @@ import es.exceptioncoders.thepersonaltrainerclub.network.WebService
 import es.exceptioncoders.thepersonaltrainerclub.network.WebServiceError
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserEntity
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserResponse
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 
 interface UserProvider {
     enum class UserError {
@@ -35,6 +36,14 @@ class UserProviderImp: UserProvider {
     }
 
     private fun mapEntityToModel(response: UserEntity) : UserModel {
+        var showCoachView = false
+
+        SharedApp.preferences.user?.let { user ->
+            showCoachView = user.showCoachView
+        } ?: run {
+            showCoachView = response.coach
+        }
+
         return UserModel(response._id,
                 response.name,
                 response.lastname,
@@ -45,6 +54,7 @@ class UserProviderImp: UserProvider {
                 response.locations,
                 response.sports,
                 response.classes,
-                response.activeBookings)
+                response.activeBookings,
+		showCoachView)
     }
 }

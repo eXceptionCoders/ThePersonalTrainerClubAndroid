@@ -22,6 +22,8 @@ class LoginActivity : BaseActivity(), LoginActivityContract.View {
         mPresenter = LoginActivityPresenter(mNavigator) as LoginActivityContract.Presenter<LoginActivity>
         mPresenter.attachView(this)
 
+        mPresenter.onCreate()
+
         loginButton.setOnClickListener {
             mPresenter.onLogin(emailEditText.text.toString(), passwordEditText.text.toString())
         }
