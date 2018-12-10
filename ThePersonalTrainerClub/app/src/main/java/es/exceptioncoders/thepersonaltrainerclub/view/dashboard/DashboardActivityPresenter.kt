@@ -15,7 +15,8 @@ class DashboardActivityPresenter(private val mNavigator: DashboardActivityContra
 
     override fun onLogoutTapped() {
         SharedApp.preferences.jwtToken = ""
-        SharedApp.preferences.user = UserModel()
+        SharedApp.preferences.user = null
+
         mNavigator.navigateToLogin()
     }
 }

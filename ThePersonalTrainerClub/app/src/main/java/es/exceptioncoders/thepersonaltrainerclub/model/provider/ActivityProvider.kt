@@ -25,7 +25,6 @@ class ActivityProviderImp: ActivityProvider {
 
         ws.load<SportResponse>(endpoint) { response: SportResponse?, e: WebServiceError? ->
             var error: ActivityProvider.ActivityError? = null
-            var loggedIn = false
 
             e?.let {
                 error = when (it) {

@@ -54,6 +54,7 @@
     <string name="add_class_section_8">Price for class</string>
     <string name="add_class_section_9">Cancelation policy</string>
     <string name="add_class_section_10">Description</string>
+    <string name="add_class_save_class_button_title">Save class</string>
     <!-- Menu -->
     <string name="menu_activities_title">Activities</string>
     <string name="menu_locations_title">Locations</string>
@@ -101,6 +102,10 @@
     <string name="trainer_management_practise_sports_label">What do you practise?</string>
     <!-- New class -->
     <string name="new_class_title">New class</string>
+    <string name="new_class_sport_error">You have to select a sport</string>
+    <string name="new_class_location_error">You have to select a location</string>
+    <string name="new_class_other_error">There is an error creating a new class</string>
+    <string name="new_class_success">You have created a new class</string>
     <!-- User settings -->
     <string name="user_settings_title">Settings</string>
     <string name="user_settings_change_photo">Change your photo</string>

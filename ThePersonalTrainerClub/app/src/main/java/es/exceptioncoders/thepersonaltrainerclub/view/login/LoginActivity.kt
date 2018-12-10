@@ -5,6 +5,7 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.Button
 import es.exceptioncoders.thepersonaltrainerclub.R
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -18,6 +19,11 @@ class LoginActivity : BaseActivity(), LoginActivityContract.View {
 
         val mNavigator = LoginActivityNavigator() as LoginActivityContract.Navigator<LoginActivityContract.View>
         mNavigator.attachView(this)
+
+        SharedApp.preferences.user?.let {
+            mNavigator.navigateToDashboardActivity()
+            return
+        }
 
         mPresenter = LoginActivityPresenter(mNavigator) as LoginActivityContract.Presenter<LoginActivity>
         mPresenter.attachView(this)

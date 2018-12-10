@@ -53,6 +53,7 @@
     <string name="add_class_section_8">Precio por clase</string>
     <string name="add_class_section_9">Politica de cancelacion</string>
     <string name="add_class_section_10">Descripcion</string>
+    <string name="add_class_save_class_button_title">Salvar clase</string>
     <!-- Menu -->
     <string name="menu_activities_title">Deportes</string>
     <string name="menu_locations_title">Ubicaciones</string>
@@ -99,6 +100,10 @@
     <string name="trainer_management_practise_sports_label">¿Qué practicas?</string>
     <!-- New class -->
     <string name="new_class_title">Crear clase</string>
+    <string name="new_class_sport_error">Tienes que seleccionar un deporte</string>
+    <string name="new_class_location_error">Tienes que seleccionar una ubicación</string>
+    <string name="new_class_other_error">Ha habido un error creando la clase</string>
+    <string name="new_class_success">Has creado una clase</string>
     <!-- User settings -->
     <string name="user_settings_title">Ajustes</string>
     <string name="user_settings_change_photo">Cambia tu foto</string>

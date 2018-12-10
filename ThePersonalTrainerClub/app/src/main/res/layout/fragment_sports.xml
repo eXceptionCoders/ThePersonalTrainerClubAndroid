@@ -5,40 +5,5 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
-
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
-
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
-
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
-
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
-
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
-
 </LinearLayout>
+    
