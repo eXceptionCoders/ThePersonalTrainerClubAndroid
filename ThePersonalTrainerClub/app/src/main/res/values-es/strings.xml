@@ -76,14 +76,19 @@
     <string name="add_location_on_search_error_message">Necesitas proveer una ubicación</string>
     <string name="add_location_on_save_error_message">Necesitas proveer una descripción y una ubicación</string>
     <string name="add_location_server_error">Ha ocurrido algún error</string>
-    <string name="add_class_cancellation_policy">Elige la politica de cancelación</string>
-    <string name="add_class_description">Descripción</string>
-
     <!-- Add class -->
     <string name="add_class_frequency_01">Unica</string>
     <string name="add_class_frequency_02">Diaria</string>
     <string name="add_class_frequency_03">Semanal</string>
     <string name="add_class_frequency_04">Mensual</string>
+    <string name="add_class_start_date">Inicio: 12 Sep 2018</string>
+    <string name="add_class_end_date">Fin: 12 Sep 2018</string>
+    <string name="add_class_cancellation_policy">Elige la politica de cancelación</string>
+    <string name="add_class_description">Descripción</string>
+    <!-- Cancellation Polity -->
+    <string name="cancellation_polity_01">La clase puede ser anulada de forma gratuita sin coste para el usuario. Pero debe darse de baja antes del inicio de la actividad para que no se considere que fue realizada</string>
+    <string name="cancellation_polity_02">La clase puede ser anulada hasta 24 horas antes del inicio de la clase . Pero no se realizara un cargo del 20 % del coste de la clase en concepto gastos de gestion.</string>
+    <string name="cancellation_polity_03">Este tipo solo es aplicable a clases con un inicio superior a 48h desde la compra y la clase puede ser anulada hasta 24 horas antes teniendo un coste del 10% del coste de la clase.</string>
     <!-- Trainer dashboard -->
     <string name="trainer_management_title">Gestión</string>
     <string name="trainer_management_open_classes_label">Clases abiertas</string>

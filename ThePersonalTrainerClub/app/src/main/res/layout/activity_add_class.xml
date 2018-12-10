@@ -1,12 +1,491 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGray"
-    tools:context=".view.trainerManagement.TrainerManagementFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/lightGray">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/lightGray"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.51">
+
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:text="@string/add_class_section_1"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal"
+            tools:text="Que clase quieres crear" />
+
+        <include
+            layout="@layout/fragment_sports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp" />
+
+        <TextView
+            tools:text="Donde enseñas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_class_section_2"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <TextView
+            tools:text="Horario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_class_section_3"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <SeekBar
+            android:id="@+id/seekBarClass01"
+            style="@style/Seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:max="24"
+            android:min="6"
+            android:progress="1" />
+
+        <TextView
+            tools:text="Duración"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_class_section_4"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_duration_01"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="00:30"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/button_duration_02"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="00:45"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/button_duration_03"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="01:00"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/button_duration_04"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="01:30"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/button_duration_05"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="02:00"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            tools:text="Frecuencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_class_section_5"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_frequency_01"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="@string/add_class_frequency_01"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Unica" />
+
+            <Button
+                android:id="@+id/button_frequency_02"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="@string/add_class_frequency_02"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible"
+                tools:text="Diaria" />
+
+            <Button
+                android:id="@+id/button_frequency_03"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="@string/add_class_frequency_03"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible"
+                tools:text="Semanal" />
+
+            <Button
+                android:id="@+id/button_frequency_04"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:text="@string/add_class_frequency_04"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible"
+                tools:text="Mensual" />
+
+            android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            tools:text="Periodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_class_section_5"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal" />
+
+        <View
+            android:id="@+id/divider8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_frequency_05"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:paddingStart="@dimen/lar_dp"
+                android:text="@string/add_class_start_date"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Inicio: 12 Sep 2018" />
+
+            <Button
+                android:id="@+id/button_frequency_06"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_weight="1"
+                android:background="@color/darkGray"
+                android:paddingEnd="@dimen/lar_dp"
+                android:text="@string/add_class_end_date"
+                android:textAlignment="viewEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="visible"
+                tools:text="fin: 12 Sep 2018" />
+        </LinearLayout>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/med_dp"
+        android:layout_marginStart="@dimen/dimension_line_separator"
+        android:text="@string/add_class_section_7"
+        android:textColor="@color/text"
+        android:textSize="@dimen/text_normal"
+        tools:text="Numero maximo alumnos" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+
+        <SeekBar
+            android:id="@+id/seekBarClass02"
+            style="@style/Seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:max="50"
+            android:min="6"
+            android:progress="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_class_section_8"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal"
+            tools:text="Precio por clase" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+
+        <SeekBar
+            android:id="@+id/seekBarClass03"
+            style="@style/Seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:max="30"
+            android:min="6"
+            android:progress="1" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_class_section_9"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal"
+            tools:text="Politica de cancelación" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <Button
+            android:id="@+id/button_frequency_07"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:layout_weight="1"
+            android:background="@color/darkGray"
+            android:paddingEnd="@dimen/lar_dp"
+            android:text="@string/add_class_cancellation_policy"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal"
+            android:visibility="visible"
+            tools:text="Elige la politica de cancelación" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/med_dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:text="@string/add_location_location_description_placeholder"
+            android:textColor="@color/text"
+            android:textSize="@dimen/text_normal"
+            tools:text="Descripción" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/dimension_line_separator"
+            android:layout_marginTop="-8dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="@dimen/lar_dp"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/lar_dp"
+            android:background="@color/darkGray"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
