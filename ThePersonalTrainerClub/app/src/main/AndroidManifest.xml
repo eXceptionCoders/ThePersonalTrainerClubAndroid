@@ -31,6 +31,7 @@
         <activity android:name=".view.dashboard.DashboardActivity" />
         <activity android:name=".view.addLocation.AddLocationActivity" />
         <activity android:name=".view.addSport.AddSportActivity" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="es.exceptioncoders.thepersonaltrainerclub.fileprovider"
@@ -40,6 +41,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <activity android:name=".view.classDetail.ClassDetailActivity"></activity>
     </application>
 
 </manifest>
