@@ -94,4 +94,18 @@
     <string name="trainer_management_open_classes_label">Clases abiertas</string>
     <string name="trainer_management_locations_label">Dónde enseñas</string>
     <string name="trainer_management_sports_label">Qué enseñas</string>
+    <!-- New class -->
+    <string name="new_class_title">Crear clase</string>
+    <!-- User settings -->
+    <string name="user_settings_title">Ajustes</string>
+    <string name="user_settings_change_photo">Cambia tu foto</string>
+    <string name="user_setting_server_error">Ha ocurrido algún error</string>
+    <string name="user_settings_type_trainer">Entrenador</string>
+    <string name="user_settings_type_athlete">Deportista</string>
+    <string name="user_settings_choose_source_image">Elige el origen de la imagen</string>
+    <string name="user_settings_source_camera">Camara</string>
+    <string name="user_settings_source_gallery">Galeria</string>
+    <!-- Class -->
+    <string name="class_detail_title">Clase</string>
+    <string name="class_detail_book_button_title">Reserva</string>
 </resources>

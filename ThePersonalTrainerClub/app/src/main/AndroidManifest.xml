@@ -5,9 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".utils.SharedApp"
@@ -30,7 +30,19 @@
         <activity android:name=".view.register.RegisterActivity" />
         <activity android:name=".view.dashboard.DashboardActivity" />
         <activity android:name=".view.addLocation.AddLocationActivity" />
-        <activity android:name=".view.addSport.AddSportActivity"></activity>
+        <activity android:name=".view.addSport.AddSportActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="es.exceptioncoders.thepersonaltrainerclub.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".view.classDetail.ClassDetailActivity"></activity>
     </application>
 
 </manifest>
