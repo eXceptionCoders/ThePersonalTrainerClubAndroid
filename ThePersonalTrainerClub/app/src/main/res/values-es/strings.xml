@@ -76,6 +76,14 @@
     <string name="add_location_on_search_error_message">Necesitas proveer una ubicación</string>
     <string name="add_location_on_save_error_message">Necesitas proveer una descripción y una ubicación</string>
     <string name="add_location_server_error">Ha ocurrido algún error</string>
+    <string name="add_class_cancellation_policy">Elige la politica de cancelación</string>
+    <string name="add_class_description">Descripción</string>
+
+    <!-- Add class -->
+    <string name="add_class_frequency_01">Unica</string>
+    <string name="add_class_frequency_02">Diaria</string>
+    <string name="add_class_frequency_03">Semanal</string>
+    <string name="add_class_frequency_04">Mensual</string>
     <!-- Trainer dashboard -->
     <string name="trainer_management_title">Gestión</string>
     <string name="trainer_management_open_classes_label">Clases abiertas</string>
