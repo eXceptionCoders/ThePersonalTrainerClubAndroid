@@ -93,4 +93,7 @@
     <string name="user_settings_choose_source_image">Choose source image</string>
     <string name="user_settings_source_camera">Camera</string>
     <string name="user_settings_source_gallery">Gallery</string>
+    <!-- Class -->
+    <string name="class_detail_title">Class</string>
+    <string name="class_detail_book_button_title">Book</string>
 </resources>
