@@ -67,15 +67,15 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     private fun showUserData() {
         val userData = SharedApp.preferences.user
 
-        nameTextView.text = "${userData.name} ${userData.lastname}"
-        usertTypeTextView.text = if (userData.coach) getString(R.string.trainer) else getString(R.string.athlete)
-        userData.thumbnail?.let {
+        nameTextView.text = "${userData!!.name} ${userData!!.lastname}"
+        usertTypeTextView.text = if (userData!!.coach) getString(R.string.trainer) else getString(R.string.athlete)
+        userData?.thumbnail?.let {
             Picasso.get().load(it).into(avatarImageView)
         }
 
-        showSports(userData.activities)
-        showLocations(userData.locations)
-        showOpenClasses(userData.classes)
+        showSports(userData!!.activities)
+        showLocations(userData!!.locations)
+        showOpenClasses(userData!!.classes)
 
     }
 

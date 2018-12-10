@@ -1,6 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.network
 
-import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.core.Request
 import com.github.kittinunf.fuel.httpGet
@@ -8,8 +7,6 @@ import com.github.kittinunf.fuel.httpPost
 import com.google.gson.Gson
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.*
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
-import java.io.*
-import java.nio.charset.Charset
 
 class Endpoint(private val type: EndpointType) {
     init {
@@ -38,20 +35,16 @@ class Endpoint(private val type: EndpointType) {
         }
 
         return when (type) {
-            is EndpointType.SetUserThumbnail -> method().also {
-                it.headers.clear()
-            }.header(contentHeader, tokenHeader).timeout(600000)
-                    .body(getBodyByteArray())
+            is EndpointType.SetUserThumbnail ->
+                method().also {
+                    it.headers.clear()
+                }.header(contentHeader, tokenHeader)
+                        .body(getBodyByteArray())
             else -> method().also {
                 it.headers.clear()
-            }.header(contentHeader, tokenHeader).timeout(600000)
+            }.header(contentHeader, tokenHeader)
                     .body(parameters())
         }
-
-        /*return method().also {
-            it.headers.clear()
-        }.header(contentHeader, tokenHeader).timeout(60000)
-                .body(parameters())*/
     }
 
     private fun getBodyByteArray(): ByteArray {
@@ -120,20 +113,6 @@ class Endpoint(private val type: EndpointType) {
                 body += type.requestModel.image.toString()
                 body += "\r\n"
                 body += "--$boundary--\r\n"
-
-                /*
-                var body = Data()
-                    let filename = "user-profile.jpg"
-                    let mimetype = "image/jpg"
-                    body.append(Data("--\(boundary)\r\n".utf8))
-                    body.append(Data("Content-Disposition: form-data; name=\"\(requestModel.imageKey)\"; filename=\"\(filename)\"\r\n".utf8))
-                    body.append(Data("Content-Type: \(mimetype)\r\n\r\n".utf8))
-                    body.append(requestModel.image)
-                    body.append(Data("\r\n".utf8))
-                    body.append(Data("--\(boundary)--\r\n".utf8))
-
-                    request.httpBody = body
-                 */
 
                 return body
             }

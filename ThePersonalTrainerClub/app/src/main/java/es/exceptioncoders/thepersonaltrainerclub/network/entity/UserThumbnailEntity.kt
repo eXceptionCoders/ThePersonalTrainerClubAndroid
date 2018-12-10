@@ -1,7 +1,11 @@
 package es.exceptioncoders.thepersonaltrainerclub.network.entity
 
+import java.io.File
+
 data class SetUserThumbnailRequest (
-    val image: ByteArray
+    val image: ByteArray,
+    val file: File,
+    val cacheDir: File
 )
 
 data class SetUserThumbnailResponse (

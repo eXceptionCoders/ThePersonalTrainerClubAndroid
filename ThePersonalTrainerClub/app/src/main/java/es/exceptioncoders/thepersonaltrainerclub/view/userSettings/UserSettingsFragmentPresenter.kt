@@ -57,7 +57,7 @@ class UserSettingsFragmentPresenter(private val mNavigator: UserSettingsFragment
         fos.flush()
         fos.close()
 
-        thumbnailUseCase.setThumbnail(SetUserThumbnailRequest(bitmapdata)) { success, error ->
+        thumbnailUseCase.setThumbnail(SetUserThumbnailRequest(bitmapdata, f, (mView!! as UserSettingsFragment).activity!!.cacheDir)) { success, error ->
             mView?.hideLoading()
             print("")
         }
