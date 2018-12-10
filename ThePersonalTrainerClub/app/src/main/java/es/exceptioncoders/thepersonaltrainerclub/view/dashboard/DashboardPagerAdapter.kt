@@ -23,8 +23,8 @@ class DashboardPagerAdapter(fm: FragmentManager, private val ctx: Context) : Fra
 
     override fun getPageTitle(position: Int): CharSequence {
         return when (position) {
-            0 -> ctx.resources.getString(R.string.type_selection_title)
-            1 -> ctx.resources.getString(R.string.trainer_management_title)
+            0 -> ctx.resources.getString(R.string.trainer_management_title)
+            1 -> ctx.resources.getString(R.string.type_selection_title)
             else -> "TODO: RELLENAR"
         }
     }

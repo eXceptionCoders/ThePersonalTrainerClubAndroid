@@ -5,7 +5,6 @@ import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService
 import es.exceptioncoders.thepersonaltrainerclub.network.WebServiceError
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserEntity
-import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserRequest
 import es.exceptioncoders.thepersonaltrainerclub.network.entity.UserResponse
 
 interface UserProvider {
@@ -44,6 +43,8 @@ class UserProviderImp: UserProvider {
                 response.thumbnail,
                 response.email,
                 response.locations,
-                response.sports)
+                response.sports,
+                response.classes,
+                response.activeBookings)
     }
 }
