@@ -15,7 +15,7 @@ class LoginActivityPresenter(private val mNavigator: LoginActivityContract.Navig
     val useCase: LoginUseCase = LoginUseCaseImp(LoginProviderImp(), UserProviderImp())
 
     override fun onCreate() {
-        SharedApp.preferences.user?.let {
+        if (!SharedApp.preferences.jwtToken.isNotEmpty() && SharedApp.preferences.user != null && SharedApp.preferences.user!!.id!!.isNotEmpty()) {
             mNavigator.navigateToDashboardActivity()
         }
     }

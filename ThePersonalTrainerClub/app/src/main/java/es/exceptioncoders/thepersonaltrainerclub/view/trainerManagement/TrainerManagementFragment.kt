@@ -69,8 +69,8 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
 
         nameTextView.text = "${userData!!.name} ${userData!!.lastname}"
         usertTypeTextView.text = if (userData!!.coach) getString(R.string.trainer) else getString(R.string.athlete)
-        userData?.thumbnail?.let {
-            Picasso.get().load(it).into(avatarImageView)
+        if (userData.thumbnail.isNotBlank() && userData.thumbnail.isNotEmpty()) {
+            Picasso.get().load(userData.thumbnail).into(avatarImageView)
         }
 
         showSports(userData!!.activities)
