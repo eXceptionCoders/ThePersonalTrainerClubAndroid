@@ -1,7 +1,8 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement
 
-import android.graphics.Color
 import android.os.Bundle
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,19 +14,18 @@ import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.ActivityStripViewAdapter
+import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.ActivityListAdapter
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.ClassStripViewAdapter
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.LocationStripViewAdapter
 import kotlinx.android.synthetic.main.activity_class_list.view.*
 import kotlinx.android.synthetic.main.activity_location_list.view.*
-import kotlinx.android.synthetic.main.activity_strip_grid.view.*
 import kotlinx.android.synthetic.main.fragment_trainer_management.*
 
 class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContract.View {
     private lateinit var mPresenter: TrainerManagementFragmentContract.Presenter<TrainerManagementFragment>
-    private lateinit var sportsAdapter: ActivityStripViewAdapter
     private lateinit var locationsAdapter: LocationStripViewAdapter
     private lateinit var classesAdapter: ClassStripViewAdapter
+    private lateinit var activitiesAdapter: ActivityListAdapter
 
     override fun bindLayout(): Int = R.layout.fragment_trainer_management
 
@@ -43,6 +43,7 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        setUpActivitiesRecycler()
         showUserData()
     }
 
@@ -80,9 +81,17 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
 
     }
 
+    private fun setUpActivitiesRecycler() {
+        activitiesAdapter = ActivityListAdapter { activity -> onSportClicked(activity) }
+
+        activitiesListView.layoutManager = GridLayoutManager(this.activity, 1, GridLayoutManager.HORIZONTAL, false)
+        activitiesListView.itemAnimator = DefaultItemAnimator()
+        activitiesListView.adapter = activitiesAdapter
+    }
+
+
     private fun showSports(sports: Array<SportModel>) {
-        sportsAdapter = ActivityStripViewAdapter(sports.toList(), emptyArray<SportModel>().toMutableList(), this.activity!!)
-        gridview.gridview.adapter = sportsAdapter
+        activitiesAdapter.swapData(sports.toList())
     }
 
     private fun showLocations(locations: Array<LocationModel>) {
@@ -95,5 +104,9 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
         classesAdapter = ClassStripViewAdapter(classes.toList(), this.activity!!)
         openClassesListview.openClassesListview.adapter = classesAdapter
         openClassesListview.openClassesListview.layoutParams.height = if (classes.count() == 0) 100 else 486 * classes.count()
+    }
+
+    private fun onSportClicked(activity: SportModel) {
+        // TODO
     }
 }

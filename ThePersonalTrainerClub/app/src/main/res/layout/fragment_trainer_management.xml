@@ -92,12 +92,12 @@
                     tools:layout_editor_absoluteY="8dp"
                     tools:text="@string/trainer_management_sports_label" />
 
-                <include
-                    android:id="@+id/gridview"
-                    layout="@layout/activity_strip_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/activitiesListView"
+                    android:scrollbars="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sportsLabel" />
@@ -113,7 +113,7 @@
                     android:text="@string/trainer_management_locations_label"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gridview"
+                    app:layout_constraintTop_toBottomOf="@+id/activitiesListView"
                     tools:text="@string/trainer_management_locations_label" />
 
                 <include
