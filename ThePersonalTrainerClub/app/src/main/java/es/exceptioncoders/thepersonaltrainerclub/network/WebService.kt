@@ -1,6 +1,8 @@
 package es.exceptioncoders.thepersonaltrainerclub.network
 
+import com.github.kittinunf.fuel.Fuel
 import com.google.gson.Gson
+import java.io.File
 import java.lang.Exception
 
 enum class WebServiceError {
@@ -18,7 +20,7 @@ enum class WebServiceError {
 
 class WebService {
     inline fun <reified O>load(endpoint: Endpoint, crossinline completion: (O?, WebServiceError?) -> Unit) {
-        endpoint.request().response { request, response, result ->
+        endpoint.request().timeout(600000).timeoutRead(600000).response { request, response, result ->
             var e: WebServiceError? = null
             var v: O? = null
 

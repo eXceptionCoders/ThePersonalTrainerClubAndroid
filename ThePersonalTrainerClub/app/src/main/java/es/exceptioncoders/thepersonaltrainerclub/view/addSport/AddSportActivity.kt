@@ -56,7 +56,7 @@ class AddSportActivity : BaseActivity(), AddSportActivityContract.View {
     }
 
     override fun showSports(sports: Array<SportModel>) {
-        sportsAdapter = ActivityStripViewAdapter(sports.toList(), SharedApp.preferences.user.activities.toMutableList(),this)
+        sportsAdapter = ActivityStripViewAdapter(sports.toList(), SharedApp.preferences.user!!.activities.toMutableList(),this)
         gridview.gridview.adapter = sportsAdapter
 
         gridview.gridview.setOnItemClickListener { adapterView, view, i, l ->

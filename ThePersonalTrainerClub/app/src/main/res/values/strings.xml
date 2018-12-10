@@ -82,4 +82,15 @@
     <string name="trainer_management_open_classes_label">Open classes</string>
     <string name="trainer_management_locations_label">Where do you teach?</string>
     <string name="trainer_management_sports_label">What do you teach?</string>
+    <!-- New class -->
+    <string name="new_class_title">New class</string>
+    <!-- User settings -->
+    <string name="user_settings_title">Settings</string>
+    <string name="user_settings_change_photo">Change your photo</string>
+    <string name="user_setting_server_error">Some error has occurred</string>
+    <string name="user_settings_type_trainer">Trainer</string>
+    <string name="user_settings_type_athlete">Athlete</string>
+    <string name="user_settings_choose_source_image">Choose source image</string>
+    <string name="user_settings_source_camera">Camera</string>
+    <string name="user_settings_source_gallery">Gallery</string>
 </resources>
