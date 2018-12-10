@@ -7,4 +7,7 @@
     <color name="customOrange">#D44622</color>
     <color name="lightGray">#F7F8F7</color>
     <color name="darkGray">#d5d5d5</color>
+    <color name="colorRedSoft">#EE9278</color>
+    <color name="colorRedNormal">#E75D38</color>
+    <color name="colorRedDark">#A31E03</color>
 </resources>

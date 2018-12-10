@@ -95,4 +95,13 @@
     <!-- Class -->
     <string name="class_detail_title">Clase</string>
     <string name="class_detail_book_button_title">Reserva</string>
+
+    <!-- Search class -->
+    <string name="search_class_section01">Que quieres practicar</string>
+    <string name="search_class_section02">Cerca de que ubicación</string>
+    <string name="search_class_section03">En un radio de</string>
+    <string name="search_class_section04">Que horario te va bien</string>
+    <string name="search_class_section05">Para cuando</string>
+    <string name="search_class_section06">Precio / Clase</string>
+    <string name="search_class_button_search">Search for Activities</string>
 </resources>

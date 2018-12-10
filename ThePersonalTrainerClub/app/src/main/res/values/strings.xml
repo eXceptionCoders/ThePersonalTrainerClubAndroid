@@ -96,4 +96,13 @@
     <!-- Class -->
     <string name="class_detail_title">Class</string>
     <string name="class_detail_book_button_title">Book</string>
+
+    <!-- Search class --> 
+    <string name="search_class_section01">What activity are you looking for?</string>
+    <string name="search_class_section02">Where are you lokking for?</string>
+    <string name="search_class_section03">In a radio of</string>
+    <string name="search_class_section04">What schedule you are ding well </string>
+    <string name="search_class_section05">When</string>
+    <string name="search_class_section06">Price / Any</string>
+    <string name="search_class_button_search">Buscar Actividades</string>
 </resources>
