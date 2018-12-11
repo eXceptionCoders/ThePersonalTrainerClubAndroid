@@ -23,7 +23,6 @@ import android.support.v4.content.FileProvider
 import android.widget.Toast
 import java.io.File
 
-
 class UserSettingsFragment : BaseFragment(), UserSettingsFragmentContract.View {
 
     companion object {
@@ -37,7 +36,7 @@ class UserSettingsFragment : BaseFragment(), UserSettingsFragmentContract.View {
     override fun bindLayout(): Int = R.layout.fragment_user_settings
 
     override fun localizeView() {
-        (changePicture as Button).text = resources.getString(R.string.user_settings_change_photo)
+        (changePicture as? Button)?.text = resources.getString(R.string.user_settings_change_photo)
     }
 
     override fun showLoading() {
@@ -57,7 +56,7 @@ class UserSettingsFragment : BaseFragment(), UserSettingsFragmentContract.View {
         mPresenter = UserSettingsFragmentPresenter(mNavigator) as UserSettingsFragmentContract.Presenter<UserSettingsFragment>
         mPresenter.attachView(this)
 
-        (changePicture as Button).setOnClickListener {
+        (changePicture as? Button)?.setOnClickListener {
             select()
         }
 
@@ -66,15 +65,17 @@ class UserSettingsFragment : BaseFragment(), UserSettingsFragmentContract.View {
 
     override fun setUser(user: UserModel) {
         if (user.coach && user.showCoachView) {
-            userTypeText.text = resources.getString(R.string.user_settings_type_trainer)
+            userTypeText?.text = resources.getString(R.string.user_settings_type_trainer)
         } else {
-            userTypeText.text = resources.getString(R.string.user_settings_type_athlete)
+            userTypeText?.text = resources.getString(R.string.user_settings_type_athlete)
         }
 
-        userName.text = user.name + " " + user.lastname
+        userName?.text = user.name + " " + user.lastname
 
         if (user.thumbnail.isNotBlank() && user.thumbnail.isNotEmpty()) {
-            Picasso.get().load(user.thumbnail).into(thumbnail)
+            thumbnail?.let {
+                Picasso.get().load(user.thumbnail).into(it)
+            }
         }
     }
 

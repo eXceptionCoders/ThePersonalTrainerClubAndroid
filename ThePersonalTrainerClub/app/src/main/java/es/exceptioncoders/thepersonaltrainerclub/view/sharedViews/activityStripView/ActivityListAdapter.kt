@@ -12,11 +12,12 @@ import kotlinx.android.synthetic.main.activity_strip_cell.view.*
 
 typealias Click = (SportModel) -> Unit
 
-class ActivityListAdapter(val clickListener: Click):  RecyclerView.Adapter<ActivityListAdapter.ActivityViewHolder>() {
+class ActivityListAdapter(val enableSelection: Boolean = false, val clickListener: Click? = null):  RecyclerView.Adapter<ActivityListAdapter.ActivityViewHolder>() {
 
     private lateinit var context: Context
 
     private var data: MutableList<SportModel> = mutableListOf()
+    var selected: SportModel? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         context = parent.context!!
@@ -43,12 +44,33 @@ class ActivityListAdapter(val clickListener: Click):  RecyclerView.Adapter<Activ
 
     inner class ActivityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: SportModel) = with(itemView) {
+            selected?.let {sportSelected ->
+                if (enableSelection) {
+                    if (sportSelected == item) {
+                        itemView.background = resources.getDrawable(R.drawable.rounded_orange_border)
+                    } else {
+                        itemView.setBackgroundColor(resources.getColor(android.R.color.white))
+                    }
+                }
+            } ?: run {
+                itemView.setBackgroundColor(resources.getColor(android.R.color.white))
+            }
+
             kotlin.with(itemView) {
                 item.icon?.let {
                     Picasso.get().load(it).into(sport_image)
                 }
 
                 sport_name.text = item.name
+            }
+
+            itemView.setOnClickListener {
+                selected = item
+                notifyDataSetChanged()
+
+                clickListener?.let {
+                    it(item)
+                }
             }
         }
     }

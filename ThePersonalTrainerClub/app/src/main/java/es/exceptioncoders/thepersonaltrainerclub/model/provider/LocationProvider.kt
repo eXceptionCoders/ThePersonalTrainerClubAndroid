@@ -20,7 +20,7 @@ interface LocationProvider {
 class LocationProviderImp: LocationProvider {
     override fun addLocation(model: LocationModel, completion: (Boolean, LocationProvider.Error?) -> Unit) {
         val requestModel = AddLocationRequest(
-                model.description,
+                model.description!!,
                 model.coordinates[0].toDouble(),
                 model.coordinates[1].toDouble()
         )

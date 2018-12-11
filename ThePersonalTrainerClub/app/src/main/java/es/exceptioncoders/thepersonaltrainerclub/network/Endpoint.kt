@@ -22,6 +22,7 @@ class Endpoint(private val type: EndpointType) {
         object Activities : EndpointType()
         class SetActivities(val requestModel: SetSportRequest) : EndpointType()
         class AddLocation(val requestModel: AddLocationRequest) : EndpointType()
+        class NewClass(val requestModel: NewClassRequest) : EndpointType()
     }
 
     val boundary: String = "===" + System.currentTimeMillis() + "==="
@@ -92,6 +93,7 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.SetActivities -> "/api/v1/es/sports/update"
             is EndpointType.AddLocation -> "/api/v1/es/location/add"
             is EndpointType.SetUserThumbnail -> "/api/v1/es/datauser/thumbnail"
+            is EndpointType.NewClass -> "/api/v1/es/class/add"
         }
     }
 
@@ -116,6 +118,7 @@ class Endpoint(private val type: EndpointType) {
 
                 return body
             }
+            is EndpointType.NewClass -> Gson().toJson(type.requestModel)
             else -> ""
         }
     }
@@ -130,6 +133,7 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.SetActivities -> path().httpPost()
             is EndpointType.AddLocation -> path().httpPost()
             is EndpointType.SetUserThumbnail -> path().httpPost()
+            is EndpointType.NewClass -> path().httpPost()
         }
     }
 

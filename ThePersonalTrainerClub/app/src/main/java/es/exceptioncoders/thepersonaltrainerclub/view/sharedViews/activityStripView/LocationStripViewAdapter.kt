@@ -9,7 +9,9 @@ import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
 import kotlinx.android.synthetic.main.activity_location_row.view.*
 
-class LocationStripViewAdapter(private val locations: List<LocationModel>, val mContext: Context): BaseAdapter() {
+class LocationStripViewAdapter(val enableSelection: Boolean = false, private val locations: List<LocationModel>, val mContext: Context): BaseAdapter() {
+    var itemSelected: LocationModel? = null
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val location = locations[position]
 
@@ -17,6 +19,18 @@ class LocationStripViewAdapter(private val locations: List<LocationModel>, val m
         val cv = layoutInflater.inflate(R.layout.activity_location_row, null)
 
         cv.locationName.text = location.description
+
+        itemSelected?.let {locationSelected ->
+            if (enableSelection) {
+                if (locationSelected == location) {
+                    cv.background = mContext.resources.getDrawable(R.drawable.rounded_orange_border)
+                } else {
+                    cv.setBackgroundColor(mContext.resources.getColor(R.color.lightGray))
+                }
+            }
+        } ?: run {
+            cv.setBackgroundColor(mContext.resources.getColor(R.color.lightGray))
+        }
 
         return cv
     }

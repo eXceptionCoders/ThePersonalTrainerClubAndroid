@@ -12,10 +12,10 @@ class UserEntity (
         val gender: String,
         val thumbnail: String,
         val email: String,
-        val locations: Array<LocationModel>,
-        val sports: Array<SportModel>,
-        val classes: Array<ClassModel>,
-        val activeBookings: Array<ClassModel>
+        val locations: Array<LocationEntity>,
+        val sports: Array<SportEntity>,
+        val classes: Array<ClassEntity>,
+        val activeBookings: Array<ClassEntity>
 )
 
 data class UserResponse (

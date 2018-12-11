@@ -26,7 +26,7 @@ abstract class BaseFragment : Fragment(), BaseContract.BaseView {
     override fun hideLoading() {}
 
     override fun showAlertMessage(title: Int?, message: Int) {
-        val builder = AlertDialog.Builder(activity!!.baseContext)
+        val builder = AlertDialog.Builder(activity!!)
 
         title?.let {
             builder.setTitle(resources.getString(title))

@@ -89,7 +89,7 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     }
 
     private fun setUpActivitiesRecycler() {
-        activitiesAdapter = ActivityListAdapter { activity -> onSportClicked(activity) }
+        activitiesAdapter = ActivityListAdapter()
 
         activitiesListView.layoutManager = GridLayoutManager(this.activity, 1, GridLayoutManager.HORIZONTAL, false)
         activitiesListView.itemAnimator = DefaultItemAnimator()
@@ -101,7 +101,7 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     }
 
     private fun showLocations(locations: Array<LocationModel>) {
-        locationsAdapter = LocationStripViewAdapter(locations.toList(), this.activity!!)
+        locationsAdapter = LocationStripViewAdapter(false, locations.toList(), this.activity!!)
         locationsListview.locationsListview.adapter = locationsAdapter
         locationsListview.locationsListview.layoutParams.height = if (locations.count() == 0) 100 else 124 * locations.count()
     }
@@ -110,9 +110,5 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
         classesAdapter = ClassStripViewAdapter(classes.toList(), this.activity!!)
         openClassesListview.openClassesListview.adapter = classesAdapter
         openClassesListview.openClassesListview.layoutParams.height = if (classes.count() == 0) 100 else 486 * classes.count()
-    }
-
-    private fun onSportClicked(activity: SportModel) {
-        // TODO
     }
 }

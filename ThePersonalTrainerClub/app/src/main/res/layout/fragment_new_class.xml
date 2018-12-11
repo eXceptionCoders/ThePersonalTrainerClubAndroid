@@ -3,7 +3,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".view.newClass.NewClassFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/med_dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:text="@string/add_class_section_1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Que clase quieres crear" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activitiesListView"
+                android:scrollbars="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_marginTop="@dimen/med_dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:layout_marginTop="@dimen/med_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                tools:text="Donde enseñas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:text="@string/add_class_section_2"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal" />
+
+            <include
+                android:id="@+id/locationsListview"
+                layout="@layout/activity_location_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/med_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"/>
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/maxText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:text="@string/add_class_section_7"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Numero maximo alumnos" />
+
+            <SeekBar
+                android:id="@+id/maxSeekBar"
+                style="@style/Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/lar_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_marginTop="@dimen/lar_dp"
+                android:max="50"
+                android:min="1"
+                android:progress="20" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:layout_marginTop="@dimen/med_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:text="@string/add_class_section_8"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Precio por clase" />
+
+            <SeekBar
+                android:id="@+id/priceSeekBar"
+                style="@style/Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/lar_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_marginTop="@dimen/lar_dp"
+                android:max="50"
+                android:min="5"
+                android:progress="15" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:layout_marginTop="@dimen/med_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:text="@string/add_location_location_description_placeholder"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Descripción" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lar_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_marginTop="@dimen/lar_dp"
+                android:textColor="@android:color/black"
+                android:background="@color/darkGray"
+                android:inputType="textMultiLine" />
+
+            <include
+                android:id="@+id/createClassButton"
+                layout="@layout/button_custom"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/lar_dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="@dimen/lar_dp"
+                android:layout_marginBottom="@dimen/lar_dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_gravity="center_vertical|center_horizontal" />
 
 </FrameLayout>

@@ -109,7 +109,7 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
             mView?.showLoading()
 
             mSelectedLocation?.let {
-                useCase.addLocation(LocationModel("Point", floatArrayOf(it.latitude.toFloat(), it.longitude.toFloat()).toTypedArray(), description)) { success, error ->
+                useCase.addLocation(LocationModel("","Point", floatArrayOf(it.latitude.toFloat(), it.longitude.toFloat()).toTypedArray(), description)) { success, error ->
                     mView?.hideLoading()
 
                     if (success) {
