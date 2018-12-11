@@ -1,15 +1,15 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.model
 
-data class ClassModel(
-        val id: String,
-        val instructor: TrainerModel,
-        val sport: SportModel,
-        val location: LocationModel,
-        val description: String,
-        val price: Double,
-        val maxusers: Int,
-        val duration: Int,
-        val registered: Int?,
-        val place: String,
-        val date: String
-)
+import java.io.Serializable
+
+data class ClassModel(var id: String,
+                      var instructor: TrainerModel,
+                      var sport: SportModel,
+                      var location: LocationModel,
+                      var description: String,
+                      var price: Double,
+                      var maxusers: Int,
+                      var duration: Int,
+                      var registered: Int?,
+                      var place: String,
+                      var date: String): Serializable
