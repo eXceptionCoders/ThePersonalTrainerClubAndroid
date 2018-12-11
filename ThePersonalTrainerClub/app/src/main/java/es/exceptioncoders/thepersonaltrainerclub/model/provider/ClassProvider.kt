@@ -148,7 +148,7 @@ class ClassProviderImp: ClassProvider {
                         data.place
                 ),
                 data.description,
-                data.price,
+                data.price.toDouble(),
                 data.maxusers,
                 data.duration,
                 data.registered,

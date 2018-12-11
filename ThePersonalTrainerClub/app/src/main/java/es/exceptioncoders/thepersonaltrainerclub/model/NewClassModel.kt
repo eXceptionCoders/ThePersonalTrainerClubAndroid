@@ -7,7 +7,7 @@ data class NewClassModel (
         val sport: String,
         val location: LocationModel,
         val description: String,
-        val price: Float,
+        val price: Double,
         val maxusers: Int,
         val duration: Int
 )

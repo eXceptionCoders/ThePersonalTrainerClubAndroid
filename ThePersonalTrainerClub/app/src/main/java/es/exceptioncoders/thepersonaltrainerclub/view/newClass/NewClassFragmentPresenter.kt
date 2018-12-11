@@ -20,7 +20,7 @@ class NewClassFragmentPresenter(private val mNavigator: NewClassFragmentContract
                 sport._id,
                 location,
                 description,
-                price.toFloat(),
+                price,
                 quota,
                 30
         )

@@ -34,7 +34,7 @@ class SearchClassFragmentPresenter(private val mNavigator: SearchClassFragmentCo
 
                 classes?.let {
                     if (it.total > 0) {
-                        print("")
+                        mNavigator.navigateToSerachClassResult(ArrayList(it.classes.toList()))
                     } else {
                         mView?.showAlertMessage(null, R.string.search_class_no_classes_found)
                     }

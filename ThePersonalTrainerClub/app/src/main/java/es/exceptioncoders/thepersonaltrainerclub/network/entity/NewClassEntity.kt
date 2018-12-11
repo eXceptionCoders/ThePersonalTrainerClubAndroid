@@ -5,7 +5,7 @@ class NewClassRequest (
         val sport: String,
         val location: LocationEntity,
         val description: String,
-        val price: Float,
+        val price: Double,
         val duration: Int,
         val maxusers: Int
 )
@@ -17,7 +17,7 @@ data class ClassEntity (
         val location: LocationEntity,
         val description: String,
         val place: String,
-        val price: Float,
+        val price: Double,
         val maxusers: Int,
         val duration: Int,
         val registered: Int?,

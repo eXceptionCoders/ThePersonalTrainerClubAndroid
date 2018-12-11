@@ -4,7 +4,7 @@ class LocationEntity (
     val _id: String?,
     val type: String,
     val description: String?,
-    val coordinates: Array<Float>
+    val coordinates: Array<Double>
 )
 
 data class AddLocationRequest (
