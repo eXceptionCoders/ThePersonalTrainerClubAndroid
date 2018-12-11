@@ -124,6 +124,9 @@
     <string name="search_class_section03">En un radio de</string>
     <string name="search_class_section04">Que horario te va bien</string>
     <string name="search_class_section05">Para cuando</string>
-    <string name="search_class_section06">Precio / Clase</string>
+    <string name="search_class_section06">Precio minimo</string>
+    <string name="search_class_any">Cualquiera</string>
     <string name="search_class_button_search">Buscar Actividades</string>
+    <string name="search_class_search_error">Ha habido un error bubscando clases</string>
+    <string name="search_class_no_classes_found">Lo sentimos, todavía no hay clases disponibles con los criterios especificados.</string>
 </resources>

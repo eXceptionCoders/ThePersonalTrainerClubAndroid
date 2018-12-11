@@ -1,6 +1,7 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.provider
 
 import es.exceptioncoders.thepersonaltrainerclub.model.NewClassModel
+import es.exceptioncoders.thepersonaltrainerclub.model.model.*
 import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService
 import es.exceptioncoders.thepersonaltrainerclub.network.WebServiceError
@@ -15,6 +16,7 @@ interface ClassProvider {
 
     fun getClassesForTrainer(trainerId: String, completion: (TrainerClassResponse?, ClassProvider.ClassError?) -> Unit)
     fun create(model: NewClassModel, completion: (Boolean, ClassProvider.ClassError?) -> Unit)
+    fun find(sport: String, location: LocationModel, distance: Int, price: String, page: Int, perPage: Int, completion: (FindClassesModel?, ClassProvider.ClassError?) -> Unit)
 }
 
 class ClassProviderImp: ClassProvider {
@@ -73,5 +75,85 @@ class ClassProviderImp: ClassProvider {
 
             completion(true, error)
         }
+    }
+
+    override fun find(sport: String, location: LocationModel, distance: Int, price: String, page: Int, perPage: Int, completion: (FindClassesModel?, ClassProvider.ClassError?) -> Unit) {
+        val requestModel = FindClassRequest(
+                sport,
+                location.coordinates[0].toDouble(),
+                location.coordinates[1].toDouble(),
+                distance,
+                price,
+                page,
+                perPage
+        )
+
+        val endpoint = Endpoint(Endpoint.EndpointType.SearchClass(requestModel))
+        val ws = WebService()
+
+        ws.load<FindClassResponse>(endpoint) { response: FindClassResponse?, e: WebServiceError? ->
+            var error: ClassProvider.ClassError? = null
+
+            e?.let {
+                error = when (it) {
+                    WebServiceError.NotFound -> ClassProvider.ClassError.NotFound
+                    WebServiceError.UnprocessableEntity -> ClassProvider.ClassError.UnprocessableEntity
+                    else -> ClassProvider.ClassError.OtherError
+                }
+
+                completion(null, error)
+            }
+
+            completion(mapFindEntityToModel(response!!), error)
+        }
+    }
+
+    private fun mapFindEntityToModel(data: FindClassResponse): FindClassesModel {
+        var total = 0
+        data.total?.let {
+            total = it
+        }
+
+        var classes = listOf<ClassModel>()
+        data.data?.let {
+            classes = it.map {
+                mapEntityToModel(it)
+            }
+        }
+
+        return FindClassesModel(
+                total,
+                classes.toTypedArray()
+        )
+    }
+
+    private fun mapEntityToModel(data: ClassEntity): ClassModel {
+        return ClassModel(
+                data._id,
+                TrainerModel(
+                        data.instructor._id,
+                        data.instructor.name,
+                        data.instructor.lastname,
+                        data.instructor.thumbnail ?: ""
+                ),
+                SportModel(
+                        data.sport._id,
+                        data.sport.name,
+                        data.sport.icon
+                ),
+                LocationModel(
+                        "",
+                        data.location.type,
+                        data.location.coordinates,
+                        data.place
+                ),
+                data.description,
+                data.price,
+                data.maxusers,
+                data.duration,
+                data.registered,
+                data.place,
+                ""
+        )
     }
 }
