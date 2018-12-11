@@ -1,16 +1,12 @@
 package es.exceptioncoders.thepersonaltrainerclub.network.entity
 
-import es.exceptioncoders.thepersonaltrainerclub.model.model.ClassModel
-import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
-import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
-
 class UserEntity (
         val _id: String,
         val name: String,
         val lastname: String,
         val coach: Boolean,
         val gender: String,
-        val thumbnail: String,
+        val thumbnail: String?,
         val email: String,
         val locations: Array<LocationEntity>,
         val sports: Array<SportEntity>,

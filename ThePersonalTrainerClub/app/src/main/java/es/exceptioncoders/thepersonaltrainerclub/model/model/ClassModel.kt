@@ -9,7 +9,7 @@ data class ClassModel (
         val price: Float,
         val maxusers: Int,
         val duration: Int,
-        val registered: Int,
+        val registered: Int?,
         val place: String,
         val date: String
 )

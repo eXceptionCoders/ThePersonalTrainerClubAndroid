@@ -126,6 +126,9 @@
     <string name="search_class_section03">In a radio of</string>
     <string name="search_class_section04">What schedule you are ding well </string>
     <string name="search_class_section05">When</string>
-    <string name="search_class_section06">Price / Any</string>
+    <string name="search_class_section06">Min price</string>
+    <string name="search_class_any">Any</string>
     <string name="search_class_button_search">Search for Activities</string>
+    <string name="search_class_search_error">There is an error searching classes</string>
+    <string name="search_class_no_classes_found">Sorry, still there are not classes available with the criteria specified</string>
 </resources>
