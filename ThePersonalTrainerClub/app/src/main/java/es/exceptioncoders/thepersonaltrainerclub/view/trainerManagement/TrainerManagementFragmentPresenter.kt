@@ -6,7 +6,7 @@ import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 class TrainerManagementFragmentPresenter(private val mNavigator: TrainerManagementFragmentContract.Navigator<TrainerManagementFragmentContract.View>) : BasePresenter<TrainerManagementFragmentContract.View>(), TrainerManagementFragmentContract.Presenter<TrainerManagementFragmentContract.View> {
     override fun onClassClicked(position: Int) {
         SharedApp.preferences.user?.let {
-            this.mNavigator.navigateToClassDetail(it.activeBookings[position])
+            this.mNavigator.navigateToClassDetail( if(it.showCoachView) it.classes[position] else it.activeBookings[position])
         }
     }
 }
