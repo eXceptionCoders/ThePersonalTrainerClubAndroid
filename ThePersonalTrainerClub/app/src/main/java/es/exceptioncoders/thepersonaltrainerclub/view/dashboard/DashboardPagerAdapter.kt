@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import es.exceptioncoders.thepersonaltrainerclub.R
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.newClass.NewClassFragment
+import es.exceptioncoders.thepersonaltrainerclub.view.searchClass.SearchClassFragment
 import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementFragment
 import es.exceptioncoders.thepersonaltrainerclub.view.typeSelection.TypeSelectionFragment
 import es.exceptioncoders.thepersonaltrainerclub.view.userSettings.UserSettingsFragment
@@ -15,7 +17,14 @@ class DashboardPagerAdapter(fm: FragmentManager, private val ctx: Context) : Fra
         return when (position) {
             0 -> TrainerManagementFragment()
             1 -> TypeSelectionFragment()
-            2 -> NewClassFragment()
+            2 -> {
+                return if (SharedApp.preferences.user!!.showCoachView) {
+                    NewClassFragment()
+                } else {
+                    SearchClassFragment()
+                }
+
+            }
             else -> UserSettingsFragment()
         }
     }
@@ -28,7 +37,13 @@ class DashboardPagerAdapter(fm: FragmentManager, private val ctx: Context) : Fra
         return when (position) {
             0 -> ctx.resources.getString(R.string.trainer_management_title)
             1 -> ctx.resources.getString(R.string.type_selection_title)
-            2 -> ctx.resources.getString(R.string.new_class_title)
+            2 -> {
+                return if (SharedApp.preferences.user!!.showCoachView) {
+                    ctx.resources.getString(R.string.new_class_title)
+                } else {
+                    ctx.resources.getString(R.string.search_class_title)
+                }
+            }
             else -> ctx.resources.getString(R.string.user_settings_title)
         }
     }
