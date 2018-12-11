@@ -93,8 +93,10 @@
     <string name="trainer_management_title">Gestión</string>
     <string name="trainer_management_open_classes_label">Clases abiertas</string>
     <string name="trainer_management_active_bookings_label">Reservas activas</string>
-    <string name="trainer_management_locations_label">Dónde enseñas</string>
-    <string name="trainer_management_sports_label">Qué enseñas</string>
+    <string name="trainer_management_locations_label">¿Dónde enseñas?</string>
+    <string name="trainer_management_look_for_locations_label">¿Dónde buscas clases?</string>
+    <string name="trainer_management_sports_label">¿Qué enseñas?</string>
+    <string name="trainer_management_practise_sports_label">¿Qué practicas?</string>
     <!-- New class -->
     <string name="new_class_title">Crear clase</string>
     <!-- User settings -->
@@ -109,4 +111,13 @@
     <!-- Class -->
     <string name="class_detail_title">Clase</string>
     <string name="class_detail_book_button_title">Reserva</string>
+
+    <!-- Search class -->
+    <string name="search_class_section01">Que quieres practicar</string>
+    <string name="search_class_section02">Cerca de que ubicación</string>
+    <string name="search_class_section03">En un radio de</string>
+    <string name="search_class_section04">Que horario te va bien</string>
+    <string name="search_class_section05">Para cuando</string>
+    <string name="search_class_section06">Precio / Clase</string>
+    <string name="search_class_button_search">Search for Activities</string>
 </resources>

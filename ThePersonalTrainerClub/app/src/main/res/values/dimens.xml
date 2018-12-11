@@ -5,4 +5,5 @@
     <dimen name="med_dp">8dp</dimen>
     <dimen name="lar_dp">16dp</dimen>
     <dimen name="text_normal">16sp</dimen>
+    <dimen name="text_sort">12dp</dimen>
 </resources>

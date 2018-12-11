@@ -80,41 +80,49 @@
 
                 <TextView
                     android:id="@+id/sportsLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="@string/trainer_management_sports_label"
                     android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nameTextView"
-                    tools:layout_editor_absoluteY="8dp"
                     tools:text="@string/trainer_management_sports_label" />
 
-                <include
-                    android:id="@+id/gridview"
-                    layout="@layout/activity_strip_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/activitiesListView"
+                    android:scrollbars="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sportsLabel" />
 
                 <TextView
                     android:id="@+id/locationsLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
+                    android:fontFamily="sans-serif"
                     android:inputType="textPersonName"
                     android:text="@string/trainer_management_locations_label"
+                    android:textAppearance="@style/TextAppearance.Widget.Event.Toolbar.Title"
                     android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gridview"
+                    app:layout_constraintTop_toBottomOf="@+id/activitiesListView"
                     tools:text="@string/trainer_management_locations_label" />
 
                 <include
@@ -129,16 +137,20 @@
 
                 <TextView
                     android:id="@+id/openClassesLabel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="@string/trainer_management_open_classes_label"
                     android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/locationsListview"
                     app:layout_constraintVertical_bias="0.0"

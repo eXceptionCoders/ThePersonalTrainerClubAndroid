@@ -96,7 +96,9 @@
     <string name="trainer_management_open_classes_label">Open classes</string>
     <string name="trainer_management_active_bookings_label">Active bookings</string>
     <string name="trainer_management_locations_label">Where do you teach?</string>
+    <string name="trainer_management_look_for_locations_label">Where do you look for classes?</string>
     <string name="trainer_management_sports_label">What do you teach?</string>
+    <string name="trainer_management_practise_sports_label">What do you practise?</string>
     <!-- New class -->
     <string name="new_class_title">New class</string>
     <!-- User settings -->
@@ -111,4 +113,13 @@
     <!-- Class -->
     <string name="class_detail_title">Class</string>
     <string name="class_detail_book_button_title">Book</string>
+
+    <!-- Search class --> 
+    <string name="search_class_section01">What activity are you looking for?</string>
+    <string name="search_class_section02">Where are you lokking for?</string>
+    <string name="search_class_section03">In a radio of</string>
+    <string name="search_class_section04">What schedule you are ding well </string>
+    <string name="search_class_section05">When</string>
+    <string name="search_class_section06">Price / Any</string>
+    <string name="search_class_button_search">Buscar Actividades</string>
 </resources>
