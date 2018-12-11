@@ -23,6 +23,7 @@ class Endpoint(private val type: EndpointType) {
         class SetActivities(val requestModel: SetSportRequest) : EndpointType()
         class AddLocation(val requestModel: AddLocationRequest) : EndpointType()
         class NewClass(val requestModel: NewClassRequest) : EndpointType()
+        class SearchClass(val requestModel: FindClassRequest) : EndpointType()
     }
 
     val boundary: String = "===" + System.currentTimeMillis() + "==="
@@ -94,6 +95,33 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.AddLocation -> "/api/v1/es/location/add"
             is EndpointType.SetUserThumbnail -> "/api/v1/es/datauser/thumbnail"
             is EndpointType.NewClass -> "/api/v1/es/class/add"
+            is EndpointType.SearchClass -> {
+                var params = ""
+                params += "page=${type.requestModel.page}"
+                params += "&per_page=${type.requestModel.perPage}"
+
+                if (!type.requestModel.sport.isEmpty()) {
+                    params += "&sport=${type.requestModel.sport}"
+                }
+
+                if (type.requestModel.longitude != 0.0 && type.requestModel.longitude.isFinite()) {
+                    params += "&longitude=${type.requestModel.longitude}"
+                }
+
+                if (type.requestModel.latitude != 0.0 && type.requestModel.latitude.isFinite()) {
+                    params += "&latitude=${type.requestModel.latitude}"
+                }
+
+                if (type.requestModel.distance != 0) {
+                    params += "&distance=${type.requestModel.distance}"
+                }
+
+                if (!type.requestModel.price.isEmpty()) {
+                    params += "&price=${type.requestModel.price}"
+                }
+
+                return "/api/v1/es/class/find?$params"
+            }
         }
     }
 
@@ -134,6 +162,7 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.AddLocation -> path().httpPost()
             is EndpointType.SetUserThumbnail -> path().httpPost()
             is EndpointType.NewClass -> path().httpPost()
+            is EndpointType.SearchClass -> path().httpGet()
         }
     }
 

@@ -1,6 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.provider
 
-import android.location.Location
 import es.exceptioncoders.thepersonaltrainerclub.model.model.*
 import es.exceptioncoders.thepersonaltrainerclub.network.Endpoint
 import es.exceptioncoders.thepersonaltrainerclub.network.WebService
@@ -151,7 +150,7 @@ class UserProviderImp: UserProvider {
                 response.lastname,
                 response.coach,
                 response.gender,
-                response.thumbnail,
+                response.thumbnail ?: "",
                 response.email,
                 locations.toTypedArray(),
                 sports.toTypedArray(),
