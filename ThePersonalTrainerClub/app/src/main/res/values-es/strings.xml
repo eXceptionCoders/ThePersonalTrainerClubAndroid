@@ -30,7 +30,7 @@
     <string name="register_genderFemale_text">Mujer</string>
     <string name="register_genderMale_text">Hombre</string>
     <!-- Type selection -->
-    <string name="type_selection_title">Configuración</string>
+    <string name="type_selection_title">Cambia rol</string>
     <string name="type_selection_title_label">Elige tu estado</string>
     <!-- Fragment Class -->>
     <string name="fragment_class_sport">Futbol</string>

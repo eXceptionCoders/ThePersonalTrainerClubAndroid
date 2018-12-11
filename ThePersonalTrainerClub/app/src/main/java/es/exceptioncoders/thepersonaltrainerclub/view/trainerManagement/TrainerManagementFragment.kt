@@ -52,11 +52,11 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     }
 
     override fun showLoading() {
-        progressBar.visibility = View.VISIBLE
+        progressBar?.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        progressBar.visibility = View.INVISIBLE
+        progressBar?.visibility = View.INVISIBLE
     }
 
     override fun localizeView() {

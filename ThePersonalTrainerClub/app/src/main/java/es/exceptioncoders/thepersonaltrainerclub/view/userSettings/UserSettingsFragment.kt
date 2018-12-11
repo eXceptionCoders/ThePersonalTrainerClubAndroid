@@ -41,11 +41,11 @@ class UserSettingsFragment : BaseFragment(), UserSettingsFragmentContract.View {
     }
 
     override fun showLoading() {
-        loading.visibility = View.VISIBLE
+        loading?.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        loading.visibility = View.INVISIBLE
+        loading?.visibility = View.INVISIBLE
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
