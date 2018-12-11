@@ -13,5 +13,5 @@ data class UserModel (
     val activities: Array<SportModel> = emptyArray<SportModel>(),
     val classes: Array<ClassModel> = emptyArray<ClassModel>(),
     val activeBookings: Array<ClassModel> = emptyArray<ClassModel>(),
-    val showCoachView: Boolean = false
+    var showCoachView: Boolean = false
 )

@@ -38,5 +38,5 @@ abstract class BaseFragment : Fragment(), BaseContract.BaseView {
         dialog.show()
     }
 
-    protected abstract fun localizeView()
+    abstract fun localizeView()
 }

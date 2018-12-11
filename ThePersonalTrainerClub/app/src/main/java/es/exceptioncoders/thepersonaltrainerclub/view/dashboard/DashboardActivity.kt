@@ -7,6 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
+import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseFragment
+import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
@@ -46,6 +48,8 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.let {
                     setActionBarMenu(it.position)
+                    if (it.position < supportFragmentManager.fragments.size)
+                        (supportFragmentManager.fragments[it.position] as BaseFragment).localizeView()
                 }
             }
 
@@ -63,17 +67,20 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.getItemId()
 
-        return if (id == R.id.action_activities) {
-            mPresenter.onAddActivitiesTapped()
-            true
-        } else if (id == R.id.action_locations) {
-            mPresenter.onAddLocationsTapped()
-            true
-        } else if (id == R.id.action_logout) {
-            mPresenter.onLogoutTapped()
-            true
-        } else {
-            super.onOptionsItemSelected(item)
+        return when (id) {
+            R.id.action_activities -> {
+                mPresenter.onAddActivitiesTapped()
+                true
+            }
+            R.id.action_locations -> {
+                mPresenter.onAddLocationsTapped()
+                true
+            }
+            R.id.action_logout -> {
+                mPresenter.onLogoutTapped()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

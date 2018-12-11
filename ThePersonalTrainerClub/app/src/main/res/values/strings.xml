@@ -94,6 +94,7 @@
     <!-- Trainer dashboard -->
     <string name="trainer_management_title">Management</string>
     <string name="trainer_management_open_classes_label">Open classes</string>
+    <string name="trainer_management_active_bookings_label">Active bookings</string>
     <string name="trainer_management_locations_label">Where do you teach?</string>
     <string name="trainer_management_sports_label">What do you teach?</string>
     <!-- New class -->

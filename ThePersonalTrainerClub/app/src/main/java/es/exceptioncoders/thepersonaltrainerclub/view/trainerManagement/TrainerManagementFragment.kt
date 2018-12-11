@@ -37,12 +37,7 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
         mPresenter = TrainerManagementFragmentPresenter(mNavigator) as TrainerManagementFragmentContract.Presenter<TrainerManagementFragment>
         mPresenter.attachView(this)
 
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        showUserData()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -59,24 +54,31 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     }
 
     override fun localizeView() {
-        sportsLabel.text = getString(R.string.trainer_management_sports_label)
-        locationsLabel.text = getString(R.string.trainer_management_locations_label)
-        openClassesLabel.text = getString(R.string.trainer_management_open_classes_label)
-    }
+        SharedApp.preferences.user?.let {
 
-    private fun showUserData() {
-        val userData = SharedApp.preferences.user
+            sportsLabel.text = getString(R.string.trainer_management_sports_label)
+            locationsLabel.text = getString(R.string.trainer_management_locations_label)
+            openClassesLabel.text = if (it.showCoachView) getString(R.string.trainer_management_open_classes_label)
+            else getString(R.string.trainer_management_active_bookings_label)
 
-        nameTextView.text = "${userData!!.name} ${userData!!.lastname}"
-        usertTypeTextView.text = if (userData!!.coach) getString(R.string.trainer) else getString(R.string.athlete)
-        if (userData.thumbnail.isNotBlank() && userData.thumbnail.isNotEmpty()) {
-            Picasso.get().load(userData.thumbnail).into(avatarImageView)
+            var userType = getString(R.string.trainer)
+            var classesToShow = it.classes
+
+            if (!it.showCoachView) {
+                userType = getString(R.string.athlete)
+                classesToShow = it.activeBookings
+            }
+
+            nameTextView.text = "${it.name} ${it.lastname}"
+            usertTypeTextView.text = userType
+            if (it.thumbnail.isNotBlank() && it.thumbnail.isNotEmpty()) {
+                Picasso.get().load(it.thumbnail).into(avatarImageView)
+            }
+
+            showSports(it.activities)
+            showLocations(it.locations)
+            showOpenClasses(classesToShow)
         }
-
-        showSports(userData!!.activities)
-        showLocations(userData!!.locations)
-        showOpenClasses(userData!!.classes)
-
     }
 
     private fun showSports(sports: Array<SportModel>) {

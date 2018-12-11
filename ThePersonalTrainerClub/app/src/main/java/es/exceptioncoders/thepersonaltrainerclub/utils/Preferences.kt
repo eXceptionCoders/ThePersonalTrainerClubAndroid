@@ -25,5 +25,4 @@ class Preferences (context: Context) {
             return Gson().fromJson(gson, UserModel::class.java)
         }
         set(value) = prefs.edit().putString(SHARED_USER, Gson().toJson(value)).apply()
-
 }
