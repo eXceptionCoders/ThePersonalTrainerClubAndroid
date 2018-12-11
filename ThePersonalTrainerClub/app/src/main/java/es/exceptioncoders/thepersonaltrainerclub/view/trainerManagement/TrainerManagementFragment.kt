@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import com.squareup.picasso.Picasso
 
 import es.exceptioncoders.thepersonaltrainerclub.R
@@ -108,7 +109,11 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
 
     private fun showOpenClasses(classes: Array<ClassModel>) {
         classesAdapter = ClassStripViewAdapter(classes.toList(), this.activity!!)
+
         openClassesListview.openClassesListview.adapter = classesAdapter
+        openClassesListview.openClassesListview.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            this.mPresenter.onClassClicked(position)
+        }
         openClassesListview.openClassesListview.layoutParams.height = if (classes.count() == 0) 100 else 486 * classes.count()
     }
 }
