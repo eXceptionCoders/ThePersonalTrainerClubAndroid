@@ -102,6 +102,14 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
 
         locationsAdapter.locations = SharedApp.preferences.user!!.locations.toList()
         locationsAdapter.notifyDataSetChanged()
+
+        if (SharedApp.preferences.user!!.showCoachView) {
+            classesAdapter.openClases = SharedApp.preferences.user!!.classes.toList()
+        } else {
+            classesAdapter.openClases = SharedApp.preferences.user!!.activeBookings.toList()
+        }
+
+        classesAdapter.notifyDataSetChanged()
     }
 
     private fun setUpActivitiesRecycler() {
