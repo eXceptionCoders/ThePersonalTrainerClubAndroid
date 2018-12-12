@@ -11,14 +11,24 @@ import es.exceptioncoders.thepersonaltrainerclub.model.model.ClassModel
 import es.exceptioncoders.thepersonaltrainerclub.utils.DateUtils
 import kotlinx.android.synthetic.main.cell_class_found.view.*
 
-class SearchClassResultAdapter(val data: Array<ClassModel>):  RecyclerView.Adapter<SearchClassResultAdapter.SearchClassResultViewHolder>() {
+interface OnItemClickListener {
+    fun onItemClick(item: ClassModel)
+}
+
+interface OnBookClickListener {
+    fun onBookClick(item: ClassModel)
+}
+
+class SearchClassResultAdapter(val data: Array<ClassModel>, val listener: OnItemClickListener, val bookListener: OnBookClickListener):  RecyclerView.Adapter<SearchClassResultAdapter.SearchClassResultViewHolder>() {
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchClassResultViewHolder {
         context = parent.context!!
         return SearchClassResultViewHolder(
                 LayoutInflater.from(parent.context)
-                        .inflate(R.layout.cell_class_found, parent, false)
+                        .inflate(R.layout.cell_class_found, parent, false),
+                listener,
+                bookListener
         )
     }
 
@@ -26,9 +36,17 @@ class SearchClassResultAdapter(val data: Array<ClassModel>):  RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: SearchClassResultViewHolder, position: Int) = holder.bind(data[position])
 
-    inner class SearchClassResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class SearchClassResultViewHolder(itemView: View, val listener: OnItemClickListener, val bookListener: OnBookClickListener) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: ClassModel) = with(itemView) {
             val classDate = DateUtils.convertStringToLocalDateTime(item.date)
+
+            itemView.setOnClickListener {
+                listener.onItemClick(item)
+            }
+
+            button_book_class.setOnClickListener {
+                bookListener.onBookClick(item)
+            }
 
             // Class mapping
             text_price_class.text = "${item.price} €"

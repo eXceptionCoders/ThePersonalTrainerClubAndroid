@@ -15,6 +15,7 @@ class SearchClassResultActivity : BaseActivity(), SearchClassResultActivityContr
     override fun bindLayout(): Int = R.layout.activity_search_class_result
     private lateinit var classesAdapter: SearchClassResultAdapter
     private lateinit var classes: Array<ClassModel>
+    private lateinit var mPresenter: SearchClassResultActivityContract.Presenter<SearchClassResultActivity>
 
     companion object {
         const val CLASSES_LIST_KEY = "classes"
@@ -25,6 +26,12 @@ class SearchClassResultActivity : BaseActivity(), SearchClassResultActivityContr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val mNavigator = SearchClassResultActivityNavigator() as SearchClassResultActivityContract.Navigator<SearchClassResultActivityContract.View>
+        mNavigator.attachView(this)
+
+        mPresenter = SearchClassResultActivityPresenter(mNavigator) as SearchClassResultActivityContract.Presenter<SearchClassResultActivity>
+        mPresenter.attachView(this)
 
         classes = Gson().fromJson(intent.extras.getString(CLASSES_LIST_KEY), Array<ClassModel>::class.java)
 
@@ -43,7 +50,15 @@ class SearchClassResultActivity : BaseActivity(), SearchClassResultActivityContr
         setUpClassesRecycler()
     }
     private fun setUpClassesRecycler() {
-        classesAdapter = SearchClassResultAdapter(classes)
+        classesAdapter = SearchClassResultAdapter(classes, object :  OnItemClickListener {
+            override fun onItemClick(item: ClassModel) {
+                mPresenter.onClassTapped(item)
+            }
+        }, object: OnBookClickListener {
+            override fun onBookClick(item: ClassModel) {
+                mPresenter.onBookClassTapped(item)
+            }
+        })
         searchResultListView.adapter = classesAdapter
         searchResultListView.layoutParams.height = if (classes.count() == 0) 100 else 486 * classes.count()
         searchResultListView.layoutManager = LinearLayoutManager(this)
