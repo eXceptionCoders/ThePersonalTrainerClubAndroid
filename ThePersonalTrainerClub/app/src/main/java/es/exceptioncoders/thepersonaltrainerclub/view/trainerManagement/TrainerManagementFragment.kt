@@ -15,6 +15,7 @@ import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseFragment
+import es.exceptioncoders.thepersonaltrainerclub.view.dashboard.DashboardActivity
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.ActivityListAdapter
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.ClassStripViewAdapter
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.LocationStripViewAdapter
@@ -53,12 +54,18 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
         return inflater!!.inflate(R.layout.fragment_trainer_management, container, false)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        refreshView()
+    }
+
     override fun showLoading() {
-        progressBar?.visibility = View.VISIBLE
+        loading?.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        progressBar?.visibility = View.INVISIBLE
+        loading?.visibility = View.INVISIBLE
     }
 
     override fun localizeView() {
@@ -89,6 +96,14 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
         }
     }
 
+    override fun refreshView() {
+        activitiesAdapter.swapData(SharedApp.preferences.user!!.activities.toList())
+        activitiesAdapter.notifyDataSetChanged()
+
+        locationsAdapter.locations = SharedApp.preferences.user!!.locations.toList()
+        locationsAdapter.notifyDataSetChanged()
+    }
+
     private fun setUpActivitiesRecycler() {
         activitiesAdapter = ActivityListAdapter()
 
@@ -104,7 +119,7 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     private fun showLocations(locations: Array<LocationModel>) {
         locationsAdapter = LocationStripViewAdapter(false, locations.toList(), this.activity!!)
         locationsListview.locationsListview.adapter = locationsAdapter
-        locationsListview.locationsListview.layoutParams.height = if (locations.count() == 0) 100 else 124 * locations.count()
+        locationsListview.locationsListview.layoutParams.height = if (locations.count() == 0) 100 else 100 * locations.count()
     }
 
     private fun showOpenClasses(classes: Array<ClassModel>) {

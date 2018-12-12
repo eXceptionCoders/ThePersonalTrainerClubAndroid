@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_strip_grid.view.*
 class AddSportActivity : BaseActivity(), AddSportActivityContract.View {
     private lateinit var mPresenter: AddSportActivityContract.Presenter<AddSportActivity>
     private lateinit var sportsAdapter: ActivityStripViewAdapter
+    private var mMenu: Menu? = null
 
     override fun bindLayout(): Int = R.layout.activity_add_sport
 
@@ -39,6 +40,7 @@ class AddSportActivity : BaseActivity(), AddSportActivityContract.View {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        mMenu = menu
         menuInflater.inflate(R.menu.menu_save, menu)
 
         return true
@@ -71,9 +73,15 @@ class AddSportActivity : BaseActivity(), AddSportActivityContract.View {
 
     override fun showLoading() {
         loading.visibility = View.VISIBLE
+
+        gridview.gridview.isEnabled = false
+        mMenu?.getItem(0)?.isEnabled = false
     }
 
     override fun hideLoading() {
         loading.visibility = View.INVISIBLE
+
+        gridview.gridview.isEnabled = true
+        mMenu?.getItem(0)?.isEnabled = true
     }
 }

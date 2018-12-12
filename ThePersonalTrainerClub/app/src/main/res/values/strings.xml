@@ -63,6 +63,7 @@
     <string name="menu_save_title">Save</string>
     <!-- Add sport -->
     <string name="add_sport_title">Set activity</string>
+    <string name="add_sport_get_activities_error">Error getting activities</string>
     <string name="add_sport_error">Error setting activities</string>
     <!-- Add location -->
     <string name="add_location_title">Set location</string>
@@ -102,6 +103,7 @@
     <string name="trainer_management_sports_label">What do you teach?</string>
     <string name="trainer_management_practise_sports_label">What do you practise?</string>
     <string name="trainer_management_delete_book_error">There is an error deleting your booking</string>
+    <string name="trainer_management_delete_class_error">Feature not implemented</string>
     <!-- New class -->
     <string name="new_class_title">New class</string>
     <string name="new_class_sport_error">You have to select a sport</string>

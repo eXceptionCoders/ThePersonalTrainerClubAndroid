@@ -19,21 +19,29 @@ class TrainerManagementFragmentPresenter(private val mNavigator: TrainerManageme
     }
 
     override fun onDeleteBookClicked(model: ClassModel) {
-        mView?.showLoading()
+        if (SharedApp.preferences.user!!.showCoachView) {
+            mView?.showAlertMessage(null, R.string.trainer_management_delete_class_error)
+        } else {
+            mView?.showLoading()
 
-        model.booking?.let {
-            useCase.deleteBook(it) { success, error ->
-                mView?.hideLoading()
+            model.booking?.let {
+                useCase.deleteBook(it) { success, error ->
+                    mView?.hideLoading()
 
-                error?.let {
-                    mView?.showAlertMessage(null, R.string.trainer_management_delete_book_error)
-                } ?: kotlin.run {
-                    //TODO: Refresh view
+                    error?.let {
+                        mView?.showAlertMessage(null, R.string.trainer_management_delete_book_error)
+                    } ?: kotlin.run {
+                        mView?.refreshView()
+                    }
                 }
+            } ?: run {
+                mView?.showAlertMessage(null, R.string.trainer_management_delete_book_error)
             }
-        } ?: run {
-            mView?.showAlertMessage(null, R.string.trainer_management_delete_book_error)
         }
+
+
+
+
 
 
     }
