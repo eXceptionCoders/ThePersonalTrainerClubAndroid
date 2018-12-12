@@ -134,7 +134,7 @@ class UserProviderImp: UserProvider {
                     sportModel,
                     locationModel,
                     book.description,
-                    book.price,
+                    book.price.toDouble(),
                     book.maxusers,
                     book.duration,
                     book.registered!!,

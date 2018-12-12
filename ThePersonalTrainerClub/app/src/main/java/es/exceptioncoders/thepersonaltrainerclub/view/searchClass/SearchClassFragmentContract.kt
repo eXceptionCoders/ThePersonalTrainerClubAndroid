@@ -1,5 +1,6 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.searchClass
 
+import es.exceptioncoders.thepersonaltrainerclub.model.model.ClassModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.UserModel
@@ -16,5 +17,7 @@ interface SearchClassFragmentContract {
         fun onSearch(sport: SportModel, location: LocationModel, distance: Int, maxPrice: Int)
     }
 
-    interface Navigator<V : View> : BaseContract.BaseNavigator<V>
+    interface Navigator<V : View> : BaseContract.BaseNavigator<V> {
+        fun navigateToSerachClassResult(classList: ArrayList<ClassModel>)
+    }
 }

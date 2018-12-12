@@ -9,7 +9,7 @@ class TrainerClassEntity (
     val sport: SportEntity,
     val location: LocationEntity,
     val description: String,
-    val price: Float,
+    val price: Double,
     val duration: Int,
     val quota: Int
 )
