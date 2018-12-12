@@ -216,15 +216,6 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button_vote_class"
-                    style="?attr/buttonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text="@string/fragment_button_vote"
-                    android:visibility="visible" />
-
-                <Button
                     android:id="@+id/button_cancel_class"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
