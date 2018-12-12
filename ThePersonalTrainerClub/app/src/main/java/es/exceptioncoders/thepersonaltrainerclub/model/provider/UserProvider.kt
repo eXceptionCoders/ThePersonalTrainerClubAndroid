@@ -100,7 +100,8 @@ class UserProviderImp: UserProvider {
                     c.duration,
                     c.registered!!,
                     c.place,
-                    ""
+                    "",
+                    c.booking
             )
 
             classes.add(model)
@@ -139,7 +140,8 @@ class UserProviderImp: UserProvider {
                     book.duration,
                     book.registered!!,
                     book.place,
-                    ""
+                    "",
+                    book.booking
             )
 
             bookings.add(model)

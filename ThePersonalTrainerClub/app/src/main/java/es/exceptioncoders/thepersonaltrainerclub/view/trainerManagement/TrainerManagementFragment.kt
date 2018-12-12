@@ -18,6 +18,7 @@ import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseFragment
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.ActivityListAdapter
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.ClassStripViewAdapter
 import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.LocationStripViewAdapter
+import es.exceptioncoders.thepersonaltrainerclub.view.sharedViews.activityStripView.OnDeleteBookClickListener
 import kotlinx.android.synthetic.main.activity_class_list.view.*
 import kotlinx.android.synthetic.main.activity_location_list.view.*
 import kotlinx.android.synthetic.main.fragment_trainer_management.*
@@ -108,7 +109,11 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     }
 
     private fun showOpenClasses(classes: Array<ClassModel>) {
-        classesAdapter = ClassStripViewAdapter(classes.toList(), this.activity!!)
+        classesAdapter = ClassStripViewAdapter(classes.toList(), this.activity!!, object: OnDeleteBookClickListener {
+            override fun onDeleteClick(item: ClassModel) {
+                mPresenter.onDeleteBookClicked(item)
+            }
+        })
 
         openClassesListview.openClassesListview.adapter = classesAdapter
         openClassesListview.openClassesListview.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->

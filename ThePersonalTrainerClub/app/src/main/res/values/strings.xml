@@ -101,6 +101,7 @@
     <string name="trainer_management_look_for_locations_label">Where do you look for classes?</string>
     <string name="trainer_management_sports_label">What do you teach?</string>
     <string name="trainer_management_practise_sports_label">What do you practise?</string>
+    <string name="trainer_management_delete_book_error">There is an error deleting your booking</string>
     <!-- New class -->
     <string name="new_class_title">New class</string>
     <string name="new_class_sport_error">You have to select a sport</string>
@@ -134,4 +135,5 @@
     <string name="search_class_no_classes_found">Sorry, still there are not classes available with the criteria specified</string>
     <!-- Search Class Result -->
     <string name="search_classes_result_title">Classes found</string>
+    <string name="search_classes_book_error">There is an error with your booking</string>
 </resources>

@@ -153,7 +153,8 @@ class ClassProviderImp: ClassProvider {
                 data.duration,
                 data.registered,
                 data.place,
-                ""
+                "",
+                data.booking
         )
     }
 }
