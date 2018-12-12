@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ThePersonalTrainerClub</string>
+    <string name="app_name">GymUs</string>
     <string name="app_bar_name">GymUs</string>
     <string name="trainer">Trainer</string>
     <string name="athlete">Athlete</string>
