@@ -117,7 +117,7 @@ class NewClassFragment : BaseFragment(), NewClassFragmentContract.View {
 
         locationsAdapter = LocationStripViewAdapter(true, user.locations.toList(), this.activity!!)
         (locationsListview as ListView).adapter = locationsAdapter
-        (locationsListview as ListView).layoutParams.height = if (user.locations.count() == 0) 100 else 100 * user.locations.count()
+        (locationsListview as ListView).layoutParams.height = if (user.locations.count() == 0) 100 else 126 * user.locations.count()
         (locationsListview as ListView).setOnItemClickListener { adapterView, view, i, l ->
             locationsAdapter.itemSelected = user.locations[i]
             locationsAdapter.notifyDataSetChanged()

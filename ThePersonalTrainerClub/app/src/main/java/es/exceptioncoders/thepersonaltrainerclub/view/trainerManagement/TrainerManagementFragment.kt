@@ -127,7 +127,7 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
     private fun showLocations(locations: Array<LocationModel>) {
         locationsAdapter = LocationStripViewAdapter(false, locations.toList(), this.activity!!)
         locationsListview.locationsListview.adapter = locationsAdapter
-        locationsListview.locationsListview.layoutParams.height = if (locations.count() == 0) 100 else 100 * locations.count()
+        locationsListview.locationsListview.layoutParams.height = if (locations.count() == 0) 100 else 126 * locations.count()
     }
 
     private fun showOpenClasses(classes: Array<ClassModel>) {
