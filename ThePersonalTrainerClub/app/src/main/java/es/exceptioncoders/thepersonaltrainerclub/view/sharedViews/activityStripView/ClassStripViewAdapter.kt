@@ -15,7 +15,7 @@ interface OnDeleteBookClickListener {
     fun onDeleteClick(item: ClassModel)
 }
 
-class ClassStripViewAdapter(private val openClases: List<ClassModel>, val mContext: Context, val onDeleteListener: OnDeleteBookClickListener): BaseAdapter() {
+class ClassStripViewAdapter(var openClases: List<ClassModel>, val mContext: Context, val onDeleteListener: OnDeleteBookClickListener): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val openClass = openClases[position]
 
