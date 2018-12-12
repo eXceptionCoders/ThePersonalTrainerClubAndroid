@@ -3,171 +3,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/white"
     tools:context=".view.searchClass.SearchClassFragment">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/lightGray">
+        android:layout_height="match_parent">
 
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/med_dp"
+            android:layout_marginStart="@dimen/med_dp"
+            android:layout_marginTop="@dimen/med_dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/lightGray"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.51">
+                android:layout_margin="@dimen/med_dp"
+                android:text="@string/search_class_section01"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Que quieres practicar" />
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activitiesListView"
+                android:scrollbars="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_marginTop="@dimen/med_dp" />
 
-                <View
-                    android:id="@+id/divider3"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="@dimen/dimension_line_separator"
-                    android:layout_marginTop="-8dp"
-                    android:background="@color/colorPrimaryDark" />
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:layout_marginTop="@dimen/med_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:background="@color/colorPrimaryDark" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/med_dp"
-                    android:text="@string/search_class_section01"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/text_normal"
-                    tools:text="Que quieres practicar" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:text="@string/search_class_section02"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Cerca de la ubicación" />
 
-                <include
-                    layout="@layout/fragment_sports"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/lar_dp"
-                    android:layout_marginEnd="@dimen/med_dp"
-                    android:layout_marginStart="@dimen/med_dp"
-                    android:layout_marginTop="@dimen/lar_dp" />
+            <include
+                android:id="@+id/locationsListview"
+                layout="@layout/activity_location_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/med_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/med_dp"
-                    android:layout_marginStart="@dimen/dimension_line_separator"
-                    android:text="@string/search_class_section02"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/text_normal"
-                    tools:text="Cerca de la ubicación" />
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:background="@color/colorPrimaryDark" />
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/radioText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:text="@string/search_class_section03"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="En un radio de" />
 
-                <View
-                    android:id="@+id/divider4"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="@dimen/dimension_line_separator"
-                    android:layout_marginTop="-8dp"
-                    android:background="@color/colorPrimaryDark" />
+            <SeekBar
+                android:id="@+id/radioSeekBar"
+                style="@style/Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/lar_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_marginTop="@dimen/lar_dp"
+                android:max="15"
+                android:min="6"
+                android:progress="1" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/med_dp"
-                    android:layout_marginStart="@dimen/dimension_line_separator"
-                    android:text="@string/search_class_section03"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/text_normal"
-                    tools:text="En un radio de" />
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:layout_marginTop="@dimen/med_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:background="@color/colorPrimaryDark" />
 
-                <View
-                    android:id="@+id/divider5"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="@dimen/dimension_line_separator"
-                    android:layout_marginTop="-8dp"
-                    android:background="@color/colorPrimaryDark" />
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_dp"
+                android:layout_marginStart="@dimen/dimension_line_separator"
+                android:text="@string/search_class_section06"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="Precio / Clase" />
 
-                <SeekBar
-                    android:id="@+id/seekBarClass01"
-                    style="@style/Seekbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="@dimen/lar_dp"
-                    android:layout_marginEnd="@dimen/med_dp"
-                    android:layout_marginStart="@dimen/med_dp"
-                    android:layout_marginTop="@dimen/lar_dp"
-                    android:max="15"
-                    android:min="6"
-                    android:progress="1" />
+            <SeekBar
+                android:id="@+id/priceSeekBar"
+                style="@style/Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/lar_dp"
+                android:layout_marginEnd="@dimen/med_dp"
+                android:layout_marginStart="@dimen/med_dp"
+                android:layout_marginTop="@dimen/lar_dp"
+                android:max="50"
+                android:min="0"
+                android:progress="1" />
 
+            <include
+                android:id="@+id/searchClassButton"
+                layout="@layout/button_custom"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/lar_dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="@dimen/lar_dp"
+                android:layout_marginBottom="@dimen/lar_dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/med_dp"
-                    android:layout_marginStart="@dimen/dimension_line_separator"
-                    android:text="@string/search_class_section06"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/text_normal"
-                    tools:text="Precio / Clase" />
+        </LinearLayout>
+    </ScrollView>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="@dimen/dimension_line_separator"
-                    android:layout_marginTop="-8dp"
-                    android:background="@color/colorPrimaryDark" />
-
-
-                <SeekBar
-                    android:id="@+id/seekBarClass02"
-                    style="@style/Seekbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="@dimen/lar_dp"
-                    android:layout_marginEnd="@dimen/med_dp"
-                    android:layout_marginStart="@dimen/med_dp"
-                    android:layout_marginTop="@dimen/lar_dp"
-                    android:max="50"
-                    android:min="6"
-                    android:progress="1" />
-
-
-                <Button
-                    android:id="@+id/button_search_class"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="@dimen/lar_dp"
-                    android:layout_marginEnd="@dimen/med_dp"
-                    android:layout_marginStart="@dimen/med_dp"
-                    android:layout_marginTop="@dimen/lar_dp"
-                    android:layout_weight="1"
-                    android:background="@color/colorRedNormal"
-                    android:paddingEnd="@dimen/lar_dp"
-                    android:text="@string/search_class_button_search"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/lightGray"
-                    android:textSize="@dimen/text_normal"
-                    android:visibility="visible"
-                    tools:text="Buscar Actividdes" />
-
-            </LinearLayout>
-        </ScrollView>
-    </android.support.constraint.ConstraintLayout>
+    <ProgressBar
+        android:id="@+id/loading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_gravity="center_vertical|center_horizontal" />
 
 </FrameLayout>

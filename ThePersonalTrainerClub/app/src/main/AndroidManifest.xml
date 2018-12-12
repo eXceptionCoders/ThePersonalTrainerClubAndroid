@@ -42,7 +42,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".view.classDetail.ClassDetailActivity"></activity>
+        <activity android:name=".view.classDetail.ClassDetailActivity" />
+        <activity android:name=".view.searchClassResult.SearchClassResultActivity"></activity>
     </application>
 
 </manifest>
