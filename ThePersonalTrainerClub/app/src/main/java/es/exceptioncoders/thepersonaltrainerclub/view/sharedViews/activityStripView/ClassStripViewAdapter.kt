@@ -11,7 +11,11 @@ import es.exceptioncoders.thepersonaltrainerclub.model.model.ClassModel
 import es.exceptioncoders.thepersonaltrainerclub.utils.DateUtils
 import kotlinx.android.synthetic.main.activity_class_row.view.*
 
-class ClassStripViewAdapter(private val openClases: List<ClassModel>, val mContext: Context): BaseAdapter() {
+interface OnDeleteBookClickListener {
+    fun onDeleteClick(item: ClassModel)
+}
+
+class ClassStripViewAdapter(private val openClases: List<ClassModel>, val mContext: Context, val onDeleteListener: OnDeleteBookClickListener): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val openClass = openClases[position]
 
@@ -37,6 +41,10 @@ class ClassStripViewAdapter(private val openClases: List<ClassModel>, val mConte
         classView.text_lastname_coach_class.text = openClass.instructor.lastname
         openClass.instructor.thumbnail.let {
             Picasso.get().load(it).into(classView.image_coach_class)
+        }
+
+        classView.button_cancel_class.setOnClickListener {
+            onDeleteListener.onDeleteClick(openClass)
         }
 
         return classView

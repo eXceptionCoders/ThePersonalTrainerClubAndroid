@@ -21,7 +21,8 @@ data class ClassEntity (
         val maxusers: Int,
         val duration: Int,
         val registered: Int?,
-        val distance: Double?
+        val distance: Double?,
+        val booking: String?
 )
 
 data class NewClassResponse (

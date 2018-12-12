@@ -1,17 +1,16 @@
 package es.exceptioncoders.thepersonaltrainerclub.model.usecase
 
-import es.exceptioncoders.thepersonaltrainerclub.model.NewClassModel
-import es.exceptioncoders.thepersonaltrainerclub.model.provider.ClassProvider
+import es.exceptioncoders.thepersonaltrainerclub.model.provider.BookingProvider
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.UserProvider
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 
-interface NewClassUseCase {
-    fun create(model: NewClassModel, completion: (Boolean, ClassProvider.ClassError?) -> Unit)
+interface DeleteBookUseCase {
+    fun deleteBook(classId: String, completion: (Boolean, BookingProvider.Error?) -> Unit)
 }
 
-class NewClassUseCaseImp(private val provider: ClassProvider, private val userProvider: UserProvider): NewClassUseCase {
-    override fun create(model: NewClassModel, completion: (Boolean, ClassProvider.ClassError?) -> Unit) {
-        provider.create(model) { success, error ->
+class DeleteBookUseCaseImp(private val provider: BookingProvider, private val userProvider: UserProvider): DeleteBookUseCase {
+    override fun deleteBook(classId: String, completion: (Boolean, BookingProvider.Error?) -> Unit) {
+        provider.deleteBook(classId) { success, error ->
             if (success) {
                 userProvider.getUser { user, error ->
                     user?.let {

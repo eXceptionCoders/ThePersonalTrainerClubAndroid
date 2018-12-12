@@ -12,6 +12,7 @@ interface TrainerManagementFragmentContract {
 
     interface Presenter<V: View> : BaseContract.BasePresenter<V> {
         fun onClassClicked(position: Int)
+        fun onDeleteBookClicked(model: ClassModel)
     }
 
     interface Navigator<V: View> : BaseContract.BaseNavigator<V> {

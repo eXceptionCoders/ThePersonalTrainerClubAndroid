@@ -12,4 +12,5 @@ data class ClassModel(var id: String,
                       var duration: Int,
                       var registered: Int?,
                       var place: String,
-                      var date: String): Serializable
+                      var date: String,
+                      var booking: String?): Serializable
