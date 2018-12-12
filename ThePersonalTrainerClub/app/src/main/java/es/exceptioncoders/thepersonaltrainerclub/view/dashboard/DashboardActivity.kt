@@ -6,12 +6,20 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import es.exceptioncoders.thepersonaltrainerclub.R
+import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseFragment
+import es.exceptioncoders.thepersonaltrainerclub.view.newClass.NewClassFragment
+import es.exceptioncoders.thepersonaltrainerclub.view.searchClass.SearchClassFragment
 import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementFragment
+import es.exceptioncoders.thepersonaltrainerclub.view.typeSelection.TypeSelectionFragment
+import es.exceptioncoders.thepersonaltrainerclub.view.userSettings.UserSettingsFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
+    lateinit var mFragments: List<BaseFragment>
+    lateinit var mFragmentNames: List<String>
+
     private lateinit var mPresenter: DashboardActivityContract.Presenter<DashboardActivity>
 
     override fun bindLayout(): Int = R.layout.activity_dashboard
@@ -28,6 +36,8 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
 
         mPresenter = DashboardActivityPresenter(mNavigator) as DashboardActivityContract.Presenter<DashboardActivity>
         mPresenter.attachView(this)
+
+        setUpFragments()
 
         val fragmentAdapter = DashboardPagerAdapter(supportFragmentManager, this)
         viewpager_main.adapter = fragmentAdapter
@@ -86,6 +96,56 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
         when (position) {
             0 -> menuInflater.inflate(R.menu.menu_dashboard, mMenu)
             else -> menuInflater.inflate(R.menu.menu_general, mMenu)
+        }
+    }
+
+    fun setUpFragments() {
+        SharedApp.preferences.user?.let {
+            if (it.coach) {
+                if (it.showCoachView) {
+                    mFragments = listOf(
+                            TrainerManagementFragment(),
+                            TypeSelectionFragment(),
+                            NewClassFragment(),
+                            UserSettingsFragment()
+                    )
+                    mFragmentNames = listOf(
+                            getString(R.string.trainer_management_title),
+                            getString(R.string.type_selection_title),
+                            getString(R.string.new_class_title),
+                            getString(R.string.user_settings_title)
+                    )
+                }
+                else {
+                    mFragments = listOf(
+                            TrainerManagementFragment(),
+                            TypeSelectionFragment(),
+                            SearchClassFragment(),
+                            UserSettingsFragment()
+                    )
+
+                    mFragmentNames = listOf(
+                            getString(R.string.trainer_management_title),
+                            getString(R.string.type_selection_title),
+                            getString(R.string.search_class_title),
+                            getString(R.string.user_settings_title)
+                    )
+                }
+            }
+            else {
+                mFragments = listOf(
+                        TrainerManagementFragment(),
+                        SearchClassFragment(),
+                        UserSettingsFragment()
+                )
+
+                mFragmentNames = listOf(
+                        getString(R.string.trainer_management_title),
+                        getString(R.string.search_class_title),
+                        getString(R.string.user_settings_title)
+                )
+            }
+            viewpager_main.adapter?.notifyDataSetChanged()
         }
     }
 }

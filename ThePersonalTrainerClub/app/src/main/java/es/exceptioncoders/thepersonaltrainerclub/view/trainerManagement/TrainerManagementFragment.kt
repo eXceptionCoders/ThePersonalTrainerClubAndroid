@@ -61,7 +61,6 @@ class TrainerManagementFragment : BaseFragment(), TrainerManagementFragmentContr
 
     override fun localizeView() {
         SharedApp.preferences.user?.let {
-
             sportsLabel.text = getString(R.string.trainer_management_sports_label)
             locationsLabel.text = getString(R.string.trainer_management_locations_label)
             openClassesLabel.text = getString(R.string.trainer_management_open_classes_label)

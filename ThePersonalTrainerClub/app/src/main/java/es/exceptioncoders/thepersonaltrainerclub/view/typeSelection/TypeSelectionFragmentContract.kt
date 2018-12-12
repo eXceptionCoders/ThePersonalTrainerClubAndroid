@@ -10,7 +10,6 @@ interface TypeSelectionFragmentContract {
     }
 
     interface Navigator<V : View> : BaseContract.BaseNavigator<V> {
-        fun navigateToTrainerView()
-        fun navigateToClientView()
+        fun navigateToMainTab()
     }
 }

@@ -1,6 +1,5 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.dashboard
 
-import es.exceptioncoders.thepersonaltrainerclub.model.model.UserModel
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 

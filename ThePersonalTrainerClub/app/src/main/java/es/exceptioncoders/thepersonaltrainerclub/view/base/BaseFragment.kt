@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 
 abstract class BaseFragment : Fragment(), BaseContract.BaseView {
-
     protected abstract fun bindLayout(): Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -7,6 +7,7 @@ class SearchClassFragment : BaseFragment(), SearchClassFragmentContract.View {
     override fun bindLayout(): Int = R.layout.fragment_search_class
 
     override fun localizeView() {
+
     }
 
 }
