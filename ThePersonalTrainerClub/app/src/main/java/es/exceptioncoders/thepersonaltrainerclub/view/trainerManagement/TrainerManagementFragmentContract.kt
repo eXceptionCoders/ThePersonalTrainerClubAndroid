@@ -7,7 +7,7 @@ import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseContract
 
 interface TrainerManagementFragmentContract {
     interface View : BaseContract.BaseView {
-
+        fun refreshView()
     }
 
     interface Presenter<V: View> : BaseContract.BasePresenter<V> {

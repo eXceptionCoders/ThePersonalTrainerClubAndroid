@@ -63,6 +63,7 @@
     <!-- Add sport -->
     <string name="add_sport_title">Alta deporte</string>
     <string name="add_sport_error">Error al añadir deportes</string>
+    <string name="add_sport_get_activities_error">Error al obtener los deportes</string>
     <!-- Add location -->
     <string name="add_location_title">Alta ubicación</string>
     <string name="add_location_error">No se puede obtener la ubicación</string>
@@ -100,6 +101,7 @@
     <string name="trainer_management_sports_label">¿Qué enseñas?</string>
     <string name="trainer_management_practise_sports_label">¿Qué practicas?</string>
     <string name="trainer_management_delete_book_error">Ha habido un error eliminando su reserva</string>
+    <string name="trainer_management_delete_class_error">Funcionalidad no implementada</string>
     <!-- New class -->
     <string name="new_class_title">Crear clase</string>
     <string name="new_class_sport_error">Tienes que seleccionar un deporte</string>

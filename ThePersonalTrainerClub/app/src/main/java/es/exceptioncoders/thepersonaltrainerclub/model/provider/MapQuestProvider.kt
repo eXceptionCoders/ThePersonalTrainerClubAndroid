@@ -35,9 +35,9 @@ class MapQuestProviderProviderImp: MapQuestProvider {
                 }
 
                 completion(null, error)
+            } ?: run {
+                completion(mapAddressResponseToModel(response!!), error)
             }
-
-            completion(mapAddressResponseToModel(response!!), error)
         }
     }
 
@@ -56,9 +56,9 @@ class MapQuestProviderProviderImp: MapQuestProvider {
                 }
 
                 completion(null, error)
+            } ?: run {
+                completion(mapReverseResponseToModel(response!!), error)
             }
-
-            completion(mapReverseResponseToModel(response!!), error)
         }
     }
 

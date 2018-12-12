@@ -21,12 +21,13 @@ class AddLocationActivity : BaseActivity(), AddLocationActivityContract.View {
     }
 
     private lateinit var mPresenter: AddLocationActivityContract.Presenter<AddLocationActivity>
+    private var mMenu: Menu? = null
 
     override fun bindLayout(): Int = R.layout.activity_add_location
 
     override fun localizeView() {
-        (currentLocationButton as Button).text =  resources.getString(R.string.add_location_use_current_location_button_title)
-        (searchLocationButton as Button).text = resources.getString(R.string.add_location_search_location_button_title)
+        (currentLocationButton as? Button)?.text =  resources.getString(R.string.add_location_use_current_location_button_title)
+        (searchLocationButton as? Button)?.text = resources.getString(R.string.add_location_search_location_button_title)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,13 +82,26 @@ class AddLocationActivity : BaseActivity(), AddLocationActivityContract.View {
 
     override fun showLoading() {
         loading.visibility = View.VISIBLE
+
+        (currentLocationButton as? Button)?.isEnabled = false
+        (searchLocationButton as? Button)?.isEnabled = false
+        descriptionText?.isEnabled = false
+        searchLocationText?.isEnabled = false
+        mMenu?.getItem(0)?.isEnabled = false
     }
 
     override fun hideLoading() {
         loading.visibility = View.INVISIBLE
+
+        (currentLocationButton as? Button)?.isEnabled = true
+        (searchLocationButton as? Button)?.isEnabled = true
+        descriptionText?.isEnabled = true
+        searchLocationText?.isEnabled = true
+        mMenu?.getItem(0)?.isEnabled = true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        mMenu = menu
         menuInflater.inflate(R.menu.menu_save, menu)
 
         return true

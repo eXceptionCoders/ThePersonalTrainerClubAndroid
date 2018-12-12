@@ -2,8 +2,8 @@ package es.exceptioncoders.thepersonaltrainerclub.view.classDetail
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.view.View
 import android.widget.Button
-import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.ClassModel
@@ -11,7 +11,6 @@ import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_class_detail.*
 
 class ClassDetailActivity : BaseActivity(), ClassDetailActivityContract.View {
-
     companion object {
         const val MODEL_CLASS_KEY = "modelClass"
     }
@@ -23,6 +22,18 @@ class ClassDetailActivity : BaseActivity(), ClassDetailActivityContract.View {
     private lateinit var model: ClassModel
 
     override fun localizeView() {}
+
+    override fun showLoading() {
+        loading?.visibility = View.VISIBLE
+
+        (bookButton as? Button)?.isEnabled = false
+    }
+
+    override fun hideLoading() {
+        loading?.visibility = View.INVISIBLE
+
+        (bookButton as? Button)?.isEnabled = true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
