@@ -18,7 +18,7 @@ class TypeSelectionFragmentPresenter(private val mNavigator: TypeSelectionFragme
             SharedApp.preferences.user = it
         }
 
-        ((mView as TypeSelectionFragment).activity as DashboardActivity).setUpFragments()
+        ((mView as TypeSelectionFragment).activity as DashboardActivity).updateTabTitles()
         mNavigator.navigateToMainTab()
     }
 }

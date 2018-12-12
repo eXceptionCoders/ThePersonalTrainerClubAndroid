@@ -9,17 +9,9 @@ import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.newClass.NewClassFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.searchClass.SearchClassFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.typeSelection.TypeSelectionFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.userSettings.UserSettingsFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
-    lateinit var mFragments: List<BaseFragment>
-    lateinit var mFragmentNames: List<String>
-
     private lateinit var mPresenter: DashboardActivityContract.Presenter<DashboardActivity>
 
     override fun bindLayout(): Int = R.layout.activity_dashboard
@@ -37,12 +29,13 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
         mPresenter = DashboardActivityPresenter(mNavigator) as DashboardActivityContract.Presenter<DashboardActivity>
         mPresenter.attachView(this)
 
-        setUpFragments()
 
         val fragmentAdapter = DashboardPagerAdapter(supportFragmentManager, this)
         viewpager_main.adapter = fragmentAdapter
 
         tabs_main.setupWithViewPager(viewpager_main)
+
+        updateTabTitles()
 
         val myToolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(myToolbar)
@@ -99,17 +92,14 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
         }
     }
 
-    fun setUpFragments() {
+    fun updateTabTitles() {
+        var newTabTitles: ArrayList<String>
+
+
         SharedApp.preferences.user?.let {
             if (it.coach) {
                 if (it.showCoachView) {
-                    mFragments = listOf(
-                            TrainerManagementFragment(),
-                            TypeSelectionFragment(),
-                            NewClassFragment(),
-                            UserSettingsFragment()
-                    )
-                    mFragmentNames = listOf(
+                    newTabTitles = arrayListOf(
                             getString(R.string.trainer_management_title),
                             getString(R.string.type_selection_title),
                             getString(R.string.new_class_title),
@@ -117,14 +107,7 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
                     )
                 }
                 else {
-                    mFragments = listOf(
-                            TrainerManagementFragment(),
-                            TypeSelectionFragment(),
-                            SearchClassFragment(),
-                            UserSettingsFragment()
-                    )
-
-                    mFragmentNames = listOf(
+                    newTabTitles = arrayListOf(
                             getString(R.string.trainer_management_title),
                             getString(R.string.type_selection_title),
                             getString(R.string.search_class_title),
@@ -133,19 +116,14 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
                 }
             }
             else {
-                mFragments = listOf(
-                        TrainerManagementFragment(),
-                        SearchClassFragment(),
-                        UserSettingsFragment()
-                )
-
-                mFragmentNames = listOf(
+                newTabTitles = arrayListOf(
                         getString(R.string.trainer_management_title),
                         getString(R.string.search_class_title),
                         getString(R.string.user_settings_title)
                 )
             }
-            viewpager_main.adapter?.notifyDataSetChanged()
+
+            (viewpager_main.adapter as DashboardPagerAdapter).setTabTitles(newTabTitles)
         }
     }
 }
