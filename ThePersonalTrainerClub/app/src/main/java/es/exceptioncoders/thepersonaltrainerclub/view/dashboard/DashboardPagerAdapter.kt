@@ -15,42 +15,29 @@ import es.exceptioncoders.thepersonaltrainerclub.view.typeSelection.TypeSelectio
 import es.exceptioncoders.thepersonaltrainerclub.view.userSettings.UserSettingsFragment
 
 class DashboardPagerAdapter(fm: FragmentManager, private val ctx: Context) : FragmentStatePagerAdapter(fm) {
-    override fun getItem(position: Int): Fragment {
-        return when (position) {
-            0 -> TrainerManagementFragment()
-            1 -> TypeSelectionFragment()
-            2 -> {
-                return if (SharedApp.preferences.user!!.showCoachView) {
-                    NewClassFragment()
-                } else {
-                    SearchClassFragment()
-                }
+    private val mTabTitles = ArrayList<String>()
 
-            }
+    fun setTabTitles(newTitles: ArrayList<String>) {
+        mTabTitles.clear()
+        mTabTitles.addAll(newTitles)
+        notifyDataSetChanged()
+    }
+
+    override fun getItem(position: Int): Fragment {
+        return when {
+            mTabTitles[position] == ctx.resources.getString(R.string.trainer_management_title) -> TrainerManagementFragment()
+            mTabTitles[position] == ctx.resources.getString(R.string.type_selection_title) -> TypeSelectionFragment()
+            mTabTitles[position] == ctx.resources.getString(R.string.new_class_title) -> NewClassFragment()
+            mTabTitles[position] == ctx.resources.getString(R.string.search_class_title) -> SearchClassFragment()
             else -> UserSettingsFragment()
         }
     }
 
     override fun getCount(): Int {
-        return 4
-    }
-
-    override fun getItemPosition(`object`: Any): Int {
-        return PagerAdapter.POSITION_NONE
+        return mTabTitles.size
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return when (position) {
-            0 -> ctx.resources.getString(R.string.trainer_management_title)
-            1 -> ctx.resources.getString(R.string.type_selection_title)
-            2 -> {
-                return if (SharedApp.preferences.user!!.showCoachView) {
-                    ctx.resources.getString(R.string.new_class_title)
-                } else {
-                    ctx.resources.getString(R.string.search_class_title)
-                }
-            }
-            else -> ctx.resources.getString(R.string.user_settings_title)
-        }
+        return mTabTitles[position]
     }
 }

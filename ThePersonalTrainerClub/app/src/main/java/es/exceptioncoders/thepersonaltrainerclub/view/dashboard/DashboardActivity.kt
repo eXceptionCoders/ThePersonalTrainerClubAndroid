@@ -2,20 +2,13 @@ package es.exceptioncoders.thepersonaltrainerclub.view.dashboard
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.view.ViewGroup
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseActivity
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BaseFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.newClass.NewClassFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.searchClass.SearchClassFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.trainerManagement.TrainerManagementFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.typeSelection.TypeSelectionFragment
-import es.exceptioncoders.thepersonaltrainerclub.view.userSettings.UserSettingsFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
@@ -41,6 +34,7 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
         viewpager_main.adapter = fragmentAdapter
 
         tabs_main.setupWithViewPager(viewpager_main)
+        updateTabTitles()
 
         val myToolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(myToolbar)
@@ -100,6 +94,36 @@ class DashboardActivity : BaseActivity(), DashboardActivityContract.View {
     }
 
     fun updateTabTitles() {
-        fragmentAdapter.notifyDataSetChanged()
+        var newTabTitles: ArrayList<String>
+
+        SharedApp.preferences.user?.let {
+            if (it.coach) {
+                if (it.showCoachView) {
+                    newTabTitles = arrayListOf(
+                            getString(R.string.trainer_management_title),
+                            getString(R.string.type_selection_title),
+                            getString(R.string.new_class_title),
+                            getString(R.string.user_settings_title)
+                    )
+                }
+                else {
+                    newTabTitles = arrayListOf(
+                            getString(R.string.trainer_management_title),
+                            getString(R.string.type_selection_title),
+                            getString(R.string.search_class_title),
+                            getString(R.string.user_settings_title)
+                    )
+                }
+            }
+            else {
+                newTabTitles = arrayListOf(
+                        getString(R.string.trainer_management_title),
+                        getString(R.string.search_class_title),
+                        getString(R.string.user_settings_title)
+                )
+            }
+
+            (viewpager_main.adapter as DashboardPagerAdapter).setTabTitles(newTabTitles)
+        }
     }
 }
