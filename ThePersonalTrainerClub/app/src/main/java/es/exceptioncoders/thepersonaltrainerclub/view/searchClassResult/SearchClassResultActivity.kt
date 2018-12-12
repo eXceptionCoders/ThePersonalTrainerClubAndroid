@@ -3,6 +3,7 @@ package es.exceptioncoders.thepersonaltrainerclub.view.searchClassResult
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import com.google.gson.Gson
 import es.exceptioncoders.thepersonaltrainerclub.R
@@ -45,7 +46,7 @@ class SearchClassResultActivity : BaseActivity(), SearchClassResultActivityContr
         classesAdapter = SearchClassResultAdapter(classes)
         searchResultListView.adapter = classesAdapter
         searchResultListView.layoutParams.height = if (classes.count() == 0) 100 else 486 * classes.count()
-        searchResultListView.layoutManager = GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false)
+        searchResultListView.layoutManager = LinearLayoutManager(this)
         searchResultListView.itemAnimator = DefaultItemAnimator()
     }
 }
