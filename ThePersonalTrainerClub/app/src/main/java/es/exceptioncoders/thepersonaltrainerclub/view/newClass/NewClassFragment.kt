@@ -3,7 +3,9 @@ package es.exceptioncoders.thepersonaltrainerclub.view.newClass
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
 import android.widget.SeekBar
@@ -41,6 +43,10 @@ class NewClassFragment : BaseFragment(), NewClassFragmentContract.View {
 
         mPresenter = NewClassFragmentPresenter(mNavigator) as NewClassFragmentContract.Presenter<NewClassFragment>
         mPresenter.attachView(this)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -111,7 +117,7 @@ class NewClassFragment : BaseFragment(), NewClassFragmentContract.View {
 
         locationsAdapter = LocationStripViewAdapter(true, user.locations.toList(), this.activity!!)
         (locationsListview as ListView).adapter = locationsAdapter
-        (locationsListview as ListView).layoutParams.height = if (user.activities.count() == 0) 100 else 124 * user.activities.count()
+        (locationsListview as ListView).layoutParams.height = if (user.locations.count() == 0) 100 else 100 * user.locations.count()
         (locationsListview as ListView).setOnItemClickListener { adapterView, view, i, l ->
             locationsAdapter.itemSelected = user.locations[i]
             locationsAdapter.notifyDataSetChanged()

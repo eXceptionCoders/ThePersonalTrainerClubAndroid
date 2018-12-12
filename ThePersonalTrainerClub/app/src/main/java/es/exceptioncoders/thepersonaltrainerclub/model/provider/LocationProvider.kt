@@ -39,9 +39,9 @@ class LocationProviderImp: LocationProvider {
                 }
 
                 completion(false, error)
+            } ?: run {
+                completion(true, error)
             }
-
-            completion(true, error)
         }
     }
 }

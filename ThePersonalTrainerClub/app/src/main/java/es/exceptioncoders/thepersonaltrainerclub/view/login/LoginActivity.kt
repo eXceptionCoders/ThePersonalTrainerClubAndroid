@@ -30,11 +30,11 @@ class LoginActivity : BaseActivity(), LoginActivityContract.View {
 
         mPresenter.onCreate()
 
-        loginButton.setOnClickListener {
-            mPresenter.onLogin(emailEditText.text.toString(), passwordEditText.text.toString())
+        loginButton?.setOnClickListener {
+            mPresenter.onLogin((emailEditText?.text ?: "").toString(), (passwordEditText?.text ?: "").toString())
         }
 
-        registerButton.setOnClickListener {
+        registerButton?.setOnClickListener {
             mPresenter.onRegister()
         }
 
@@ -45,17 +45,25 @@ class LoginActivity : BaseActivity(), LoginActivityContract.View {
     }
 
     override fun showLoading() {
-        progressBar.visibility = View.VISIBLE
+        progressBar?.visibility = View.VISIBLE
+        emailEditText?.isEnabled = false
+        passwordEditText?.isEnabled = false
+        (loginButton as? Button)?.isEnabled = false
+        (registerButton as? Button)?.isEnabled = false
     }
 
     override fun hideLoading() {
-        progressBar.visibility = View.INVISIBLE
+        progressBar?.visibility = View.INVISIBLE
+        emailEditText?.isEnabled = true
+        passwordEditText?.isEnabled = true
+        (loginButton as? Button)?.isEnabled = true
+        (registerButton as? Button)?.isEnabled = true
     }
 
     override fun localizeView() {
-        emailEditText.hint = resources.getString(R.string.login_email_placeholder)
-        passwordEditText.hint = resources.getString(R.string.login_password_placeholder)
-        (loginButton as Button).text =  resources.getString(R.string.login_login_button)
-        (registerButton as Button).text = resources.getString(R.string.login_register_button)
+        emailEditText?.hint = resources.getString(R.string.login_email_placeholder)
+        passwordEditText?.hint = resources.getString(R.string.login_password_placeholder)
+        (loginButton as? Button)?.text =  resources.getString(R.string.login_login_button)
+        (registerButton as? Button)?.text = resources.getString(R.string.login_register_button)
     }
 }

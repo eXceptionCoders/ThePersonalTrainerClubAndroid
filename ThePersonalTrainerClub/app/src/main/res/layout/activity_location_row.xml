@@ -10,22 +10,22 @@
 
     <TextView
         android:id="@+id/locationName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="6"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="@android:color/black"
         android:textSize="@dimen/text_normal"
-        tools:text='Gimnasio "el Leon"'
-        android:layout_width="0dp" />
+        tools:text='Gimnasio "el Leon"' />
 
     <ImageView
         android:id="@+id/iconImageView"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_location"
-        tools:srcCompat="@drawable/ic_location"
-        android:layout_width="0dp" />
+        tools:srcCompat="@drawable/ic_location" />
 
 </LinearLayout>

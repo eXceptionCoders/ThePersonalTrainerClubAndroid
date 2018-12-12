@@ -9,7 +9,7 @@ import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
 import kotlinx.android.synthetic.main.activity_location_row.view.*
 
-class LocationStripViewAdapter(val enableSelection: Boolean = false, private val locations: List<LocationModel>, val mContext: Context): BaseAdapter() {
+class LocationStripViewAdapter(val enableSelection: Boolean = false, var locations: List<LocationModel>, val mContext: Context): BaseAdapter() {
     var itemSelected: LocationModel? = null
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {

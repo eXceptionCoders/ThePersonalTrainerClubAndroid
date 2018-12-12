@@ -71,9 +71,9 @@ class ClassProviderImp: ClassProvider {
                 }
 
                 completion(false, error)
+            } ?: run {
+                completion(true, error)
             }
-
-            completion(true, error)
         }
     }
 
@@ -102,9 +102,9 @@ class ClassProviderImp: ClassProvider {
                 }
 
                 completion(null, error)
+            } ?: run {
+                completion(mapFindEntityToModel(response!!), error)
             }
-
-            completion(mapFindEntityToModel(response!!), error)
         }
     }
 

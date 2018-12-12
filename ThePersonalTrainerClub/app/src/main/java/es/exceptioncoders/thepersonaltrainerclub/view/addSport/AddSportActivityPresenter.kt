@@ -1,5 +1,6 @@
 package es.exceptioncoders.thepersonaltrainerclub.view.addSport
 
+import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SetSportsModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.ActivityProviderImp
@@ -22,7 +23,11 @@ class AddSportActivityPresenter(private val mNavigator: AddSportActivityContract
         activityUseCase.getAllActivities { arrayOfSportModels, activityError ->
             mView?.hideLoading()
 
-            mView?.showSports(arrayOfSportModels)
+            activityError?.let {
+                mView?.showAlertMessage(null, R.string.add_sport_get_activities_error)
+            } ?: kotlin.run {
+                mView?.showSports(arrayOfSportModels)
+            }
         }
     }
 
@@ -38,7 +43,11 @@ class AddSportActivityPresenter(private val mNavigator: AddSportActivityContract
         setActivitiesUseCase.setActivities(SetSportsModel(str)) { success, error ->
             mView?.hideLoading()
 
-            mNavigator?.popBack()
+            error?.let {
+                mView?.showAlertMessage(null, R.string.add_sport_error)
+            } ?: run {
+                mNavigator?.popBack()
+            }
         }
     }
 }

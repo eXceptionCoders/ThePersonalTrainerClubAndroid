@@ -65,7 +65,7 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
     }
 
     override fun stopLocation() {
-        mFusedLocationClient!!.removeLocationUpdates(locationCallback)
+        mFusedLocationClient?.removeLocationUpdates(locationCallback)
     }
 
     override fun getLastLocation() {
@@ -75,11 +75,13 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
 
             mView?.showLoading()
             provider.getReverseLocation(MQAddressModel("", mSelectedLocation!!)) { response, error ->
-                //TODO: Check error & null
-
                 mView?.hideLoading()
 
-                mView?.setLocation(mSelectedLocation!!, response!!.address)
+                error?.let {
+                    mView?.showAlertMessage(null, R.string.add_location_user_location_error_message)
+                } ?: kotlin.run {
+                    mView?.setLocation(mSelectedLocation!!, response!!.address)
+                }
             }
         } ?: run {
             mView?.showAlertMessage(null, R.string.add_location_no_last_location_message)
@@ -91,13 +93,14 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
         showCurrentLocation = false
 
         provider.getLocation(MQAddressModel(address, GeoPoint(0.0, 0.0))) { response, error ->
-            //TODO: Check error & null
-
             mView?.hideLoading()
 
-            mSelectedLocation = response!!.latlng
-
-            mView?.setLocation(mSelectedLocation!!, response!!.address)
+            error?.let {
+                mView?.showAlertMessage(null, R.string.add_location_no_address_found)
+            } ?: kotlin.run {
+                mSelectedLocation = response!!.latlng
+                mView?.setLocation(mSelectedLocation!!, response!!.address)
+            }
         }
     }
 
@@ -115,6 +118,8 @@ class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityCo
 
                     if (success) {
                         mNavigator.popBack()
+                    } else {
+                        mView?.showAlertMessage(null, R.string.add_location_on_save_error_message)
                     }
                 }
             } ?: run {

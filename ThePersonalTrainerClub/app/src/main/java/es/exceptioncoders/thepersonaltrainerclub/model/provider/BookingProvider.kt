@@ -37,9 +37,9 @@ class BookingProviderImp: BookingProvider {
                 }
 
                 completion(false, error)
+            } ?: run {
+                completion(true, error)
             }
-
-            completion(true, error)
         }
     }
 
@@ -62,9 +62,9 @@ class BookingProviderImp: BookingProvider {
                 }
 
                 completion(false, error)
+            } ?: run {
+                completion(true, error)
             }
-
-            completion(true, error)
         }
     }
 }
