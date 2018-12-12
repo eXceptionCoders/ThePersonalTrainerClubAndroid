@@ -40,6 +40,10 @@ class ClassDetailActivity : BaseActivity(), ClassDetailActivityContract.View {
 
         supportActionBar?.title = resources.getString(R.string.class_detail_title)
 
+        bookButton.setOnClickListener {
+            mPresenter.onBookClass(model)
+        }
+
         showClass()
     }
 

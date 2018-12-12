@@ -11,4 +11,8 @@ class SearchClassResultActivityNavigator : BaseNavigator<SearchClassResultActivi
         intent.putExtra(ClassDetailActivity.MODEL_CLASS_KEY, model)
         (mView as SearchClassResultActivity).startActivity(intent)
     }
+
+    override fun popBack() {
+        (mView as SearchClassResultActivity).finish()
+    }
 }

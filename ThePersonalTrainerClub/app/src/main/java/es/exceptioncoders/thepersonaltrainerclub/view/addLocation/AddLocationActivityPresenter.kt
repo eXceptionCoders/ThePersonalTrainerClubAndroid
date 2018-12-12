@@ -9,6 +9,7 @@ import es.exceptioncoders.thepersonaltrainerclub.model.model.MQAddressModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.LocationProviderImp
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.MapQuestProvider
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.MapQuestProviderProviderImp
+import es.exceptioncoders.thepersonaltrainerclub.model.provider.UserProviderImp
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.AddLocationUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.AddLocationUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
@@ -16,7 +17,7 @@ import org.osmdroid.util.GeoPoint
 
 class AddLocationActivityPresenter(private val mNavigator: AddLocationActivityContract.Navigator<AddLocationActivityContract.View>) : BasePresenter<AddLocationActivityContract.View>(),AddLocationActivityContract.Presenter<AddLocationActivityContract.View> {
 
-    private val useCase: AddLocationUseCase = AddLocationUseCaseImp(LocationProviderImp())
+    private val useCase: AddLocationUseCase = AddLocationUseCaseImp(LocationProviderImp(), UserProviderImp())
     private val provider: MapQuestProvider = MapQuestProviderProviderImp()
 
     private var mFusedLocationClient: FusedLocationProviderClient? = null

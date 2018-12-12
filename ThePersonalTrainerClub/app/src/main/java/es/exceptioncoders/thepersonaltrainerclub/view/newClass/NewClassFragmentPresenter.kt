@@ -5,6 +5,7 @@ import es.exceptioncoders.thepersonaltrainerclub.model.NewClassModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.LocationModel
 import es.exceptioncoders.thepersonaltrainerclub.model.model.SportModel
 import es.exceptioncoders.thepersonaltrainerclub.model.provider.ClassProviderImp
+import es.exceptioncoders.thepersonaltrainerclub.model.provider.UserProviderImp
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.NewClassUseCase
 import es.exceptioncoders.thepersonaltrainerclub.model.usecase.NewClassUseCaseImp
 import es.exceptioncoders.thepersonaltrainerclub.utils.SharedApp
@@ -12,7 +13,7 @@ import es.exceptioncoders.thepersonaltrainerclub.view.base.BasePresenter
 
 class NewClassFragmentPresenter(private val mNavigator: NewClassFragmentContract.Navigator<NewClassFragmentContract.View>) : BasePresenter<NewClassFragmentContract.View>(), NewClassFragmentContract.Presenter<NewClassFragmentContract.View> {
 
-    val useCase: NewClassUseCase = NewClassUseCaseImp(ClassProviderImp())
+    val useCase: NewClassUseCase = NewClassUseCaseImp(ClassProviderImp(), UserProviderImp())
 
     override fun onCreate(sport: SportModel, location: LocationModel, description: String, price: Double, quota: Int) {
         val model = NewClassModel(

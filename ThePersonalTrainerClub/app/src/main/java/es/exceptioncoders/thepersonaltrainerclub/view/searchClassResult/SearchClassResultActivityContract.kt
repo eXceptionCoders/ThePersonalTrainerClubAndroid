@@ -13,5 +13,6 @@ interface SearchClassResultActivityContract {
 
     interface Navigator<V : View> : BaseContract.BaseNavigator<V> {
         fun navigateToClassDetail(model: ClassModel)
+        fun popBack()
     }
 }

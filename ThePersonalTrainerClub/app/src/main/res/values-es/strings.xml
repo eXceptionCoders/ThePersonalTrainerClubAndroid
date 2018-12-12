@@ -99,6 +99,7 @@
     <string name="trainer_management_look_for_locations_label">¿Dónde buscas clases?</string>
     <string name="trainer_management_sports_label">¿Qué enseñas?</string>
     <string name="trainer_management_practise_sports_label">¿Qué practicas?</string>
+    <string name="trainer_management_delete_book_error">Ha habido un error eliminando su reserva</string>
     <!-- New class -->
     <string name="new_class_title">Crear clase</string>
     <string name="new_class_sport_error">Tienes que seleccionar un deporte</string>
@@ -133,4 +134,5 @@
 
     <!-- Search Class Result -->
     <string name="search_classes_result_title">Clases encontradas</string>
+    <string name="search_classes_book_error">Hay un error al efectuar la reserva</string>
 </resources>

@@ -2,9 +2,9 @@ package es.exceptioncoders.thepersonaltrainerclub.view.searchClassResult
 
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
+import android.view.View
 import com.google.gson.Gson
 import es.exceptioncoders.thepersonaltrainerclub.R
 import es.exceptioncoders.thepersonaltrainerclub.model.model.ClassModel
@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_search_class_result.*
 
 class SearchClassResultActivity : BaseActivity(), SearchClassResultActivityContract.View {
     override fun bindLayout(): Int = R.layout.activity_search_class_result
+
     private lateinit var classesAdapter: SearchClassResultAdapter
     private lateinit var classes: Array<ClassModel>
     private lateinit var mPresenter: SearchClassResultActivityContract.Presenter<SearchClassResultActivity>
@@ -22,6 +23,14 @@ class SearchClassResultActivity : BaseActivity(), SearchClassResultActivityContr
     }
 
     override fun localizeView() {
+    }
+
+    override fun showLoading() {
+        loading?.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        loading?.visibility = View.INVISIBLE
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

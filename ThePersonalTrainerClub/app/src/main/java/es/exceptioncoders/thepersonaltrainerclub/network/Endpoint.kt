@@ -2,6 +2,7 @@ package es.exceptioncoders.thepersonaltrainerclub.network
 
 import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.core.Request
+import com.github.kittinunf.fuel.httpDelete
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.fuel.httpPost
 import com.google.gson.Gson
@@ -24,6 +25,8 @@ class Endpoint(private val type: EndpointType) {
         class AddLocation(val requestModel: AddLocationRequest) : EndpointType()
         class NewClass(val requestModel: NewClassRequest) : EndpointType()
         class SearchClass(val requestModel: FindClassRequest) : EndpointType()
+        class BookClass(val requestModel: BookClassRequest) : EndpointType()
+        class DeleteBook(val requestModel: BookClassRequest) : EndpointType()
     }
 
     val boundary: String = "===" + System.currentTimeMillis() + "==="
@@ -95,6 +98,8 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.AddLocation -> "/api/v1/es/location/add"
             is EndpointType.SetUserThumbnail -> "/api/v1/es/datauser/thumbnail"
             is EndpointType.NewClass -> "/api/v1/es/class/add"
+            is EndpointType.BookClass -> "/api/v1/es/booking/check"
+            is EndpointType.DeleteBook -> "/api/v1/es/booking/${type.requestModel.classValue}"
             is EndpointType.SearchClass -> {
                 var params = ""
                 params += "page=${type.requestModel.page}"
@@ -132,6 +137,9 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.TrainerClasses -> Gson().toJson(type.trainerClassRequestModel)
             is EndpointType.SetActivities -> Gson().toJson(type.requestModel)
             is EndpointType.AddLocation -> Gson().toJson(type.requestModel)
+            is EndpointType.BookClass -> {
+                return "{\"class\":\"${type.requestModel.classValue}\"}"
+            }
             is EndpointType.SetUserThumbnail -> {
                 var body = ""
                 val filename = "user-profile.jpg"
@@ -163,6 +171,8 @@ class Endpoint(private val type: EndpointType) {
             is EndpointType.SetUserThumbnail -> path().httpPost()
             is EndpointType.NewClass -> path().httpPost()
             is EndpointType.SearchClass -> path().httpGet()
+            is EndpointType.BookClass -> path().httpPost()
+            is EndpointType.DeleteBook -> path().httpDelete()
         }
     }
 
